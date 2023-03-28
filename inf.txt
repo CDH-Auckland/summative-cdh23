@@ -1,5 +1,10 @@
 mongodb+srv://summativecdh2023:<password>@cluster0.6z7upvv.mongodb.net/?retryWrites=true&w=majority
 
+
+
+-CSS writing methonology
+-Please follow BEM method
+
 -initial set up for node.js
 
 npm init
@@ -13,4 +18,5 @@ npx nodemon index.js
 control + c (stop server)
 
 - github 
+
 
