@@ -1,5 +1,22 @@
 mongodb+srv://summativecdh2023:<password>@cluster0.6z7upvv.mongodb.net/?retryWrites=true&w=majority
 
 
+
 -CSS writing methonology
 -Please follow BEM method
+
+-initial set up for node.js
+
+npm init
+npm install express
+npm uninstall express(***)
+touch index.js
+http://localhost:3000/(chrome)
+node index.js
+npm install nodemon --save-dev
+npx nodemon index.js
+control + c (stop server)
+
+- github 
+
+
