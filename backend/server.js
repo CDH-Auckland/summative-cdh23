@@ -10,11 +10,6 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(cors());
 
-server.get("/", (req, res) => {
-  res.send(req.body);
-  res.end();
-});
-
 //MongoDB server
 mongoose.connect(process.env.DB_URL).catch((error) => {
   console.log(error);
