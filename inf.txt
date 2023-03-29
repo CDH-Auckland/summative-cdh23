@@ -1,5 +1,4 @@
-mongodb+srv://summativecdh2023:<password>@cluster0.6z7upvv.mongodb.net/?retryWrites=true&w=majority
-
+DB_URL="mongodb+srv://summativecdh2023:Gb7wfWm2BuJ6SUjA@cluster0.6z7upvv.mongodb.net/project01?retryWrites=true&w=majority"
 
 
 -CSS writing methonology
@@ -10,6 +9,8 @@ npm init
 npm install express
 npm uninstall express(***)
 npm i cors
+npm install dotenv
+npm install mongoose
 touch index.js
 http://localhost:3000/(chrome)
 node index.js
