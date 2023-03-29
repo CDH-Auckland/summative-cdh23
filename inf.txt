@@ -1,5 +1,10 @@
 mongodb+srv://summativecdh2023:<password>@cluster0.6z7upvv.mongodb.net/?retryWrites=true&w=majority
 
+
+
+-CSS writing methonology
+-Please follow BEM method
+
 -initial set up for node.js
 npm init
 npm install express
@@ -21,3 +26,4 @@ control + c (stop server)
 -every time you start new thing you should pull the branch frist
 √ git pull origin branch-name
 DONOT MERGE TO MAIN!! WE NEED EACHOTHERS PERMISSIONS.
+
