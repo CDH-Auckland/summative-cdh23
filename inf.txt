@@ -20,11 +20,13 @@ control + c (stop server)
 
 
 - github 
+√ git branch 
+  check where you at
 √ git add . 
 √ git commit -m "Your commit message here" 
 √ git checkout -b branch-name you want to commit
 √ git push origin branch-name 
--every time you start new thing you should pull the branch frist
+  every time you start new thing you should pull the branch frist
 √ git pull origin branch-name
-DONOT MERGE TO MAIN!! WE NEED EACHOTHERS PERMISSIONS.
+  DONOT MERGE TO MAIN!! WE NEED EACHOTHERS PERMISSIONS.
 
