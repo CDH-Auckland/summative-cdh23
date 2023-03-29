@@ -1,4 +1,4 @@
-DB_URL="mongodb+srv://summativecdh2023:<password>@cluster0.6z7upvv.mongodb.net/project01?retryWrites=true&w=majority"
+DB_URL="mongodb+srv://summativecdh2023:Gb7wfWm2BuJ6SUjA@cluster0.6z7upvv.mongodb.net/project01?retryWrites=true&w=majority"
 
 
 -CSS writing methonology
