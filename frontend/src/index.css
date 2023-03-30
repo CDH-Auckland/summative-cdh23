@@ -10,6 +10,22 @@
 }
 
 /* Elements */
+h1 {
+  font-size: 30px;
+  font-weight: 200;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 17px;
+}
+h5 {
+  font-size: 12px;
+}
 
 /* Landingpage */
 .logn--signup {
