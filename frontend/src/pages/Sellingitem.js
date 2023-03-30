@@ -14,9 +14,16 @@ function Sellingitem() {
 
 
     return (
-        <div>
+        <div className='wrapper'>
             <Header title={"Selling Items"} backNavigation={backNavigation} />
+            <div className='wrapper__sub'>
+                <div>
+                    <h4>Update your selling information</h4>
+                    <div>
 
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

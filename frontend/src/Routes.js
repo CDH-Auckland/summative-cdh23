@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import LandingPage from "./pages/Landing";
 import BuySell from "./pages/BuySell";
 import Sellingitem from "./pages/Sellingitem";
+import Icontest from "./pages/Icontest";
 
 const AppRoutes = () => {
     return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
             <Route path="/" element={< LandingPage />} />
             <Route path="/buyandsell" element={< BuySell />} />
             <Route path="/sellingitems" element={< Sellingitem />} />
+            <Route path="/icon" element={< Icontest />} />
         </Routes>
     )
 }
