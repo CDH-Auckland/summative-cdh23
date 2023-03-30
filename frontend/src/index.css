@@ -13,7 +13,7 @@
 
 * {
   font-family: "Montserrat", sans-serif;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 0;
 }
 
@@ -71,16 +71,20 @@ h5 {
   align-items: center;
 }
 
-.DIOLogoR {
+.landingpage__signup__bgr {
+  width: 960px;
+  height: 1080px;
+}
+
+.landingpage__signup__DIOLogoR {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 205px auto 0 auto;
 }
 
-.landingpage__signup h2 {
+.landingpage__signup h3 {
   width: 284px;
-  font-size: 20px;
   text-align: center;
   margin: 36px auto;
   color: var(--primary-color);
@@ -90,10 +94,11 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   position: relative;
-  width: 390px;
-  height: 48px;
-  font-size: 14px;
-  font-style: ;
+  width: 370px;
+  height: 28px;
+  font-size: 20px;
+  font-style: bold italic;
+  padding: 10px;
   text-align: left;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
@@ -107,16 +112,16 @@ input[type="text"]:not(:placeholder-shown) ~ label,
 input[type="email"]:not(:placeholder-shown) ~ label,
 input[type="password"]:not(:placeholder-shown) ~ label {
   transform: translate(0, -25px);
-  font-size: 14px;
+  font-size: 20px;
   color: #6bace4;
 }
 
-.landingpage__signup_input {
+.landingpage__signup__input {
   width: 390px;
   margin: 0 auto;
 }
 
-.landingpage__signup_button {
+.landingpage__signup__button {
   position: relative;
   width: 390px;
   height: 48px;
@@ -126,7 +131,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   background-color: #415fff;
   border-radius: 12px;
 }
-.landingpage__signup_button h2 {
+.landingpage__signup__button h2 {
   color: var(--secondary-text-color);
   margin: 0 auto;
 }
