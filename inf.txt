@@ -1,16 +1,17 @@
 DB_URL="mongodb+srv://summativecdh2023:Gb7wfWm2BuJ6SUjA@cluster0.6z7upvv.mongodb.net/project01?retryWrites=true&w=majority"
 
 
--CSS writing methonology
--Please follow BEM method
+🛑 CSS writing methonology 🛑
+🛑 Please follow BEM method 🛑
 
--initial set up for node.js
+✅initial set up for node.js
 npm init
 npm install express
 npm uninstall express(***)
 npm i cors
 npm install dotenv
 npm install mongoose
+npm install @mui/material @emotion/react @emotion/styled
 touch index.js
 http://localhost:3000/(chrome)
 node index.js
@@ -19,19 +20,19 @@ npx nodemon index.js
 control + c (stop server)
 
 
-- github 
+✅ github 
 √ git branch 
-  check where you at
+ ❕ check where you at
 √ git add . 
 √ git commit -m "Your commit message here" 
 √ git checkout -b branch-name you want to commit
 √ git push origin branch-name 
-  every time you start new thing you should pull the branch frist
+ ❕ every time you start new thing you should pull the branch frist
 √ git pull origin branch-name
-  DONOT MERGE TO MAIN!! WE NEED EACHOTHERS PERMISSIONS.
+ ❕ DONOT MERGE TO MAIN!! WE NEED EACHOTHERS PERMISSIONS.
 
 
--MUI Material icons
+✅ MUI Material icons
 import ShoppingBagOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
