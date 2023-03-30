@@ -1,5 +1,23 @@
+/* import font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
+<<<<<<< HEAD
+=======
+  --background-color: #FFFFFF;
+  --primary-color: #415FFF;
+  --secondary-color: #FFEE1C;
+  --text-color: #415FFF;
+  --secondary-text-color: #FFFFFF;
+  --font-family: "Montserrat", sans-serif;
+  --secondary-font-family:'arial', sans-serif;
+>>>>>>> 92dd7ac3facf37f5a1970d19807ec744f5db3a2c
 }
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* Block */
 .App {
   width: 1920px;
@@ -50,4 +68,5 @@ h5 {
 /* **** Signup */
 
 /* **** Signup END*/
-/* Landingpage   END*/
+/* Landingpage   END*
+
