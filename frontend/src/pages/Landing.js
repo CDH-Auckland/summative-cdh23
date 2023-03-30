@@ -43,6 +43,7 @@ function Landing() {
                 onSubmit={handleSubmit}
               >
                 <div>
+                  {/* <label htmlFor="firstName"></label> */}
                   <input
                     type="text"
                     id="firstName"
@@ -52,6 +53,7 @@ function Landing() {
                   />
                 </div>
                 <div>
+                  {/* <label htmlFor="lastName"></label> */}
                   <input
                     type="text"
                     id="lastName"
@@ -61,6 +63,7 @@ function Landing() {
                   />
                 </div>
                 <div>
+                  {/* <label htmlFor="email"></label> */}
                   <input
                     type="email"
                     id="email"
@@ -70,6 +73,7 @@ function Landing() {
                   />
                 </div>
                 <div>
+                  {/* <label htmlFor="password"></label> */}
                   <input
                     type="password"
                     id="password"
@@ -79,6 +83,7 @@ function Landing() {
                   />
                 </div>
                 <div>
+                  {/* <label htmlFor="confirmPassword"></label> */}
                   <input
                     type="password"
                     id="confirmPassword"
