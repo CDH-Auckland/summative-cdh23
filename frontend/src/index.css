@@ -17,13 +17,32 @@
 
 /* Block */
 .App {
-  width: 1920px;
-  height: 1080px;
-  background-color: var(--background-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+
+  background-color: #383838;
 }
 .wrapper {
   width: 100%;
+  height: 1080px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper__sub {
+  width: 70%;
   height: 100%;
+  background-color: aqua;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 /* Block END*/
 
@@ -47,6 +66,9 @@ h5 {
 input {
   border-style: none;
 }
+input:focus {
+  outline: none;
+}
 button {
   border-style: none;
   font: var(--font-family);
@@ -63,17 +85,16 @@ button {
 
 /* Landingpage */
 .landingpage {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
 
 /* ***** Login */
 .landingpage__login {
-  width: 960px;
-}
-.landingpage__login--bg_l {
-  width: 960px;
-  height: 1080px;
+  width: 50%;
+  background-image: url(./images/BG_L_L.jpg);
 }
 .landingpage__login--contents {
   display: flex;
@@ -87,28 +108,45 @@ button {
   /* padding: 36px auto 62px auto; */
 }
 
-.landingpage__login--h2 {
+.landingpage__login--h3 {
+  width: 341px;
   color: var(--text-color);
   margin: 0;
+  text-align: center;
   padding-top: 36px;
+  padding-bottom: 62px;
 }
-.landingpage__login--h2Regular {
+/* .landingpage__login--h2Regular {
   color: var(--text-color);
   font-weight: 300;
   margin: 0;
   padding-top: 12px;
   padding-bottom: 62px;
+} */
+
+.landingpage__login__inputarea {
+  position: relative;
+  border-bottom: 1px solid var(--primary-color);
 }
 .landingpage__login--input-border-bottom {
-  width: 390px;
+  width: 328px;
   height: 62px;
   font-size: 20px;
   font: var(--text-color);
-  border-bottom: 1px solid var(--primary-color);
+  margin-left: 55px;
 }
 .landingpage__login--input-border-bottom::placeholder {
   color: var(--text-color);
+  margin-left: 22px;
 }
+.landingpage__login--inputicon {
+  position: absolute;
+  left: 2%;
+  top: 14%;
+  transform: translate(22px, 10px);
+  color: var(--primary-color);
+}
+
 .landingpage__login--button {
   width: 390px;
   height: 48px;
