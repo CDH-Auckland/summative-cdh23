@@ -18,6 +18,11 @@ npx nodemon index.js
 control + c (stop server)
 
 
+
+-initial set up for react
+npm install react-router-dom
+
+
 - github 
 √ git add . 
 √ git commit -m "Your commit message here" 

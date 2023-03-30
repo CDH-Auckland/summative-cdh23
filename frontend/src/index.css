@@ -1,8 +1,6 @@
 :root {
   --colorBG: #fff;
   --colorWarning: #6d0000;
-  --colorInputBorder: #415fff;
-  --colorInputBG: #fff;
 }
 /* Block */
 .App {
@@ -39,7 +37,7 @@ h5 {
   height: 60px;
   font-size: 20px;
   margin: 15px;
-  border: 1px sold var(--colorInputBorder);
+  border: 1px sold var(--colorPrimary);
 }
 
 /* Landingpage */
