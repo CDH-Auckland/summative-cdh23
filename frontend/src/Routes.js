@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import LandingPage from "./pages/Landing";
 import BuySell from "./pages/BuySell";
+import Sellingitem from "./pages/Sellingitem";
 
 const AppRoutes = () => {
     return (

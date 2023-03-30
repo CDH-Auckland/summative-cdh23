@@ -1,12 +1,10 @@
 :root {
-  --colorBG: #fff;
-  --colorWarning: #6d0000;
 }
 /* Block */
 .App {
   width: 1920px;
   height: 1080px;
-  background-color: var(--colorBG);
+  background-color: var(--background-color);
 }
 .wrapper {
   width: 100%;
@@ -37,7 +35,7 @@ h5 {
   height: 60px;
   font-size: 20px;
   margin: 15px;
-  border: 1px sold var(--colorPrimary);
+  border: 1px sold var(--primary-color);
 }
 
 /* Landingpage */
