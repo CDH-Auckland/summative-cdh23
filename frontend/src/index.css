@@ -2,17 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --background-color: #FFFFFF;
-  --primary-color: #415FFF;
-  --secondary-color: #FFEE1C;
-  --text-color: #415FFF;
-  --secondary-text-color: #FFFFFF;
+  --background-color: #ffffff;
+  --primary-color: #415fff;
+  --secondary-color: #ffee1c;
+  --text-color: #415fff;
+  --secondary-text-color: #ffffff;
   --font-family: "Montserrat", sans-serif;
-  --secondary-font-family:'arial', sans-serif;
+  --secondary-font-family: "arial", sans-serif;
 }
 
 * {
   font-family: "Montserrat", sans-serif;
+  border: 1px solid red;
+  padding: 0;
 }
 
 /* Block */
@@ -58,12 +60,79 @@ h5 {
   display: flex;
   flex-direction: row;
 }
-
 /* ***** Login */
 
 /* *** *Login END*/
+
 /* **** Signup */
+.landingpage__signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.DIOLogoR {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 205px auto 0 auto;
+}
+
+.landingpage__signup h2 {
+  width: 284px;
+  font-size: 20px;
+  text-align: center;
+  margin: 36px auto;
+  color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  position: relative;
+  width: 390px;
+  height: 48px;
+  font-size: 14px;
+  font-style: ;
+  text-align: left;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  margin: 6px auto 0 auto;
+}
+
+input[type="text"]:focus ~ label,
+input[type="email"]:focus ~ label,
+input[type="password"]:focus ~ label,
+input[type="text"]:not(:placeholder-shown) ~ label,
+input[type="email"]:not(:placeholder-shown) ~ label,
+input[type="password"]:not(:placeholder-shown) ~ label {
+  transform: translate(0, -25px);
+  font-size: 14px;
+  color: #6bace4;
+}
+
+.landingpage__signup_input {
+  width: 390px;
+  margin: 0 auto;
+}
+
+.landingpage__signup_button {
+  position: relative;
+  width: 390px;
+  height: 48px;
+  font-size: 20px;
+  border: 1px solid var(--primary-color);
+  margin: 36px auto 0 auto;
+  background-color: #415fff;
+  border-radius: 12px;
+}
+.landingpage__signup_button h2 {
+  color: var(--secondary-text-color);
+  margin: 0 auto;
+}
+/* .landingpage__signup_bg_r {
+  width: 100vh;
+} */
 /* **** Signup END*/
-/* Landingpage   END*
 
+/* Landingpage   END*/
