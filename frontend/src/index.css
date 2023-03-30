@@ -2,13 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --background-color: #FFFFFF;
-  --primary-color: #415FFF;
-  --secondary-color: #FFEE1C;
-  --text-color: #415FFF;
-  --secondary-text-color: #FFFFFF;
+  --background-color: #ffffff;
+  --primary-color: #415fff;
+  --secondary-color: #ffee1c;
+  --text-color: #415fff;
+  --secondary-text-color: #ffffff;
   --font-family: "Montserrat", sans-serif;
-  --secondary-font-family:'arial', sans-serif;
+  --secondary-font-family: "arial", sans-serif;
 }
 
 * {
@@ -19,7 +19,7 @@
 .App {
   width: 1920px;
   height: 1080px;
-  background-color: var(--colorBG);
+  background-color: var(--background-color);
 }
 .wrapper {
   width: 100%;
@@ -44,13 +44,21 @@ h4 {
 h5 {
   font-size: 12px;
 }
+input {
+  border-style: none;
+}
+button {
+  border-style: none;
+  font: var(--font-family);
+}
+
 /* Elements END*/
 .inputtext {
   width: 200px;
   height: 60px;
   font-size: 20px;
   margin: 15px;
-  border: 1px sold var(--colorInputBorder);
+  border: 1px sold var(--primary-color);
 }
 
 /* Landingpage */
@@ -60,10 +68,60 @@ h5 {
 }
 
 /* ***** Login */
+.landingpage__login {
+  width: 960px;
+}
+.landingpage__login--bg_l {
+  width: 960px;
+  height: 1080px;
+}
+.landingpage__login--contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 205px;
+}
+.landingpage__login--logo {
+  width: 249.22px;
+  /* padding: 36px auto 62px auto; */
+}
 
+.landingpage__login--h2 {
+  color: var(--text-color);
+  margin: 0;
+  padding-top: 36px;
+}
+.landingpage__login--h2Regular {
+  color: var(--text-color);
+  font-weight: 300;
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 62px;
+}
+.landingpage__login--input-border-bottom {
+  width: 390px;
+  height: 62px;
+  font-size: 20px;
+  font: var(--text-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+.landingpage__login--input-border-bottom::placeholder {
+  color: var(--text-color);
+}
+.landingpage__login--button {
+  width: 390px;
+  height: 48px;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  font-weight: 600;
+  font-size: 20px;
+  border-radius: 12px;
+  margin-top: 166px;
+}
 /* *** *Login END*/
 /* **** Signup */
 
 /* **** Signup END*/
-/* Landingpage   END*
 
+/* Landingpage   END*/

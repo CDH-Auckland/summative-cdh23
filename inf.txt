@@ -20,9 +20,18 @@ npx nodemon server.js
 control + c (stop server)
 
 
+<<<<<<< HEAD
+
+-initial set up for react
+npm install react-router-dom
+
+
+- github 
+=======
 ✅ github 
 √ git branch 
  ❕ check where you at
+>>>>>>> 92dd7ac3facf37f5a1970d19807ec744f5db3a2c
 √ git add . 
 √ git commit -m "Your commit message here" 
 √ git checkout -b branch-name you want to commit
