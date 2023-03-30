@@ -5,8 +5,20 @@ import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 
 function Landing() {
+
   const [logemail, setLogEmail] = useState("");
   const [logpw, setLogPw] = useState("");
+
+    return (
+        <div className='wrapper'>
+            <div className='landingpage'>
+                <div className='landingpage__login'>
+
+                </div>
+                <div className='landingpage__signup'>
+
+                </div>
+
 
   const handleLogin = (event) => {
     event.preventDefault(); // prevent the default form submission behavior
