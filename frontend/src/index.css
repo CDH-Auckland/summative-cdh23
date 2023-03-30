@@ -1,9 +1,17 @@
+/* import font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
   --colorBG: #fff;
   --colorWarning: #6d0000;
   --colorInputBorder: #415fff;
   --colorInputBG: #fff;
 }
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* Block */
 .App {
   width: 1920px;
@@ -54,4 +62,5 @@ h5 {
 /* **** Signup */
 
 /* **** Signup END*/
-/* Landingpage   END*/
+/* Landingpage   END*
+
