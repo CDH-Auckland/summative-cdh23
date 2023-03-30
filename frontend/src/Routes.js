@@ -10,6 +10,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/" element={< LandingPage />} />
             <Route path="/buyandsell" element={< BuySell />} />
+            <Route path="/sellingitems" element={< Sellingitem />} />
         </Routes>
     )
 }
