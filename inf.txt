@@ -18,7 +18,7 @@ npm install nodemon --save-dev
 npx nodemon server.js
 control + c (stop server)
 
-
+npm install @mui/icons-material @mui/material @emotion/styled
 
 ✅initial set up for react
 npm install react-router-dom
