@@ -1,9 +1,10 @@
 import React from "react";
-
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
-function OrderhistoryBox({ history }) {
-  const handleStatus = () => {
-    console.log(`Clear all ${history.id}'s history`);
+
+function OrderhistoryBox({ history, onDelete }) {
+  const deleteOrderHistory = () => {
+    console.log(`Deleting product ${history.id}`);
+    onDelete(history.id);
   };
 
   return (
@@ -16,12 +17,13 @@ function OrderhistoryBox({ history }) {
           <div className="orderhistorybox_ordername">{history.ordername}</div>
           <div className="orderhistorybox_price">{history.price}</div>
         </div>
-        <button className="orderhistorybox_statusButton" onClick={handleStatus}>
-          Order status
-        </button>
+        <button className="orderhistorybox_statusButton">Order status</button>
       </div>
       <div className="orderhistorybox_right">
-        <div className="orderhistorybox_right_icon-blue">
+        <div
+          className="orderhistorybox_right_icon-blue"
+          onClick={deleteOrderHistory}
+        >
           <RemoveCircleOutlineOutlinedIcon fontSize="large" />
         </div>
       </div>

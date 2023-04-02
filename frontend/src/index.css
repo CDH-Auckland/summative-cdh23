@@ -91,6 +91,12 @@ button {
   border: 1px solid var(--primary-color); /* Set border color to #415FFF */
   margin-bottom: 50px;
 }
+@media only screen and (max-width: 790px) {
+  .productBox {
+    width: 390px;
+    height: 186px;
+  }
+}
 
 .productBox_left {
   width: 186px;
@@ -139,12 +145,7 @@ button {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 768px) {
-  .productBox {
-    width: 390px;
-    height: 186px;
-  }
-
+@media only screen and (max-width: 790px) {
   .productBox_editButton {
     width: 166px;
     height: 48px;
@@ -161,7 +162,7 @@ button {
   margin-bottom: 50px;
 }
 
-@media screen and (max-width: 786px) {
+@media screen and (max-width: 790px) {
   .orderhistorybox {
     width: 100%;
   }

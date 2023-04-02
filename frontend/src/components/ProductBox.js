@@ -1,19 +1,20 @@
 import React from "react";
 
-function ProductBox({ product }) {
+function ProductBox(props) {
   const handleEdit = () => {
-    console.log(`Editing product ${product.id}`);
+    console.log(`Editing product ${props.id}`);
+    props.listitemClickEvent(props.id);
   };
 
   return (
     <div className="productBox">
       <div className="productBox_left">
-        <img src={product.imageUrl} alt={product.name} />
+        <img src={props.imageUrl} alt={props.name} />
       </div>
       <div className="productBox_right">
         <div className="productBox_infopart">
-          <div className="productBox_name">{product.name}</div>
-          <div className="productBox_author">{product.author}</div>
+          <div className="productBox_name">{props.name}</div>
+          <div className="productBox_author">{props.author}</div>
         </div>
         <button className="productBox_editButton" onClick={handleEdit}>
           EDIT
