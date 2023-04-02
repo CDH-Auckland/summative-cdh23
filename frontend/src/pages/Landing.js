@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+
 import DIOLogoL from "../images/DIO_Logo.png";
-import backgroundImgL from "../images/BG_L_L.jpg";
 import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 

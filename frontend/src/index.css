@@ -24,8 +24,7 @@
   align-items: flex-start;
   margin: 0;
   padding: 0;
-
-  background-color: #383838;
+  background-color: var(--background-color);
 }
 .wrapper {
   width: 100%;
@@ -69,12 +68,6 @@ input {
 input:focus {
   outline: none;
 }
-button {
-  border-style: none;
-  font: var(--font-family);
-}
-
-/* Elements END*/
 .inputtext {
   width: 200px;
   height: 60px;
@@ -82,6 +75,70 @@ button {
   margin: 15px;
   border: 1px sold var(--primary-color);
 }
+button {
+  border-style: none;
+  font: var(--font-family);
+}
+/* Elements END*/
+
+/* Components */
+/*ProductBox */
+.productBox {
+  display: flex;
+  width: 732px;
+  height: 186px;
+  border: 1px solid var(--primary-color); /* Set border color to #415FFF */
+  margin-bottom: 50px;
+}
+
+.productBox_left {
+  width: 186px;
+  height: 186px;
+  margin: 0px 3% 0 0;
+}
+
+.productBox_left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productBox_right {
+  flex: 1 1;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.productBox_name {
+  font-size: 17px;
+  font-weight: bold;
+  /* margin-bottom: 10px; */
+  color: var(--primary-color);
+}
+
+.productBox_author {
+  font-size: 14px;
+  /* margin-bottom: 10px; */
+  color: var(--primary-color); /* Set font color to #415FFF */
+}
+
+.productBox_editButton {
+  width: 477px; /* Set button width to 477px */
+  height: 48px; /* Set button height to 48px */
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+/* ProductBox END */
+/* Components  END*/
 
 /* Landingpage */
 .landingpage {
@@ -96,6 +153,7 @@ button {
   width: 50%;
   background-image: url(./images/BG_L_L.jpg);
 }
+
 .landingpage__login--contents {
   display: flex;
   flex-direction: column;
@@ -116,13 +174,6 @@ button {
   padding-top: 36px;
   padding-bottom: 62px;
 }
-/* .landingpage__login--h2Regular {
-  color: var(--text-color);
-  font-weight: 300;
-  margin: 0;
-  padding-top: 12px;
-  padding-bottom: 62px;
-} */
 
 .landingpage__login__inputarea {
   position: relative;
@@ -161,5 +212,14 @@ button {
 /* **** Signup */
 
 /* **** Signup END*/
-
 /* Landingpage   END*/
+
+/* Hannah */
+/* Listed Items page */
+.listeditemsPage_h3-blue {
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 68px;
+}
+/*  Listed Items page END */
