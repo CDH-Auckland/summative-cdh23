@@ -13,6 +13,8 @@
 
 * {
   font-family: "Montserrat", sans-serif;
+  /* border: 1px solid red; */
+  padding: 0;
 }
 
 /* Block */
@@ -24,7 +26,6 @@
   align-items: flex-start;
   margin: 0;
   padding: 0;
-
   background-color: #383838;
 }
 .wrapper {
@@ -90,7 +91,6 @@ button {
   display: flex;
   flex-direction: row;
 }
-
 /* ***** Login */
 .landingpage__login {
   width: 50%;
@@ -158,8 +158,81 @@ button {
   margin-top: 166px;
 }
 /* *** *Login END*/
+
 /* **** Signup */
 
+.landingpage__signup {
+  width: 50%;
+  background-image: url(./images/BG_L_R.jpg);
+}
+
+.landingpage__signup__bgr {
+  width: 960px;
+  height: 1080px;
+}
+
+.landingpage__signup__DIOLogoR {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 205px auto 0 auto;
+}
+
+.landingpage__signup h3 {
+  width: 284px;
+  text-align: center;
+  margin: 36px auto;
+  color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  position: relative;
+  width: 370px;
+  height: 28px;
+  font-size: 20px;
+  font-style: bold italic;
+  padding: 10px;
+  text-align: left;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  margin: 6px auto 0 auto;
+}
+
+input[type="text"]:focus ~ label,
+input[type="email"]:focus ~ label,
+input[type="password"]:focus ~ label,
+input[type="text"]:not(:placeholder-shown) ~ label,
+input[type="email"]:not(:placeholder-shown) ~ label,
+input[type="password"]:not(:placeholder-shown) ~ label {
+  transform: translate(0, -25px);
+  font-size: 20px;
+  color: #6bace4;
+}
+
+.landingpage__signup__input {
+  width: 390px;
+  margin: 0 auto;
+}
+
+.landingpage__signup__button {
+  position: relative;
+  width: 390px;
+  height: 48px;
+  font-size: 20px;
+  border: 1px solid var(--primary-color);
+  margin: 36px auto 0 auto;
+  background-color: #415fff;
+  border-radius: 12px;
+}
+.landingpage__signup__button h2 {
+  color: var(--secondary-text-color);
+  margin: 0 auto;
+}
+/* .landingpage__signup_bg_r {
+  width: 100vh;
+} */
 /* **** Signup END*/
 
 /* Landingpage   END*/
