@@ -78,6 +78,7 @@ input:focus {
 button {
   border-style: none;
   font: var(--font-family);
+  background-color: transparent;
 }
 /* Elements END*/
 
@@ -137,7 +138,91 @@ button {
   border-radius: 12px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+  .productBox {
+    width: 390px;
+    height: 186px;
+  }
+
+  .productBox_editButton {
+    width: 166px;
+    height: 48px;
+  }
+}
 /* ProductBox END */
+
+/*Orderhistory ProductBox */
+.orderhistorybox {
+  display: flex;
+  width: 940px;
+  height: 122px;
+  border: 1px solid var(--primary-color);
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 786px) {
+  .orderhistorybox {
+    width: 100%;
+  }
+}
+
+.orderhistorybox_left {
+  width: 122px;
+  height: 122px;
+  margin: 0px 3% 0 0;
+}
+
+.orderhistorybox_left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.orderhistorybox_middle {
+  flex: 1 1;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.orderhistorybox_ordername {
+  font-size: 17px;
+  font-weight: bold;
+  /* margin-bottom: 10px; */
+  color: var(--primary-color);
+}
+
+.orderhistorybox_price {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--primary-color); /* Set font color to #415FFF */
+}
+
+.orderhistorybox_statusButton {
+  font-family: var(--font-family);
+  font-size: 14px;
+  text-align: left;
+  color: var(--primary-color);
+  border: none;
+  padding: 0;
+  margin-bottom: 26px;
+  cursor: pointer;
+}
+.orderhistorybox_right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+}
+.orderhistorybox_right_icon-blue {
+  padding-right: 22px;
+  color: var(--primary-color);
+}
+/* OrderhistoryProductBox END */
+
 /* Components  END*/
 
 /* Landingpage */
@@ -222,4 +307,38 @@ button {
   justify-content: center;
   margin-bottom: 68px;
 }
+
 /*  Listed Items page END */
+
+/* Orderhistory page */
+.orderhistoryPage_h3section {
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 68px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.orderhistoryPage_Button {
+  width: 732px;
+  height: 48px;
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 790px) {
+  .orderhistoryPage_Button {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Orderhistory page END */
