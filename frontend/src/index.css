@@ -22,7 +22,7 @@
 
 .App {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -33,7 +33,7 @@
 }
 .wrapper {
   width: 100%;
-  height: 1080px;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -76,9 +76,30 @@ h5 {
   font-size: 12px;
 }
 
+.button {
+  width: 98%;
+  height: 48px;
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
 /* Elements END*/
 
 /* Modifier */
+
+.button--invert {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
 
 /* Modifier END */
 
@@ -150,6 +171,12 @@ h5 {
   width: 100%;
   height: 45px;
   position: relative;
+}
+.sellingitem__inputblocks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .sellingitem__formctrl {
   width: 98%;
@@ -231,6 +258,7 @@ h5 {
   grid-gap: 10px;
   justify-items: center;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .uploadimg {
@@ -278,6 +306,9 @@ h5 {
   } */
 }
 @media (max-width: 1054px) {
+  .wrapper__sub {
+    width: 80%;
+  }
   .uploadimg {
     width: 280px;
     height: 144px;
@@ -313,12 +344,12 @@ h5 {
   .header__title h1 {
     font-size: 25px;
   }
-}
-
-@media (max-width: 480px) {
   .wrapper__sub {
     width: 100%;
   }
+}
+
+@media (max-width: 480px) {
   .sellingitem__addimage {
     grid-template-columns: repeat(1, 1fr);
   }

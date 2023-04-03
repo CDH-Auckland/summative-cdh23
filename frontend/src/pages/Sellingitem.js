@@ -46,7 +46,9 @@ function Sellingitem() {
     const submitClickHandler = () => {
 
         console.log(inputs);
+        navigate("/buyandsell");
     }
+
     const selectChange = (e: SelectChangeEvent<String>, child: React.ReactNode) => {
         SetInputs(inputs => ({
             ...inputs,
@@ -131,6 +133,7 @@ function Sellingitem() {
                     </FormControl>
                     <div className='sellingitem__divaddtitle paddingtop__small'>
                         <input required className='sellingitem__inputadditem' type="text" id="title"
+                            value={inputs.title}
                             onChange={titleHandleChange}
                         />
                         <label htmlFor="title">Add Title</label>
@@ -152,8 +155,8 @@ function Sellingitem() {
                         <UploadImg key={4} id={"img_url4"} imgFile={imgFile} />
                     </div>
 
-                    <button onClick={submitClickHandler}>SUBMIT</button>
-
+                    <button className='button' onClick={submitClickHandler}>SUBMIT</button>
+                    <button className='button button--invert' onClick={backNavigation}>CANCEL</button>
                 </div>
             </div>
         </div>
