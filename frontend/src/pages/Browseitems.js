@@ -56,7 +56,12 @@ function Browseitems() {
                     <Typeicon key={"type3"} name={"type3"} selected={type} typeiconclick={typeiconclick} />
                     <Typeicon key={"type4"} name={"type4"} selected={type} typeiconclick={typeiconclick} />
                 </div>
-                {/* Create you div here */}
+                <div className='browseitems_titleblock paddingtop__small'>
+                    <h3>List Items</h3>
+                </div>
+                <div >
+
+                </div>
 
 
             </div>

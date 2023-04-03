@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
+import Header from "../components/Header"
 import UpdateOutlinedIcon from "@mui/icons-material/UpdateOutlined";
 import OrderhistoryBox from "../components/OrderhistoryBox";
 
 function Orderhistory() {
+  const navigate = useNavigate();
   const historys = [
     {
       id: 4,
@@ -24,6 +27,9 @@ function Orderhistory() {
       imageUrl: "../images/listeditems_1.jpg",
     },
   ];
+  const backNavigation = () => {
+    navigate("/buyandsell");
+  }
 
   const handleStatus = (history) => {
     console.log(`Clear all ${history.id}'s history`);
@@ -34,6 +40,7 @@ function Orderhistory() {
 
   return (
     <div className="wrapper">
+      <Header title={"Order history"} backNavigation={backNavigation} />
       <div className="wrapper__sub">
         <div className="orderhistoryPage">
           <div className="orderhistoryPage_h3section">
