@@ -1,10 +1,11 @@
-/* import font */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
   --background-color: #ffffff;
   --primary-color: #415fff;
   --secondary-color: #ffee1c;
+  --disabled-color: #9e9e9e;
+  --criticalColor: #ff0000;
   --text-color: #415fff;
   --secondary-text-color: #ffffff;
   --font-family: "Montserrat", sans-serif;
@@ -13,14 +14,16 @@
 
 * {
   font-family: "Montserrat", sans-serif;
+  margin: 0;
   /* border: 1px solid red; */
   padding: 0;
 }
 
 /* Block */
+
 .App {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -44,13 +47,30 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  color: var(--primary-color);
 }
+.wrapper__sub {
+  width: 60%;
+  height: 100%;
+  background-color: aqua;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+.paddinginline__small {
+  padding-inline: 30px;
+}
+.paddingtop__small {
+  padding-top: 30px;
+}
+
 /* Block END*/
 
 /* Elements */
 h1 {
-  font-size: 30px;
-  font-weight: 200;
+  font-size: 40px;
+  font-weight: bold;
 }
 h2 {
   font-size: 24px;
@@ -64,6 +84,14 @@ h4 {
 h5 {
   font-size: 12px;
 }
+
+
+.button {
+  width: 98%;
+  height: 48px;
+  padding: 5px 10px;
+  font-family: var(--font-family);
+
 input {
   border-style: none;
 }
@@ -74,8 +102,38 @@ input:focus {
   width: 200px;
   height: 60px;
   font-size: 20px;
-  margin: 15px;
-  border: 1px sold var(--primary-color);
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* Elements END*/
+
+/* Modifier */
+
+.button--invert {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Modifier END */
+
+/* Components */
+/*** Header Components ***/
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-evenly;
+  padding-block: 40px;
+  position: relative;
 }
 button {
   border-style: none;
@@ -217,6 +275,27 @@ button {
 
 /* Components  END*/
 
+.header__icon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.header__title {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+/*** Header Components END***/
+/* Components END*  /
+
+
 /* Landingpage */
 
 .landingpage {
@@ -288,6 +367,8 @@ button {
 /* *** *Login END*/
 
 /* **** Signup */
+.landingpage__signup {
+}
 
 .landingpage__signup {
   width: 50%;
@@ -361,6 +442,208 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 /* **** Signup END*/
 /* Landingpage   END*/
 
+
+.buysell {
+}
+
+/* Selling page */
+
+.sellingitem__titleblock {
+  display: flex;
+  align-items: center;
+}
+.sellingitem__titleblock__icon {
+  width: 25px;
+  height: 25px;
+}
+.sellingitem__divaddtitle {
+  width: 100%;
+  height: 45px;
+  position: relative;
+}
+.sellingitem__inputblocks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sellingitem__formctrl {
+  width: 98%;
+}
+.sellingitem__inputadditem {
+  width: 98%;
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--disabled-color);
+  outline: none;
+  color: var(--primary-color);
+}
+.sellingitem__inputadditem:focus,
+.sellingitem__inputadditem:valid {
+  border-color: var(--primary-color);
+}
+.sellingitem__divaddtitle label {
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  cursor: text;
+  transition: 0.5s ease-in-out;
+}
+
+.sellingitem__inputadditem:focus ~ label,
+.sellingitem__inputadditem:valid ~ label {
+  transform: translateY(-33px);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.sellingitem__divdescription {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.sellingitem__inputdesc {
+  width: 98%;
+  height: 150px;
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid var(--disabled-color);
+  background-color: transparent;
+  outline: none;
+  resize: none;
+  color: var(--primary-color);
+}
+
+.sellingitem__inputdesc:focus,
+.sellingitem__inputdesc:valid {
+  border-color: var(--primary-color);
+}
+
+.sellingitem__inputdesc::placeholder {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.sellingitem__descriptionLimit {
+  position: absolute;
+  bottom: 38px;
+  right: 38px;
+}
+
+.sellingitem__descriptionLimit--red {
+  color: var(--criticalColor);
+  font-weight: 600;
+}
+.sellingitem__addimage {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.uploadimg {
+  width: 350px;
+  height: 180px;
+  border: 2px dashed #415fff;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.uploadimg__input {
+  display: none;
+}
+.uploadimg label {
+  width: 350px;
+  height: 180px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.uploadimg img {
+  width: 100%;
+  height: auto;
+  border-radius: 9px;
+}
+
+.uploadimg h4 {
+  color: var(--criticalColor);
+}
+
+/* Media queries */
+
+@media (max-width: 1243px) {
+  .uploadimg {
+    width: 300px;
+    height: 154px;
+  }
+  /* .sellingitem__addimage {
+    grid-template-columns: repeat(1, 1fr);
+  } */
+}
+@media (max-width: 1054px) {
+  .wrapper__sub {
+    width: 80%;
+  }
+  .uploadimg {
+    width: 280px;
+    height: 144px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h4 {
+    font-size: 13px;
+  }
+  h5 {
+    font-size: 8px;
+  }
+  .wrapper__sub {
+    width: 90%;
+  }
+  .header__icon {
+    left: 5%;
+  }
+  .header__title {
+    width: 75%;
+  }
+  .header__title h1 {
+    font-size: 25px;
+  }
+  .wrapper__sub {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sellingitem__addimage {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 /* Hannah */
 /* Listed Items page */
 .listeditemsPage_h3-blue {
@@ -396,12 +679,15 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   cursor: pointer;
 }
 
-/* @media only screen and (max-width: 790px) {
-} */
+
 
 /* Orderhistory page END */
 
+
 /* Media Query Controls */
+
+/* @media only screen and (max-width: 790px) {
+} */
 
 @media (max-width: 1243px) {
   /* styles for screens with a max width of 1243px */
@@ -521,3 +807,4 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 }
 
 /* Media Query Controls END */
+

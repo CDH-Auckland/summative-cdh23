@@ -11,6 +11,11 @@ npm uninstall express(***)
 npm i cors
 npm install dotenv
 npm install mongoose
+npm install nodemon --save-dev
+touch server.js
+node server.js
+npx nodemon server.js
+http://localhost:3000/(chrome)
 npm install @mui/material @emotion/react @emotion/styled
 http://localhost:4000/(chrome)
 node server.js
@@ -20,11 +25,24 @@ control + c (stop server)
 
 npm install @mui/icons-material @mui/material @emotion/styled
 
+
+
+-initial set up for react
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+npm install react-router-dom
+
+
+
+✅ github 
+√ git branch 
+
 ✅initial set up for react
 npm install react-router-dom
 
 
 ✅ github 
+
 √ git add . 
 √ git commit -m "Your commit message here" 
 √ git checkout -b branch-name you want to commit
@@ -62,6 +80,32 @@ import BallotIcon from "@mui/icons-material/Ballot";
 import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 
+
+<ShoppingBagOutlinedIcon />
+          <DeleteOutlineOutlinedIcon />
+          <ViewHeadlineOutlinedIcon />
+          <FormatListBulletedOutlinedIcon />
+          <AppsOutlinedIcon />
+          <CreditCardOutlinedIcon />
+          <ShoppingCartOutlinedIcon />
+          <NotificationsNoneOutlinedIcon />
+          <LocalShippingOutlinedIcon />
+          <AssignmentOutlinedIcon />
+          <RadioButtonCheckedOutlinedIcon />
+          <RemoveCircleOutlineOutlinedIcon />
+          <AddCircleOutlineOutlinedIcon />
+          <SendOutlinedIcon />
+          <PersonOutlineOutlinedIcon />
+          <UpdateOutlinedIcon />
+          <ForumOutlinedIcon />
+          <Inventory2OutlinedIcon />
+          <SearchOutlinedIcon />
+          <LogoutOutlinedIcon />
+          <ArrowDropDownOutlinedIcon />
+          <ArrowBackOutlinedIcon />
+          <HomeOutlinedIcon />
+          <BallotOutlinedIcon />
+
 <ShoppingBagIcon />
 <DeleteIcon />
 <ViewHeadlineIcon />
@@ -88,4 +132,5 @@ import LockIcon from "@mui/icons-material/Lock";
 <BallotIcon />
 <MailIcon />
 <LockIcon />
+
 

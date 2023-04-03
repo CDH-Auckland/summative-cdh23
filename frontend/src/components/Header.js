@@ -1,9 +1,25 @@
 import React from 'react'
 
-function header() {
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+
+function Header(props) {
+
+
+  const backClickHandler = () => {
+    props.backNavigation();
+  }
+
   return (
-    <div>header</div>
+    <div className='header'>
+      <div className='header__icon' onClick={backClickHandler}>
+        <ArrowBackOutlinedIcon fontSize='large' />
+      </div>
+      <div className='header__title'>
+        <h1>{props.title}</h1>
+      </div>
+    </div>
   )
 }
 
-export default header
+
+export default Header
