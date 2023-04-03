@@ -85,12 +85,12 @@ h5 {
   font-size: 12px;
 }
 
-
 .button {
   width: 98%;
   height: 48px;
   padding: 5px 10px;
   font-family: var(--font-family);
+}
 
 input {
   border-style: none;
@@ -442,7 +442,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 /* **** Signup END*/
 /* Landingpage   END*/
 
-
 .buysell {
 }
 
@@ -679,10 +678,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   cursor: pointer;
 }
 
-
-
 /* Orderhistory page END */
-
 
 /* Media Query Controls */
 
@@ -807,4 +803,3 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 }
 
 /* Media Query Controls END */
-
