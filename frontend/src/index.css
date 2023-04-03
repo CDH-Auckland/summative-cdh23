@@ -604,6 +604,22 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   color: var(--criticalColor);
 }
 
+/* Selling page END */
+
+/* Cart page */
+
+.cart_titleblock {
+  display: flex;
+  align-items: center;
+}
+.cart_titleblock__icon {
+  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+/* Cart page END */
+
 /* Media queries */
 
 @media (max-width: 1243px) {
