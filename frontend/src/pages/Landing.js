@@ -1,51 +1,34 @@
 import React, { useState } from "react";
-import DIOLogoL from "../images/DIO_Logo.png";
+
 import DIOLogoR from "../images/DIO_LogoR.png";
-import backgroundImgL from "../images/BG_L_L.jpg";
+import DIOLogoL from "../images/DIO_Logo.png";
 import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 
 function Landing() {
-
-  const [logemail, setLogEmail] = useState("");
-  const [logpw, setLogPw] = useState("");
-  
   const [firstName, setsignFirstName] = useState("");
   const [lastName, setsignLastName] = useState("");
   const [email, setsignEmail] = useState("");
   const [password, setsignPassword] = useState("");
-  const [confirmPassword, setsignConfirmPassword] = useState("");e
+  const [confirmPassword, setsignConfirmPassword] = useState("");
 
-    return (
-        <div className='wrapper'>
-            <div className='landingpage'>
-                <div className='landingpage__login'>
-
-                </div>
-                <div className='landingpage__signup'>
-
-                </div>
-
+  const [logemail, setLogEmail] = useState("");
+  const [logpw, setLogPw] = useState("");
 
   const handleLogin = (event) => {
-    event.preventDefault(); // prevent the default form submission behavior
-
-    // Do something with the form data, such as send it to a server
     console.log("Form submitted:", { logemail, logpw });
-
-    // Clear the form inputs after submission
     setLogEmail("");
     setLogPw("");
   };
-  
-   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ firstName, lastName, email, password, confirmPassword });
-    // do something with the form data, like send it to a server
-  const [logemail, setLogEmail] = useState("");
-  const [logpw, setLogPw] = useState("");
-  }
 
+  const handleSubmit = (e) => {
+    console.log({ firstName, lastName, email, password, confirmPassword });
+    setsignFirstName("");
+    setsignLastName("");
+    setsignEmail("");
+    setsignPassword("");
+    setsignConfirmPassword("");
+  };
 
   return (
     <div className="wrapper">
@@ -105,10 +88,8 @@ function Landing() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* DAVE */}
-      <div className="landingpage__signup">
+        <div className="landingpage__signup">
           <div className="landingpage__signup__contents">
             <img
               className="landingpage__signup__DIOLogoR"
@@ -122,8 +103,8 @@ function Landing() {
 
             <div className="landingpage__signup__input" onSubmit={handleSubmit}>
               <div>
-                {/* <label htmlFor="firstName"></label> */}
                 <input
+                  className="landingpage__signup__input-boxdesign"
                   type="text"
                   id="firstName"
                   placeholder="First Name"
@@ -132,8 +113,8 @@ function Landing() {
                 />
               </div>
               <div>
-                {/* <label htmlFor="lastName"></label> */}
                 <input
+                  className="landingpage__signup__input-boxdesign"
                   type="text"
                   id="lastName"
                   placeholder="Last Name"
@@ -142,8 +123,8 @@ function Landing() {
                 />
               </div>
               <div>
-                {/* <label htmlFor="email"></label> */}
                 <input
+                  className="landingpage__signup__input-boxdesign"
                   type="email"
                   id="email"
                   placeholder="Email"
@@ -152,8 +133,8 @@ function Landing() {
                 />
               </div>
               <div>
-                {/* <label htmlFor="password"></label> */}
                 <input
+                  className="landingpage__signup__input-boxdesign"
                   type="password"
                   id="password"
                   placeholder="Password"
@@ -162,8 +143,8 @@ function Landing() {
                 />
               </div>
               <div>
-                {/* <label htmlFor="confirmPassword"></label> */}
                 <input
+                  className="landingpage__signup__input-boxdesign"
                   type="password"
                   id="confirmPassword"
                   placeholder="Confirm Password"
@@ -171,64 +152,17 @@ function Landing() {
                   onChange={(e) => setsignConfirmPassword(e.target.value)}
                 />
               </div>
-              <button className="landingpage__signup__button" type="submit">
-                <h2>Sign Up</h2>
-        <div className="landingpage__login">
-          {/* background */}
-
-          <div className="landingpage__login--contents">
-            {/* LOGO */}
-            <img
-              className="landingpage__login--logo"
-              src={DIOLogoL}
-              alt="DIO Logo L"
-            />
-            <h3 className="landingpage__login--h3">
-              Welcom back to DIO
-              <br /> Buy & sell your DIY's smatly
-            </h3>
-            {/* <h2 className="landingpage__login--h2"></h2> */}
-
-            {/* Input section */}
-
-            <div className="landingpage__login__input__wrapper">
-              <div className="landingpage__login__inputarea">
-                <div className="landingpage__login--inputicon">
-                  <MailIcon />
-                </div>
-                <input
-                  className="landingpage__login--input-border-bottom"
-                  type="email"
-                  value={logemail}
-                  onChange={(event) => setLogEmail(event.target.value)}
-                  placeholder="Email Address / ID"
-                />
-              </div>
-
-              <div className="landingpage__login__inputarea">
-                <input
-                  className="landingpage__login--input-border-bottom"
-                  type="text"
-                  value={logpw}
-                  onChange={(event) => setLogPw(event.target.value)}
-                  placeholder="Password"
-                />
-                <div className="landingpage__login--inputicon">
-                  <LockIcon />
-                </div>
-              </div>
-
               <button
-                onClick={handleLogin}
-                className="landingpage__login--button"
-                type="login"
+                className="landingpage__signup__button"
+                type="submit"
+                onClick={handleSubmit}
               >
-                LOG IN
-
+                Sign Up
               </button>
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 }
