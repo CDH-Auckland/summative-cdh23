@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
+import Header from "../components/Header"
 import ProductBox from "../components/ProductBox"; // assuming ProductBox.js is in the same directory as Listeditems.js
 
 function Listeditems() {
+  const navigate = useNavigate();
   const product = [
     {
       id: 1,
@@ -23,16 +26,19 @@ function Listeditems() {
       imageUrl: "../images/listeditems_1.jpg",
     },
   ];
-
+  const backNavigation = () => {
+    navigate("/buyandsell");
+  }
   const listitemClickEvent = (e) => {
     console.log(e);
   };
 
   return (
     <div className="wrapper">
+      <Header title={"View Listed selling items"} backNavigation={backNavigation} />
       <div className="wrapper__sub">
         <div className="listeditemsPage">
-          <div className="listeditemsPage_h3section">
+          <div className="listeditemsPage_h3section paddingtop__small">
             <h3 className="listeditemsPage_h3-blue">
               Edit / Delete listed items
             </h3>

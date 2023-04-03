@@ -33,7 +33,7 @@
 }
 .wrapper {
   width: 100%;
-  height: 1080px;
+  height: auto;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -135,11 +135,31 @@ input:focus {
   padding-block: 40px;
   position: relative;
 }
-button {
+/* button {
   border-style: none;
   font: var(--font-family);
   background-color: transparent;
+} */
+button {
+  width: 732px;
+  height: 48px;
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
+.button--invert {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
 /* Elements END*/
 
 /* Components */
@@ -188,9 +208,9 @@ button {
   color: var(--primary-color); /* Set font color to #415FFF */
 }
 
-.productBox_editButton {
-  width: 477px; /* Set button width to 477px */
-  height: 48px; /* Set button height to 48px */
+/* .productBox_editButton {
+  width: 477px; 
+  height: 48px; 
   padding: 5px 10px;
   font-family: var(--font-family);
   font-size: 20px;
@@ -200,7 +220,8 @@ button {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-}
+} */
+
 /* @media only screen and (max-width: 790px) {
 } */
 /* ProductBox END */
@@ -291,6 +312,7 @@ button {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
 }
 /*** Header Components END***/
 /* Components END*  /
@@ -730,10 +752,10 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 390px;
     height: 186px;
   }
-  .productBox_editButton {
+  /* .productBox_editButton {
     width: 166px;
     height: 48px;
-  }
+  } */
   .orderhistorybox {
     width: 100%;
   }

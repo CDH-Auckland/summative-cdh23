@@ -16,7 +16,7 @@ function ProductBox(props) {
           <div className="productBox_name">{props.name}</div>
           <div className="productBox_author">{props.author}</div>
         </div>
-        <button className="productBox_editButton" onClick={handleEdit}>
+        <button className="button" onClick={handleEdit}>
           EDIT
         </button>
       </div>
