@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-
+import UploadImg from '../components/UploadImg';
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -18,7 +18,7 @@ import Header from "../components/Header"
 function Sellingitem() {
     const navigate = useNavigate();
     const [inputs, SetInputs] = useState({ category: "", type: "", title: "", description: "", img_url1: "", img_url2: "", img_url3: "", });
-
+    const [limit, setLimit] = useState(0);
     const categoryData = ["Category1", "Category2", "Category3", "Category4", "Category5", "Category6"];
     const typeData = ["DIY Kiy", "Ready to use", "Download"];
 
@@ -37,24 +37,42 @@ function Sellingitem() {
         console.log(e.target.name + " ---- " + e.target.value);
     };
 
+    const titleHandleChange = (e) => {
+        SetInputs(inputs => ({
+            ...inputs,
+            "title": e.target.value
+        }));
+        console.log(e.target.value);
+    }
+
+    const decHandleChange = (e) => {
+        if (e.target.value.length <= 300) {
+            SetInputs(inputs => ({
+                ...inputs,
+                "description": e.target.value
+            }));
+            setLimit(e.target.value.length);
+        }
+        console.log(e.target.value.length);
+    }
 
 
     return (
         <div className='wrapper'>
             <Header title={"Selling Items"} backNavigation={backNavigation} />
             <div className='wrapper__sub'>
-                <div className='sellingitem__titleblock'>
-                    <h4>Update your selling information</h4>
+                <div className='sellingitem__titleblock paddingtop__small'>
+                    <h3>Update your selling information</h3>
                     <div className='sellingitem__titleblock__icon'>
                         <Inventory2OutlinedIcon />
                     </div>
                 </div>
-                <div className='paddinginline__small'>
-                    <h4>
+                <div className='paddinginline__small paddingtop__small'>
+                    <h3>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco poriti laboris nisi ut aliquip ex ea commodo consequat.
-                    </h4>
+                    </h3>
                 </div>
-                <div className='sellingitem__inputblocks'>
+                <div className='sellingitem__inputblocks paddingtop__small'>
 
                     <FormControl sx={{ m: 1, minWidth: 290 }}>
                         <InputLabel htmlFor="category-select">Select Category</InputLabel>
@@ -86,10 +104,29 @@ function Sellingitem() {
 
                         </Select>
                     </FormControl>
-                    <div className='sellingitem__addtitle'>
-                        <h5>Add Title</h5>
-                        <input type="text" placeholder="Title" />
+                    <div className='sellingitem__divaddtitle paddingtop__small'>
+                        <input required className='sellingitem__inputadditem' type="text" id="title"
+                            onChange={titleHandleChange}
+                        />
+                        <label for="title">Add Title</label>
                     </div>
+                    <div className='sellingitem__divdescription paddingtop__small'>
+                        <h5>Add Description</h5>
+                        <textarea required className='sellingitem__inputdesc' id="title" placeholder='Add your items description'
+                            rows={5}
+                            cols={80}
+                            value={inputs.description}
+                            onChange={decHandleChange}
+                        />
+                        <span className={limit < 300 ? 'sellingitem__descriptionLimit' : 'sellingitem__descriptionLimit sellingitem__descriptionLimit--red'}>{limit}/300</span>
+                    </div>
+                    <div className='sellingitem__addimage'>
+                        <UploadImg key={1} id={"img01"} />
+                        <UploadImg key={2} id={"img02"} />
+                        <UploadImg key={3} id={"img03"} />
+                        <UploadImg key={4} id={"img04"} />
+                    </div>
+
                     <button onClick={submitClickHandler}>SUBMIT</button>
 
                 </div>
