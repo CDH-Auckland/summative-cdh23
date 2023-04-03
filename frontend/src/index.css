@@ -171,9 +171,6 @@ button {
   border: 1px solid var(--primary-color); /* Set border color to #415FFF */
   margin-bottom: 50px;
 }
-/* @media only screen and (max-width: 790px) {
-  
-} */
 
 .productBox_left {
   width: 186px;
@@ -222,8 +219,6 @@ button {
   cursor: pointer;
 } */
 
-/* @media only screen and (max-width: 790px) {
-} */
 /* ProductBox END */
 
 /*Orderhistory ProductBox */
@@ -234,9 +229,6 @@ button {
   border: 1px solid var(--primary-color);
   margin-bottom: 50px;
 }
-
-/* @media screen and (max-width: 790px) {
-} */
 
 .orderhistorybox_left {
   width: 122px;
@@ -620,67 +612,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 
 /* Cart page END */
 
-/* Media queries */
-
-@media (max-width: 1243px) {
-  .uploadimg {
-    width: 300px;
-    height: 154px;
-  }
-  /* .sellingitem__addimage {
-    grid-template-columns: repeat(1, 1fr);
-  } */
-}
-@media (max-width: 1054px) {
-  .wrapper__sub {
-    width: 80%;
-  }
-  .uploadimg {
-    width: 280px;
-    height: 144px;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  h2 {
-    font-size: 20px;
-  }
-  h3 {
-    font-size: 16px;
-  }
-  h4 {
-    font-size: 13px;
-  }
-  h5 {
-    font-size: 8px;
-  }
-  .wrapper__sub {
-    width: 90%;
-  }
-  .header__icon {
-    left: 5%;
-  }
-  .header__title {
-    width: 75%;
-  }
-  .header__title h1 {
-    font-size: 25px;
-  }
-  .wrapper__sub {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .sellingitem__addimage {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
 /* Hannah */
 /* Listed Items page */
 .listeditemsPage_h3-blue {
@@ -720,15 +651,27 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 
 /* Media Query Controls */
 
-/* @media only screen and (max-width: 790px) {
-} */
-
 @media (max-width: 1243px) {
   /* styles for screens with a max width of 1243px */
+  .uploadimg {
+    width: 300px;
+    height: 154px;
+    
+    /* .sellingitem__addimage {
+    grid-template-columns: repeat(1, 1fr);
+  } */
+  }
 }
 
 @media (max-width: 1054px) {
   /* styles for screens with a max width of 1054px */
+  .wrapper__sub {
+    width: 80%;
+  }
+  .uploadimg {
+    width: 280px;
+    height: 144px;
+  }
 }
 @media (max-width: 768px) {
   /* styles for screens with a max width of 768px */
@@ -831,6 +774,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     margin-bottom: 184px;
     padding: 0;
   }
+    /* landingPage */
 }
 
 @media (max-width: 480px) {
