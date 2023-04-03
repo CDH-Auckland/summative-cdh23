@@ -6,6 +6,7 @@ import BuySell from "./pages/BuySell";
 import Sellingitem from "./pages/Sellingitem";
 import Listeditems from "./pages/Listeditems";
 import OrderHistoryBox from "./pages/Orderhistory";
+import Cart from "./pages/Cart";
 
 import Icons from "./pages/icons";
 import Icontest from "./pages/Icontest";
@@ -19,10 +20,11 @@ const AppRoutes = () => {
             <Route path="/" element={< LandingPage />} />
             <Route path="/buyandsell" element={< BuySell />} />
             <Route path="/sellingitems" element={< Sellingitem />} />
+            <Route path="/listeditems" element={<Listeditems />} />
+            <Route path="/orderhistory" element={<OrderHistoryBox />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/icons" element={< Icontest />} />
-             <Route path="/listeditems" element={<Listeditems />} />
-             <Route path="/orderhistory" element={<OrderHistoryBox />} />
-              <Route path="/icons" element={<Icons />} />
+            <Route path="/icons" element={<Icons />} />
         </Routes>
     )
 }
