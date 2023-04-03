@@ -15,6 +15,7 @@
 * {
   font-family: "Montserrat", sans-serif;
   margin: 0;
+  /* border: 1px solid red; */
   padding: 0;
 }
 
@@ -28,12 +29,20 @@
   align-items: flex-start;
   margin: 0;
   padding: 0;
-
-  background-color: #383838;
+  background-color: var(--background-color);
 }
 .wrapper {
   width: 100%;
+  height: 1080px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper__sub {
+  width: 70%;
   height: 100%;
+  background-color: aqua;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -76,11 +85,22 @@ h5 {
   font-size: 12px;
 }
 
+
 .button {
   width: 98%;
   height: 48px;
   padding: 5px 10px;
   font-family: var(--font-family);
+
+input {
+  border-style: none;
+}
+input:focus {
+  outline: none;
+}
+.inputtext {
+  width: 200px;
+  height: 60px;
   font-size: 20px;
   font-weight: 600;
   color: var(--secondary-text-color);
@@ -115,6 +135,145 @@ h5 {
   padding-block: 40px;
   position: relative;
 }
+button {
+  border-style: none;
+  font: var(--font-family);
+  background-color: transparent;
+}
+/* Elements END*/
+
+/* Components */
+/*ProductBox */
+.productBox {
+  display: flex;
+  width: 732px;
+  height: 186px;
+  border: 1px solid var(--primary-color); /* Set border color to #415FFF */
+  margin-bottom: 50px;
+}
+/* @media only screen and (max-width: 790px) {
+  
+} */
+
+.productBox_left {
+  width: 186px;
+  height: 186px;
+  margin: 0px 3% 0 0;
+}
+
+.productBox_left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productBox_right {
+  flex: 1 1;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.productBox_name {
+  font-size: 17px;
+  font-weight: bold;
+  /* margin-bottom: 10px; */
+  color: var(--primary-color);
+}
+
+.productBox_author {
+  font-size: 14px;
+  /* margin-bottom: 10px; */
+  color: var(--primary-color); /* Set font color to #415FFF */
+}
+
+.productBox_editButton {
+  width: 477px; /* Set button width to 477px */
+  height: 48px; /* Set button height to 48px */
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+/* @media only screen and (max-width: 790px) {
+} */
+/* ProductBox END */
+
+/*Orderhistory ProductBox */
+.orderhistorybox {
+  display: flex;
+  width: 940px;
+  height: 122px;
+  border: 1px solid var(--primary-color);
+  margin-bottom: 50px;
+}
+
+/* @media screen and (max-width: 790px) {
+} */
+
+.orderhistorybox_left {
+  width: 122px;
+  height: 122px;
+  margin: 0px 3% 0 0;
+}
+
+.orderhistorybox_left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.orderhistorybox_middle {
+  flex: 1 1;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.orderhistorybox_ordername {
+  font-size: 17px;
+  font-weight: bold;
+  /* margin-bottom: 10px; */
+  color: var(--primary-color);
+}
+
+.orderhistorybox_price {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--primary-color); /* Set font color to #415FFF */
+}
+
+.orderhistorybox_statusButton {
+  font-family: var(--font-family);
+  font-size: 14px;
+  text-align: left;
+  color: var(--primary-color);
+  border: none;
+  padding: 0;
+  margin-bottom: 26px;
+  cursor: pointer;
+}
+.orderhistorybox_right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+}
+.orderhistorybox_right_icon-blue {
+  padding-right: 22px;
+  color: var(--primary-color);
+}
+/* OrderhistoryProductBox END */
+
+/* Components  END*/
 
 .header__icon {
   width: 30px;
@@ -138,21 +297,151 @@ h5 {
 
 
 /* Landingpage */
+
 .landingpage {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
-
 /* ***** Login */
 .landingpage__login {
+  width: 50%;
+  background-image: url(./images/BG_L_L.jpg);
+}
+
+.landingpage__login--contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 205px;
+}
+.landingpage__login--logo {
+  width: 249.22px;
+  /* padding: 36px auto 62px auto; */
+}
+
+.landingpage__login--h3 {
+  width: 341px;
+  color: var(--text-color);
+  margin: 0;
+  text-align: center;
+  padding-top: 36px;
+  padding-bottom: 62px;
+}
+
+.landingpage__login__inputarea {
+  position: relative;
+  border-bottom: 1px solid var(--primary-color);
+}
+.landingpage__login--input-border-bottom {
+  width: 328px;
+  height: 62px;
+  font-size: 20px;
+  font: var(--text-color);
+  margin-left: 68px;
+}
+.landingpage__login--input-border-bottom::placeholder {
+  color: var(--text-color);
+  margin-left: 22px;
+}
+.landingpage__login--inputicon {
+  position: absolute;
+  left: 2%;
+  top: 14%;
+  transform: translate(22px, 10px);
+  color: var(--primary-color);
+}
+
+.landingpage__login--button {
+  width: 390px;
+  height: 48px;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  font-weight: 600;
+  font-size: 20px;
+  border-radius: 12px;
+  margin-top: 166px;
 }
 /* *** *Login END*/
+
 /* **** Signup */
 .landingpage__signup {
 }
 
+.landingpage__signup {
+  width: 50%;
+  background-image: url(./images/BG_L_R.jpg);
+}
+
+.landingpage__signup__bgr {
+  width: 960px;
+  height: 1080px;
+}
+
+.landingpage__signup__DIOLogoR {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 205px auto 0 auto;
+}
+
+.landingpage__signup h3 {
+  width: 284px;
+  text-align: center;
+  margin: 36px auto;
+  color: var(--primary-color);
+}
+
+.landingpage__signup__input-boxdesign {
+  position: relative;
+  width: 370px;
+  height: 28px;
+  font-size: 20px;
+  font-style: bold italic;
+  padding: 10px;
+  text-align: left;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  margin: 6px auto 0 auto;
+}
+
+input[type="text"]:focus ~ label,
+input[type="email"]:focus ~ label,
+input[type="password"]:focus ~ label,
+input[type="text"]:not(:placeholder-shown) ~ label,
+input[type="email"]:not(:placeholder-shown) ~ label,
+input[type="password"]:not(:placeholder-shown) ~ label {
+  transform: translate(0, -25px);
+  font-size: 20px;
+  color: #6bace4;
+}
+
+.landingpage__signup__input {
+  width: 390px;
+  margin: 0 auto;
+}
+
+.landingpage__signup__button {
+  position: relative;
+  width: 390px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  margin: 36px auto 0 auto;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+}
+.landingpage__signup__button h2 {
+  color: var(--secondary-text-color);
+  margin: 0 auto;
+}
 /* **** Signup END*/
 /* Landingpage   END*/
+
 
 .buysell {
 }
@@ -354,3 +643,168 @@ h5 {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+/* Hannah */
+/* Listed Items page */
+.listeditemsPage_h3-blue {
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 68px;
+}
+
+/*  Listed Items page END */
+
+/* Orderhistory page */
+.orderhistoryPage_h3section {
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 68px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.orderhistoryPage_Button {
+  width: 732px;
+  height: 48px;
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+
+
+/* Orderhistory page END */
+
+
+/* Media Query Controls */
+
+/* @media only screen and (max-width: 790px) {
+} */
+
+@media (max-width: 1243px) {
+  /* styles for screens with a max width of 1243px */
+}
+
+@media (max-width: 1054px) {
+  /* styles for screens with a max width of 1054px */
+}
+@media (max-width: 768px) {
+  /* styles for screens with a max width of 768px */
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h4 {
+    font-size: 13px;
+  }
+  h5 {
+    font-size: 8px;
+  }
+  .wrapper__sub {
+    width: 90%;
+  }
+  .header__icon {
+    left: 5%;
+  }
+  .header__title {
+    width: 75%;
+  }
+  .header__title h1 {
+    font-size: 25px;
+  }
+  .orderhistoryPage_Button {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .productBox {
+    width: 390px;
+    height: 186px;
+  }
+  .productBox_editButton {
+    width: 166px;
+    height: 48px;
+  }
+  .orderhistorybox {
+    width: 100%;
+  }
+
+  /* landingPage */
+
+  .landingpage {
+    flex-direction: column;
+  }
+
+  .landingpage__login,
+  .landingpage__signup {
+    width: 100vw;
+  }
+
+  .landingpage__login {
+    order: 1;
+    background-image: url(./images/BG_L_L.jpg);
+    background-size: 932px auto;
+  }
+
+  .landingpage__signup {
+    order: 2;
+    background-image: url(./images/BG_L_R.jpg);
+  }
+
+  .landingpage__signup__DIOLogoR {
+    padding-top: 100px;
+  }
+
+  .landingpage__login--h3,
+  .landingpage__signup h3 {
+    width: 80%;
+    font-size: 18px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .landingpage__login__inputarea,
+  .landingpage__signup__input-boxdesign {
+    width: 100%;
+  }
+
+  .landingpage__login--input-border-bottom::placeholder,
+  .landingpage__signup__input-boxdesign::placeholder {
+    font-size: 16px;
+  }
+
+  .landingpage__login--button,
+  .landingpage__signup__button {
+    width: 100%;
+    margin-top: 182px;
+  }
+  .landingpage__signup__contents,
+  .landingpage__login--contents {
+    margin-top: 228px;
+    margin-bottom: 184px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* styles for screens with a max width of 480px */
+  .wrapper__sub {
+    width: 100%;
+  }
+}
+
+/* Media Query Controls END */
+

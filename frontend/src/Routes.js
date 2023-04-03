@@ -1,10 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 import LandingPage from "./pages/Landing";
 import BuySell from "./pages/BuySell";
 import Sellingitem from "./pages/Sellingitem";
+import Listeditems from "./pages/Listeditems";
+import OrderHistoryBox from "./pages/Orderhistory";
+
+import Icons from "./pages/icons";
 import Icontest from "./pages/Icontest";
+
+
+
 
 const AppRoutes = () => {
     return (
@@ -13,8 +20,12 @@ const AppRoutes = () => {
             <Route path="/buyandsell" element={< BuySell />} />
             <Route path="/sellingitems" element={< Sellingitem />} />
             <Route path="/icons" element={< Icontest />} />
+             <Route path="/listeditems" element={<Listeditems />} />
+             <Route path="/orderhistory" element={<OrderHistoryBox />} />
+              <Route path="/icons" element={<Icons />} />
         </Routes>
     )
 }
+
 
 export default AppRoutes;
