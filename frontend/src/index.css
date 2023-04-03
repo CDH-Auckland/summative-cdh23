@@ -637,6 +637,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 .browseitems_category {
   width: 100px;
   height: 100px;
+  color: var(--disabled-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -647,11 +648,20 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   width: 80px;
   height: 80px;
   border-radius: 40px;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--disabled-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.browseitems_category--selected {
+  color: var(--primary-color);
+}
+
+.browseitems_categoryicon--selected {
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .browseitems_typeblock {
