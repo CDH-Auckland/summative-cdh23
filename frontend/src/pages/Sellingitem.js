@@ -22,11 +22,29 @@ function Sellingitem() {
     const categoryData = ["Category1", "Category2", "Category3", "Category4", "Category5", "Category6"];
     const typeData = ["DIY Kiy", "Ready to use", "Download"];
 
+
+    useEffect(() => {
+
+        const CreateNewSellItem = async () => {
+
+            const form = new FormData();
+            form.append(inputs);
+
+
+
+        }
+
+        // CreateNewSellItem();
+
+    }, []);
+
+
     const backNavigation = () => {
         navigate("/buyandsell");
     }
 
     const submitClickHandler = () => {
+
         console.log(inputs);
     }
     const selectChange = (e: SelectChangeEvent<String>, child: React.ReactNode) => {
@@ -56,6 +74,13 @@ function Sellingitem() {
         console.log(e.target.value.length);
     }
 
+    const imgFile = (img_file, img_id) => {
+        console.log(img_file, img_id);
+        SetInputs(inputs => ({
+            ...inputs,
+            [img_id]: img_file
+        }));
+    }
 
     return (
         <div className='wrapper'>
@@ -74,7 +99,7 @@ function Sellingitem() {
                 </div>
                 <div className='sellingitem__inputblocks paddingtop__small'>
 
-                    <FormControl sx={{ m: 1, minWidth: 290 }}>
+                    <FormControl sx={{ m: 1, minWidth: 210 }} className='sellingitem__formctrl'>
                         <InputLabel htmlFor="category-select">Select Category</InputLabel>
                         <Select
                             name="category"
@@ -89,7 +114,7 @@ function Sellingitem() {
 
                         </Select>
                     </FormControl>
-                    <FormControl sx={{ m: 1, minWidth: 290 }}>
+                    <FormControl sx={{ m: 1, minWidth: 290 }} className='sellingitem__formctrl'>
                         <InputLabel htmlFor="type-select">Select Type</InputLabel>
                         <Select
                             name="type"
@@ -108,7 +133,7 @@ function Sellingitem() {
                         <input required className='sellingitem__inputadditem' type="text" id="title"
                             onChange={titleHandleChange}
                         />
-                        <label for="title">Add Title</label>
+                        <label htmlFor="title">Add Title</label>
                     </div>
                     <div className='sellingitem__divdescription paddingtop__small'>
                         <h5>Add Description</h5>
@@ -121,10 +146,10 @@ function Sellingitem() {
                         <span className={limit < 300 ? 'sellingitem__descriptionLimit' : 'sellingitem__descriptionLimit sellingitem__descriptionLimit--red'}>{limit}/300</span>
                     </div>
                     <div className='sellingitem__addimage'>
-                        <UploadImg key={1} id={"img01"} />
-                        <UploadImg key={2} id={"img02"} />
-                        <UploadImg key={3} id={"img03"} />
-                        <UploadImg key={4} id={"img04"} />
+                        <UploadImg key={1} id={"img_url1"} imgFile={imgFile} />
+                        <UploadImg key={2} id={"img_url2"} imgFile={imgFile} />
+                        <UploadImg key={3} id={"img_url3"} imgFile={imgFile} />
+                        <UploadImg key={4} id={"img_url4"} imgFile={imgFile} />
                     </div>
 
                     <button onClick={submitClickHandler}>SUBMIT</button>

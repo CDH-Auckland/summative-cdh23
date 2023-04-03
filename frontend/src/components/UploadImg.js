@@ -7,7 +7,7 @@ function UploadImg(props) {
     const validFileTypes = ['image/png', 'image/jpeg', 'image/jpg'];
     const [error, setError] = useState('');
     const [image, setImage] = useState(null);
-    const [fileName, setFileName] = useState();
+    const [imgFile, setImgFile] = useState();
 
     const uploadHandler = ({ target: { files } }) => {
         console.log(files[0]);
@@ -17,7 +17,8 @@ function UploadImg(props) {
         }
         if (files) {
             setImage(URL.createObjectURL(files[0]));
-
+            setImgFile(files[0]);
+            props.imgFile(files[0], props.id);
         }
     }
 
@@ -26,7 +27,7 @@ function UploadImg(props) {
         <div className='uploadimg' >
             <input type='file' id={props.id} accept='image/*' className='uploadimg__input'
                 onChange={uploadHandler} />
-            <label for={props.id}>
+            <label htmlFor={props.id}>
                 {image ? "" : <ControlPointIcon fontSize='large' />}
                 {image ? <img src={image} /> : <h5>Add images</h5>}
             </label>
