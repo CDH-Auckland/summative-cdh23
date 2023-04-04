@@ -15,7 +15,7 @@ function Header(props) {
         <ArrowBackOutlinedIcon fontSize='large' />
       </div>
       <div className='header__title'>
-        <h1>{props.title}</h1>
+        <h2>{props.title}</h2>
       </div>
     </div>
   )
