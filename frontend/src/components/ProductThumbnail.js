@@ -8,9 +8,9 @@ import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 function ProductThumbnail(props) {
   const [wishlist, setWishlist] = useState(props.wishlistStatus);
 
-  const removeWishHandler = (e) => {
+  const wishHandler = (e) => {
     setWishlist(!wishlist);
-    props.removeWishlistCallback(props.id, wishlist);
+    props.wishlistCallback(props.id, wishlist);
   };
 
   const viewDetailHandler = () => {
@@ -28,8 +28,8 @@ function ProductThumbnail(props) {
           <h3 className="productThumbnail__price">{props.price}</h3>
         </div>
         <div className="productThumbnail__icon">
-          <div onClick={removeWishHandler}>
-            {wishlist ? <AssignmentIcon fontSize="large" /> : <AssignmentOutlinedIcon fontSize="large" />}
+          <div onClick={wishHandler}>
+            <AssignmentIcon fontSize="large" />
           </div>
         </div>
       </div>
