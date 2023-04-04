@@ -1,12 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
-import ProductBlock from "../components/ProductBlock";
+import ProductThumbnail from "../components/ProductThumbnail";
+
 import img from "../images/Sampleimage.jpg";
-import AssignmentIcon from "@mui/icons-material/Assignment";
+import img1 from "../images/item_001.jpg";
+
 
 // import NotificationsIcon from "@mui/icons-material/Notifications";
 // import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -23,9 +26,13 @@ function Wishlist() {
     console.log(e);
   }
 
-  const removeWishlistCallback = (e) => {
-    console.log(e);
+  const removeWishlistCallback = (item_id, wishliststatus) => {
+    console.log(item_id, wishliststatus);
   };
+
+  const viewDetailsCallback = (item_id) => {
+    console.log(item_id);
+  }
 
   return (
     <div className="wrapper">
@@ -34,94 +41,92 @@ function Wishlist() {
         <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
         <div className="wishlist__title">
           <h3>Your Wishlist here</h3>
-          <div className="product__icon__top">
+          <div className="wishlist__titleblock__icon">
             <AssignmentIcon fontSize="large" />
-
-            {/* <NotificationsIcon fontSize="large" />
-            <ShoppingCartIcon fontSize="large" />
-            <ViewHeadlineIcon fontSize="large" /> */}
           </div>
         </div>
 
         <div className="Wishlist__items">
-          <ProductBlock
+
+          <ProductThumbnail
             key={"001"}
             id={"001"}
             name={"test"}
             price={78}
             //   img={"./img"}
-            img={img}
+            img={img1}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"002"}
             id={"002"}
-            name={"test2"}
-            price={79}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"003"}
             id={"003"}
-            name={"test3"}
-            price={80}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"004"}
             id={"004"}
-            name={"test4"}
-            price={81}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"005"}
             id={"005"}
-            name={"test5"}
-            price={82}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"006"}
             id={"006"}
-            name={"test6"}
-            price={83}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"007"}
             id={"007"}
-            name={"test7"}
-            price={84}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
-
-          <ProductBlock
+          <ProductThumbnail
             key={"008"}
             id={"008"}
-            name={"test8"}
-            price={84}
+            name={"test"}
+            price={78}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
         </div>
       </div>
