@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import AssignmentIcon from "@mui/icons-material/Assignment";
 
@@ -17,10 +17,14 @@ import img1 from "../images/item_001.jpg";
 
 function Wishlist() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location.state);
+
   const [cartCount, setCartCount] = useState(3);
 
   const backNavigation = () => {
-    navigate("/browseitems");
+    // navigate("/browseitems");
   }
   const hamburgerClick = (e) => {
     console.log(e);
@@ -29,6 +33,10 @@ function Wishlist() {
   const removeWishlistCallback = (item_id, wishliststatus) => {
     console.log(item_id, wishliststatus);
   };
+
+  const viewDetailsCallback = (item_id) => {
+    console.log(item_id);
+  }
 
   return (
     <div className="wrapper">
@@ -52,6 +60,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img1}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"002"}
@@ -61,6 +70,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"003"}
@@ -70,6 +80,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"004"}
@@ -79,6 +90,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"005"}
@@ -88,6 +100,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"006"}
@@ -97,6 +110,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"007"}
@@ -106,6 +120,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
             key={"008"}
@@ -115,6 +130,7 @@ function Wishlist() {
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
+            viewDetailsCallback={viewDetailsCallback}
           />
         </div>
       </div>

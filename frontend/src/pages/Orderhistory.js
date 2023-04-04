@@ -38,7 +38,7 @@ function Orderhistory() {
     },
   ]);
   const backNavigation = () => {
-    navigate("/browseitems");
+    // navigate("/browseitems");
   }
 
   const clearAllHistoryHandler = (e) => {

@@ -8,6 +8,10 @@ import Statusmenu from '../components/Statusmenu';
 import BallotOutlinedIcon from "@mui/icons-material/BallotOutlined";
 import Categoryicon from '../components/Categoryicon';
 import Typeicon from '../components/Typeicon';
+import ProductThumbnail from "../components/ProductThumbnail";
+
+import img from "../images/Sampleimage.jpg";
+import img1 from "../images/item_001.jpg";
 
 function Browseitems() {
     const navigate = useNavigate();
@@ -16,7 +20,7 @@ function Browseitems() {
     const [cartCount, setCartCount] = useState(3);
 
     const backNavigation = () => {
-        navigate("/buyandsell");
+        // navigate("/buyandsell");
     }
 
     const categoryiconclick = (e) => {
@@ -32,6 +36,14 @@ function Browseitems() {
         console.log(e);
     }
 
+    const removeWishlistCallback = (item_id, wishliststatus) => {
+        console.log(item_id, wishliststatus);
+    };
+
+    const viewDetailsCallback = (item_id) => {
+        console.log(item_id);
+        navigate("/wishlist", { state: { item_id: item_id, test: "Hellow" } });
+    }
 
     return (
         <div className="wrapper">
@@ -68,8 +80,17 @@ function Browseitems() {
                     <h3>List Items</h3>
                 </div>
 
-                <div >
-
+                < div className="browseitem__items">
+                    <ProductThumbnail
+                        key={"001"}
+                        id={"001"}
+                        name={"test"}
+                        price={78}
+                        //   img={"./img"}
+                        img={img1}
+                        removeWishlistCallback={removeWishlistCallback}
+                        viewDetailsCallback={viewDetailsCallback}
+                    />
                 </div>
 
 

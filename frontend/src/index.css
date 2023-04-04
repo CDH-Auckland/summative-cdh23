@@ -915,7 +915,8 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   height: 100px;
 }
 
-.Wishlist__items {
+.Wishlist__items,
+.browseitem__items {
   /* display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px; */
