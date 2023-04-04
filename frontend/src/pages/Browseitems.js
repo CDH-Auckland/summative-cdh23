@@ -42,7 +42,7 @@ function Browseitems() {
 
     const viewDetailsCallback = (item_id) => {
         console.log(item_id);
-        navigate("/wishlist", { state: { item_id: item_id, test: "Hellow" } });
+        navigate("/viewitem", { state: { item_id: item_id, test: "Hellow" } });
     }
 
     return (
@@ -86,6 +86,29 @@ function Browseitems() {
                         id={"001"}
                         name={"test"}
                         price={78}
+                        wishlistStatus={true}
+                        //   img={"./img"}
+                        img={img1}
+                        removeWishlistCallback={removeWishlistCallback}
+                        viewDetailsCallback={viewDetailsCallback}
+                    />
+                    <ProductThumbnail
+                        key={"0012"}
+                        id={"0013"}
+                        name={"test"}
+                        price={45}
+                        wishlistStatus={false}
+                        //   img={"./img"}
+                        img={img1}
+                        removeWishlistCallback={removeWishlistCallback}
+                        viewDetailsCallback={viewDetailsCallback}
+                    />
+                    <ProductThumbnail
+                        key={"045"}
+                        id={"0045"}
+                        name={"test"}
+                        price={120}
+                        wishlistStatus={true}
                         //   img={"./img"}
                         img={img1}
                         removeWishlistCallback={removeWishlistCallback}

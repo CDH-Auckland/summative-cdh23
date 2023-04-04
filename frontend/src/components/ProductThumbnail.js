@@ -6,7 +6,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 
 function ProductThumbnail(props) {
-  const [wishlist, setWishlist] = useState(true);
+  const [wishlist, setWishlist] = useState(props.wishlistStatus);
 
   const removeWishHandler = (e) => {
     setWishlist(!wishlist);

@@ -57,6 +57,7 @@ function Wishlist() {
             id={"001"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img1}
             removeWishlistCallback={removeWishlistCallback}
@@ -67,6 +68,7 @@ function Wishlist() {
             id={"002"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
@@ -77,6 +79,7 @@ function Wishlist() {
             id={"003"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
@@ -87,6 +90,7 @@ function Wishlist() {
             id={"004"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
@@ -97,6 +101,7 @@ function Wishlist() {
             id={"005"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
@@ -107,6 +112,7 @@ function Wishlist() {
             id={"006"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
@@ -117,6 +123,7 @@ function Wishlist() {
             id={"007"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
@@ -127,6 +134,7 @@ function Wishlist() {
             id={"008"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
             removeWishlistCallback={removeWishlistCallback}
