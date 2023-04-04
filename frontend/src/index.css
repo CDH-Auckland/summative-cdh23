@@ -124,6 +124,7 @@ input:focus {
 /* Modifier END */
 
 /* Components */
+
 /*** Header Components ***/
 .header {
   width: 100%;
@@ -135,6 +136,26 @@ input:focus {
   padding-block: 40px;
   position: relative;
 }
+.header__icon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.header__title {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+/*** Header Components END***/
+
 /* button {
   border-style: none;
   font: var(--font-family);
@@ -160,10 +181,33 @@ button {
   color: var(--primary-color);
 }
 
-/* Elements END*/
+/*** statusMenu ***/
+.statusMenu {
+  width: 95%;
+  height: 60px;
+  background-color: darkseagreen;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+.statusMenu__usericon {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+}
+.statusMenu__shoppingcart {
+  width: 50px;
+  height: 50px;
+  background-color: #ffee1c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Components */
-/*ProductBox */
+/*** statusMenu END ***/
+
+/*** ProductBox ***/
 .productBox {
   display: flex;
   width: 732px;
@@ -171,9 +215,6 @@ button {
   border: 1px solid var(--primary-color); /* Set border color to #415FFF */
   margin-bottom: 50px;
 }
-/* @media only screen and (max-width: 790px) {
-  
-} */
 
 .productBox_left {
   width: 186px;
@@ -198,14 +239,12 @@ button {
 .productBox_name {
   font-size: 17px;
   font-weight: bold;
-  /* margin-bottom: 10px; */
   color: var(--primary-color);
 }
 
 .productBox_author {
   font-size: 14px;
-  /* margin-bottom: 10px; */
-  color: var(--primary-color); /* Set font color to #415FFF */
+  color: var(--primary-color);
 }
 
 /* .productBox_editButton {
@@ -222,11 +261,10 @@ button {
   cursor: pointer;
 } */
 
-/* @media only screen and (max-width: 790px) {
-} */
-/* ProductBox END */
+/*** ProductBox END ***/
 
-/*Orderhistory ProductBox */
+/*** Orderhistory ProductBox ***/
+
 .orderhistoryPage_list {
   width: 100%;
   height: auto;
@@ -243,9 +281,6 @@ button {
   border: 1px solid var(--primary-color);
   margin-bottom: 50px;
 }
-
-/* @media screen and (max-width: 790px) {
-} */
 
 .orderhistorybox_left {
   width: 122px;
@@ -272,14 +307,13 @@ button {
 .orderhistorybox_ordername {
   font-size: 17px;
   font-weight: bold;
-  /* margin-bottom: 10px; */
   color: var(--primary-color);
 }
 
 .orderhistorybox_price {
   font-size: 14px;
   margin-bottom: 10px;
-  color: var(--primary-color); /* Set font color to #415FFF */
+  color: var(--primary-color);
 }
 
 .orderhistorybox_statusButton {
@@ -302,31 +336,9 @@ button {
   padding-right: 22px;
   color: var(--primary-color);
 }
-/* OrderhistoryProductBox END */
+/*** OrderhistoryProductBox END ***/
 
 /* Components  END*/
-
-.header__icon {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 20%;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.header__title {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-}
-/*** Header Components END***/
-/* Components END*  /
-
 
 /* Landingpage */
 
