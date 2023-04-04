@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header"
@@ -7,7 +7,7 @@ import OrderhistoryBox from "../components/OrderhistoryBox";
 
 function Orderhistory() {
   const navigate = useNavigate();
-  const historys = [
+  const [historys, setHistory] = useState([
     {
       item_id: "0023",
       item_name: "Product name",
@@ -36,13 +36,13 @@ function Orderhistory() {
       order_status: "ITDE",
       imageUrl: "../images/listeditems_1.jpg",
     },
-  ];
+  ]);
   const backNavigation = () => {
     navigate("/buyandsell");
   }
 
-  const handleStatus = (history) => {
-    console.log(`Clear all ${history.id}'s history`);
+  const clearAllHistoryHandler = (e) => {
+    console.log(`Clear all order history`);
   };
   const orderboxDelete = (e) => {
     console.log(`Deleting selected orderhistory ${e}`);
@@ -68,7 +68,7 @@ function Orderhistory() {
             />
           ))}
         </div>
-        <button className="orderhistoryPage_Button" onClick={handleStatus}>
+        <button className="orderhistoryPage_Button" onClick={clearAllHistoryHandler}>
           CLEAR ALL HISTORY
         </button>
       </div>

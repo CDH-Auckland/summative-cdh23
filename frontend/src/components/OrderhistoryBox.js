@@ -10,7 +10,6 @@ function OrderhistoryBox({ history, onDelete }) {
 
 
   const deleteOrderHistory = () => {
-    console.log(`Deleting selected orderhistory ${history.id}`);
     onDelete(history.item_id);
   };
 

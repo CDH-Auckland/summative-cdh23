@@ -227,9 +227,18 @@ button {
 /* ProductBox END */
 
 /*Orderhistory ProductBox */
+.orderhistoryPage_list {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .orderhistorybox {
   display: flex;
-  width: 100%;
+  width: 99%;
   height: 122px;
   border: 1px solid var(--primary-color);
   margin-bottom: 50px;
@@ -238,10 +247,6 @@ button {
 /* @media screen and (max-width: 790px) {
 } */
 
-.orderhistoryPage_list {
-  width: 100%;
-  height: auto;
-}
 .orderhistorybox_left {
   width: 122px;
   height: 122px;
@@ -677,6 +682,11 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   grid-gap: 20px;
   justify-items: center;
   align-items: center;
+}
+
+.browseitems__typeicon {
+  width: 40px;
+  height: auto;
 }
 
 /* Browse Items Page */

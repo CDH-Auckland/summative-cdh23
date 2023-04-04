@@ -51,14 +51,14 @@ function Browseitems() {
                     <h3>Type</h3>
                 </div>
                 <div className='browseitems_typeblock paddingtop__small'>
-                    <Typeicon key={"type1"} name={"type1"} selected={type} typeiconclick={typeiconclick} />
-                    <Typeicon key={"type2"} name={"type2"} selected={type} typeiconclick={typeiconclick} />
-                    <Typeicon key={"type3"} name={"type3"} selected={type} typeiconclick={typeiconclick} />
-                    <Typeicon key={"type4"} name={"type4"} selected={type} typeiconclick={typeiconclick} />
+                    <Typeicon key={"type1"} name={"DIY Kit"} img_url={"DIY-KIt"} selected={type} typeiconclick={typeiconclick} />
+                    <Typeicon key={"type2"} name={"Ready To Use"} img_url={"readyToUse"} selected={type} typeiconclick={typeiconclick} />
+                    <Typeicon key={"type3"} name={"Download"} img_url={"download"} selected={type} typeiconclick={typeiconclick} />
                 </div>
                 <div className='browseitems_titleblock paddingtop__small'>
                     <h3>List Items</h3>
                 </div>
+
                 <div >
 
                 </div>
