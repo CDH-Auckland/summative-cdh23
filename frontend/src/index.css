@@ -902,11 +902,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 /* BuySell   END*/
 
 /* Wishlist */
-.wishlist__menu {
-  height: 138px;
-  width: 100%;
-  background-color: #ffee1c;
-}
 
 .wishlist__title {
   display: flex;

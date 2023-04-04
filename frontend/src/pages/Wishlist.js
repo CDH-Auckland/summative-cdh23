@@ -1,4 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+
+import Header from "../components/Header"
+import Statusmenu from '../components/Statusmenu';
 import ProductBlock from "../components/ProductBlock";
 import img from "../images/Sampleimage.jpg";
 import AssignmentIcon from "@mui/icons-material/Assignment";
@@ -8,14 +13,25 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 // import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 
 function Wishlist() {
+  const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(3);
+
+  const backNavigation = () => {
+    navigate("/buyandsell");
+  }
+  const hamburgerClick = (e) => {
+    console.log(e);
+  }
+
   const removeWishlistCallback = (e) => {
     console.log(e);
   };
 
   return (
     <div className="wrapper">
+      <Header title={"Wishlist"} backNavigation={backNavigation} />
       <div className="wrapper__sub">
-        <div className="wishlist__menu"></div>
+        <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
         <div className="wishlist__title">
           <h3>Your Wishlist here</h3>
           <div className="product__icon__top">

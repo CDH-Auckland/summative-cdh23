@@ -6,8 +6,10 @@ import BuySell from "./pages/BuySell";
 import Sellingitem from "./pages/Sellingitem";
 import Listeditems from "./pages/Listeditems";
 import OrderHistoryBox from "./pages/Orderhistory";
-import Cart from "./pages/Cart";
 import Browseitems from "./pages/Browseitems";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
+
 
 import Icons from "./pages/icons";
 import Icontest from "./pages/Icontest";
@@ -22,6 +24,7 @@ const AppRoutes = () => {
             <Route path="/orderhistory" element={<OrderHistoryBox />} />
             <Route path="/browseitems" element={<Browseitems />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/icons" element={< Icontest />} />
             <Route path="/icons" element={<Icons />} />
         </Routes>
