@@ -17,7 +17,7 @@ function Wishlist() {
   const [cartCount, setCartCount] = useState(3);
 
   const backNavigation = () => {
-    navigate("/buyandsell");
+    navigate("/browseitems");
   }
   const hamburgerClick = (e) => {
     console.log(e);
