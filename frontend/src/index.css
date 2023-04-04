@@ -1169,9 +1169,9 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 
   .browseitems_categoryblock {
     width: 95%;
-
     grid-gap: 5px;
   }
+
   .browseitems_category {
     width: 70px;
     height: 70px;
@@ -1181,6 +1181,16 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 60px;
     height: 60px;
     border-radius: 30px;
+  }
+
+  .BuySell {
+    flex-direction: column;
+  }
+
+  .buysell__buyitems,
+  .buysell__sellitems {
+    width: 100%;
+    height: 50vh;
   }
 }
 
