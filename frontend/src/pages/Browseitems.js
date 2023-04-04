@@ -13,6 +13,7 @@ function Browseitems() {
     const navigate = useNavigate();
     const [category, setCategory] = useState("all");
     const [type, setType] = useState("all");
+    const [cartCount, setCartCount] = useState(3);
 
     const backNavigation = () => {
         navigate("/buyandsell");
@@ -27,12 +28,16 @@ function Browseitems() {
         console.log(e);
     }
 
+    const hamburgerClick = (e) => {
+        console.log(e);
+    }
+
 
     return (
         <div className="wrapper">
             <Header title={"Browse Items"} backNavigation={backNavigation} />
             <div className="wrapper__sub">
-                <Statusmenu username={"John"} />
+                <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
                 <div className='browseitems_titleblock paddingtop__small'>
                     <h3>Category</h3>
                     <div className='cart__titleblock__icon'>

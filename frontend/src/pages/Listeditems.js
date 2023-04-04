@@ -27,7 +27,7 @@ function Listeditems() {
     },
   ];
   const backNavigation = () => {
-    navigate("/buyandsell");
+    navigate("/browseitems");
   }
   const listitemClickEvent = (e) => {
     console.log(e);

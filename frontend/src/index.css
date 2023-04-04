@@ -185,11 +185,15 @@ button {
 .statusMenu {
   width: 95%;
   height: 60px;
-  background-color: darkseagreen;
+  /* background-color: darkseagreen; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
+}
+.statusMenu Span {
+  font-size: 14px;
+  font-weight: 500;
 }
 .statusMenu__usericon {
   width: 44px;
@@ -199,10 +203,37 @@ button {
 .statusMenu__shoppingcart {
   width: 50px;
   height: 50px;
-  background-color: #ffee1c;
+  /* background-color: #ffee1c; */
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.statusMenu__carcount {
+  width: 23px;
+  height: 23px;
+  background-color: var(--background-color);
+  border: 1px solid var(--primary-color);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.statusMenu__carcount span {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.statusMenu__hamburger {
+  cursor: pointer;
 }
 
 /*** statusMenu END ***/
@@ -799,7 +830,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 /* BuySell*/
 .BuySell {
   width: 100%;
-  height: 100%;
+  height: 1080px;
   display: flex;
   flex-direction: row;
 }
@@ -839,6 +870,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   position: relative;
   width: 260px;
   height: 178px;
+  color: var(--primary-color);
   margin: auto;
   display: block;
   padding: 10px;
@@ -870,11 +902,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 /* BuySell   END*/
 
 /* Wishlist */
-.wishlist__menu {
-  height: 138px;
-  width: 100%;
-  background-color: #ffee1c;
-}
 
 .wishlist__title {
   display: flex;
@@ -1126,6 +1153,15 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 100%;
   }
 
+  .BuySell {
+    flex-direction: column;
+  }
+
+  .buysell__buyitems,
+  .buysell__sellitems {
+    width: 100%;
+    height: 50vh;
+  }
 
   .sellingitem__addimage {
     grid-template-columns: repeat(1, 1fr);
@@ -1135,7 +1171,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 95%;
     grid-gap: 5px;
   }
-  
+
   .browseitems_category {
     width: 70px;
     height: 70px;
@@ -1145,7 +1181,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    }
+  }
 
   .BuySell {
     flex-direction: column;
@@ -1156,7 +1192,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 100%;
     height: 50vh;
   }
-  
 }
 
 /* Media Query Controls END */

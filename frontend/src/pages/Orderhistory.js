@@ -38,7 +38,7 @@ function Orderhistory() {
     },
   ]);
   const backNavigation = () => {
-    navigate("/buyandsell");
+    navigate("/browseitems");
   }
 
   const clearAllHistoryHandler = (e) => {
