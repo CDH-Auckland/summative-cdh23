@@ -2,6 +2,7 @@ import React from "react";
 import ProductBlock from "../components/ProductBlock";
 import img from "../images/Sampleimage.jpg";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import Header from "../components/Header";
 
 // import NotificationsIcon from "@mui/icons-material/Notifications";
 // import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -14,8 +15,9 @@ function Wishlist() {
 
   return (
     <div className="wrapper">
+      <Header title={"Wishlist"} />
       <div className="wrapper__sub">
-        <div className="wishlist__menu"></div>
+        {/* <div className="wishlist__menu"></div> */}
         <div className="wishlist__title">
           <h3>Your Wishlist here</h3>
           <div className="product__icon__top">
