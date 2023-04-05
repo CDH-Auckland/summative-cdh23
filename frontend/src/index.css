@@ -669,7 +669,68 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   width: 25px;
   height: 25px;
 }
+.cart_orderHistoryBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.cart_total {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-top: 96px;
+  font-family: var(--secondary-font-family);
+}
+.cart_total_h5-fontweight300 {
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.cart_total_h1-fontweight300 {
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.cart_taxes_line,
+.cart_subtotal_line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+  padding: 36px 0;
+}
+.cart_taxes,
+.cart_subtotal {
+  font-family: var(--secondary-font-family);
+  margin-left: 136px;
+  font-weight: 300;
+}
+.cart_taxes_sum,
+.cart_subtotal_sum {
+  font-family: var(--secondary-font-family);
+  margin-right: 16px;
+  font-weight: 300;
+}
+.cart_subtotal_sum {
+  font-family: var(--secondary-font-family);
+  font-weight: 300;
+}
 
+.cart_point {
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  margin-top: 64px;
+}
+
+.cart_button {
+  margin-top: 96px;
+  margin-bottom: 144px;
+}
 /* Car page END */
 
 /* Browse Items Page */
@@ -1039,7 +1100,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   .uploadimg {
     width: 300px;
     height: 154px;
-    
+
     /* .sellingitem__addimage {
     grid-template-columns: repeat(1, 1fr);
   } */
@@ -1157,7 +1218,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     margin-bottom: 184px;
     padding: 0;
   }
-    /* landingPage */
+  /* landingPage */
 }
 
 @media (max-width: 480px) {
