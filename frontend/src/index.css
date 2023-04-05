@@ -1522,13 +1522,13 @@ body {
     border-radius: 30px;
   }
 
-<<<<<<< HEAD
+
   .popup__container {
     position: fixed;
     width: 390px;
     height: 680px;
   }
-=======
+
   .BuySell {
     flex-direction: column;
   }
@@ -1548,7 +1548,7 @@ body {
 }
 
 @media only screen and (max-width: 355px) {
->>>>>>> 671843b9e57053f8a7bd5e00c9a9d57655741387
+
 }
 
 /* Media Query Controls END */
