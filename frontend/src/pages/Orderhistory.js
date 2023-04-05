@@ -7,17 +7,10 @@ import OrderhistoryBox from "../components/OrderhistoryBox";
 import Statusmenu from "../components/Statusmenu";
 
 function Orderhistory() {
-  const navigate = useNavigate();
+  
   const [cartCount, setCartCount] = useState(3);
   const backNavigation = () => {
     navigate("/browseitems");
-  };
-
-  const clearAllHistoryHandler = (e) => {
-    console.log(`Clear all order history`);
-  };
-  const orderboxDelete = (e) => {
-    console.log(`Deleting selected orderhistory ${e}`);
   };
   const hamburgerClick = (e) => {
     console.log(e);
@@ -53,6 +46,18 @@ function Orderhistory() {
       imageUrl: "../images/listeditems_1.jpg",
     },
   ]);
+
+  const backNavigation = () => {
+    // navigate("/browseitems");
+  }
+
+  const clearAllHistoryHandler = (e) => {
+    console.log(`Clear all order history`);
+  };
+  const orderboxDelete = (e) => {
+    console.log(`Deleting selected orderhistory ${e}`);
+  };
+
 
   return (
     <div className="wrapper">

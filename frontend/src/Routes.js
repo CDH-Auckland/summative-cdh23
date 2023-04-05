@@ -7,6 +7,7 @@ import Sellingitem from "./pages/Sellingitem";
 import Listeditems from "./pages/Listeditems";
 import OrderHistoryBox from "./pages/Orderhistory";
 import Browseitems from "./pages/Browseitems";
+import Viewitem from "./pages/Viewitem";
 import Wishlist from "./pages/Wishlist";
 import AccountDetails from "./pages/AccountDetails";
 import Cart from "./pages/Cart";
@@ -24,6 +25,7 @@ const AppRoutes = () => {
             <Route path="/buyandsell" element={<BuySell />} />
             <Route path="/sellingitems" element={<Sellingitem />} />
             <Route path="/browseitems" element={< Browseitems />} />
+            <Route path="/viewitem" element={< Viewitem />} />
             <Route path="/listeditems" element={<Listeditems />} />
             <Route path="/orderhistory" element={<OrderHistoryBox />} />
             <Route path="/wishlist" element={<Wishlist />} />
