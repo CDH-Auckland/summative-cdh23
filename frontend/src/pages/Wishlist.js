@@ -22,6 +22,26 @@ function Wishlist() {
   console.log(location.state);
 
   const [cartCount, setCartCount] = useState(3);
+  const [wistlistStatus, SetWishlistStatus] = useState("");
+
+
+  useEffect(() => {
+
+
+    //  wishlist remove API
+    const removeWishlist = async () => {
+      console.log(wistlistStatus);
+    }
+
+
+
+
+    if (wistlistStatus) {
+      removeWishlist();
+    }
+
+  }, [wistlistStatus]);
+
 
   const backNavigation = () => {
     // navigate("/browseitems");
@@ -30,8 +50,14 @@ function Wishlist() {
     console.log(e);
   }
 
-  const removeWishlistCallback = (item_id, wishliststatus) => {
+  const wishlistCallback = (item_id, wishliststatus) => {
     console.log(item_id, wishliststatus);
+    SetWishlistStatus(inputs => ({
+      ...inputs,
+      "user_id": "00022234",
+      "product_id": item_id,
+      status: wishliststatus,
+    }));
   };
 
   const viewDetailsCallback = (item_id) => {
@@ -60,7 +86,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img1}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -71,7 +97,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -82,7 +108,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -93,7 +119,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -104,7 +130,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -115,7 +141,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -126,7 +152,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -137,7 +163,7 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
             viewDetailsCallback={viewDetailsCallback}
           />
         </div>

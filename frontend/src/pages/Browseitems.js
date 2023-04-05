@@ -19,6 +19,67 @@ function Browseitems() {
     const [type, setType] = useState("all");
     const [cartCount, setCartCount] = useState(3);
 
+    const [wistlistStatus, SetWishlistStatus] = useState("");
+    const [wistlistArry, setWishlistArray] = useState("");
+    const [productArray, setProductArray] = useState("");
+
+    const [wishlistToken, setWishlistToken] = useState(false);
+
+    const user_id = "00034rf";
+
+    useEffect(() => {
+
+        // get all product API  
+        //Server search all products with stock == "A" and return the productArray
+        const getAllProduct = async () => {
+            // get product_id, name, price, category, type, img_utl1
+            setProductArray();
+            console.log("Product deatls retrieved");
+        }
+
+        //get all wishlist API using user_id
+        const getAllWishlist = async () => {
+            //search wishlist using user_id
+            setWishlistArray();
+        }
+
+        //  wishlist create API using user_id & product_id 
+        //First server will Search wishlist using user_id & product_id if fount msg back"Item all ready in wishlist" else Create new wishlist
+        const addWishlist = async () => {
+            console.log(wistlistStatus);
+            console.log("Item added to your Wish");
+        }
+
+        // wishlist deleted API using user_id & product_id
+        //First server will Search wishlist using user_id & product_id if Not fount msg back"Item not in the wishlist" else Delete the wishlist
+        const removeWishlist = async () => {
+
+            console.log(wistlistStatus)
+            console.log("Item removed from your Wish");
+        }
+
+
+
+        //All API function calls
+
+        if (wishlistToken && wistlistStatus) {
+            console.log(wistlistStatus.status);
+            if (wistlistStatus.status) {
+                addWishlist();
+
+            } else {
+                removeWishlist();
+
+            }
+            setWishlistToken(false);
+        }
+
+        if (!productArray) {
+            getAllProduct();
+        }
+
+    }, [wistlistStatus, wishlistToken]);
+
     const backNavigation = () => {
         // navigate("/buyandsell");
     }
@@ -36,13 +97,24 @@ function Browseitems() {
         console.log(e);
     }
 
-    const removeWishlistCallback = (item_id, wishliststatus) => {
+    const wishlistCallback = (item_id, wishliststatus) => {
         console.log(item_id, wishliststatus);
+        SetWishlistStatus(inputs => ({
+            ...inputs,
+            "user_id": user_id,
+            "product_id": item_id,
+            status: wishliststatus,
+        }));
+        setWishlistToken(true);
     };
 
-    const viewDetailsCallback = (item_id) => {
-        console.log(item_id);
-        navigate("/viewitem", { state: { item_id: item_id, test: "Hellow" } });
+    const viewDetailsCallback = (item_id, wishlistStatus) => {
+        console.log(item_id, wishlistStatus);
+        navigate("/viewitem", { state: { user_id: user_id, item_id: item_id, wishlistStatus: wishlistStatus } });
+    }
+
+    const testclick = () => {
+
     }
 
     return (
@@ -89,7 +161,7 @@ function Browseitems() {
                         wishlistStatus={true}
                         //   img={"./img"}
                         img={img1}
-                        removeWishlistCallback={removeWishlistCallback}
+                        wishlistCallback={wishlistCallback}
                         viewDetailsCallback={viewDetailsCallback}
                     />
                     <ProductThumbnail
@@ -100,7 +172,7 @@ function Browseitems() {
                         wishlistStatus={false}
                         //   img={"./img"}
                         img={img1}
-                        removeWishlistCallback={removeWishlistCallback}
+                        wishlistCallback={wishlistCallback}
                         viewDetailsCallback={viewDetailsCallback}
                     />
                     <ProductThumbnail
@@ -111,11 +183,11 @@ function Browseitems() {
                         wishlistStatus={true}
                         //   img={"./img"}
                         img={img1}
-                        removeWishlistCallback={removeWishlistCallback}
+                        wishlistCallback={wishlistCallback}
                         viewDetailsCallback={viewDetailsCallback}
                     />
                 </div>
-
+                <button className='button' onClick={testclick}>test</button>
 
             </div>
         </div>
