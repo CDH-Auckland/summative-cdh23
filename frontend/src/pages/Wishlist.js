@@ -2,10 +2,10 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import AssignmentIcon from "@mui/icons-material/Assignment";
-<<<<<<< HEAD
+
 import Header from "../components/Header";
 import Msgbox from "../components/Msgbox";
-=======
+
 
 import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
@@ -14,7 +14,7 @@ import ProductThumbnail from "../components/ProductThumbnail";
 import img from "../images/Sampleimage.jpg";
 import img1 from "../images/item_001.jpg";
 
->>>>>>> 671843b9e57053f8a7bd5e00c9a9d57655741387
+
 
 // import NotificationsIcon from "@mui/icons-material/Notifications";
 // import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -71,12 +71,7 @@ function Wishlist() {
 
   return (
     <div className="wrapper">
-<<<<<<< HEAD
-      <Msgbox></Msgbox>
-      <Header title={"Wishlist"} />
-=======
       <Header title={"Wishlist"} backNavigation={backNavigation} />
->>>>>>> 671843b9e57053f8a7bd5e00c9a9d57655741387
       <div className="wrapper__sub">
         <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
         <div className="wishlist__title">
