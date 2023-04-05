@@ -8,6 +8,10 @@ import CartBox from "../components/CartBox";
 
 function Cart() {
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(3);
+  const hamburgerClick = (e) => {
+    console.log(e);
+  };
   const [CartHistory, setCartHistory] = useState([
     {
       item_id: "0023",
@@ -55,16 +59,19 @@ function Cart() {
     return taxAmount.toFixed(2);
   };
   const taxAmount = calculateTax(totalPrice);
-
   const sum = totalPrice + parseFloat(taxAmount);
 
+  const checkoutHandler = (e) => {
+    console.log(`Checkout button`);
+  };
   return (
     <div className="wrapper">
       <Header title={"Cart"} backNavigation={backNavigation} />
       <div className="wrapper__sub">
         <Statusmenu
-          username="John Doe" // Pass props to Statusmenu component
-          cartCount={CartHistory.length} // Pass props to Statusmenu component
+          username={"John"}
+          hamburgerClick={hamburgerClick}
+          cartCount={cartCount}
         />
         <div className="cart_titleblock paddingtop__small">
           <h3>Product added to your cart </h3>
@@ -97,7 +104,9 @@ function Cart() {
         </div>
 
         <h5 className="cart_point">You earn +{totalPrice} points</h5>
-        <button className="cart_button">CHECKOUT</button>
+        <button className="cart_button" onClick={checkoutHandler}>
+          CHECKOUT
+        </button>
       </div>
     </div>
   );

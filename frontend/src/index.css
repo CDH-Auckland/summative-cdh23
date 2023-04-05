@@ -185,6 +185,7 @@ button {
 .statusMenu {
   width: 95%;
   height: 60px;
+  margin-left: 44px;
   /* background-color: darkseagreen; */
   display: flex;
   justify-content: flex-end;
@@ -664,6 +665,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 .cart_titleblock {
   display: flex;
   align-items: center;
+  margin-bottom: 44px;
 }
 .cart_titleblock__icon {
   width: 25px;
@@ -682,7 +684,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  margin-top: 96px;
+  margin-top: 50px;
   font-family: var(--secondary-font-family);
 }
 .cart_total_h5-fontweight300 {
@@ -703,6 +705,9 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
   padding: 36px 0;
+}
+.cart_subtotal_line {
+  border-top: none;
 }
 .cart_taxes,
 .cart_subtotal {
@@ -1151,17 +1156,20 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 100%;
     margin: 0 auto;
   }
+  .orderhistorybox {
+    width: 100%;
+  }
   .productBox {
     width: 390px;
     height: 186px;
+  }
+  .cart_button {
+    width: 100%;
   }
   /* .productBox_editButton {
     width: 166px;
     height: 48px;
   } */
-  .orderhistorybox {
-    width: 100%;
-  }
 
   /* landingPage */
 
