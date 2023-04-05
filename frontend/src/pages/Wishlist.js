@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import AssignmentIcon from "@mui/icons-material/Assignment";
 
@@ -17,18 +17,48 @@ import img1 from "../images/item_001.jpg";
 
 function Wishlist() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location.state);
+
   const [cartCount, setCartCount] = useState(3);
+  const [wistlistStatus, SetWishlistStatus] = useState("");
+
+
+  useEffect(() => {
+
+
+    //  wishlist remove API
+    const removeWishlist = async () => {
+      console.log(wistlistStatus);
+    }
+
+
+
+
+    if (wistlistStatus) {
+      removeWishlist();
+    }
+
+  }, [wistlistStatus]);
+
 
   const backNavigation = () => {
-    navigate("/browseitems");
+    // navigate("/browseitems");
   }
   const hamburgerClick = (e) => {
     console.log(e);
   }
 
-  const removeWishlistCallback = (item_id, wishliststatus) => {
+  const wishlistCallback = (item_id, wishliststatus) => {
     console.log(item_id, wishliststatus);
-  };
+    SetWishlistStatus(inputs => ({
+      ...inputs,
+      "user_id": "00022234",
+      "product_id": item_id,
+      status: wishliststatus,
+    }));
+
 
   const viewDetailsCallback = (item_id) => {
     console.log(item_id);
@@ -53,9 +83,12 @@ function Wishlist() {
             id={"001"}
             name={"test"}
             price={78}
+            wishlistStatus={true}
             //   img={"./img"}
             img={img1}
-            removeWishlistCallback={removeWishlistCallback}
+
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -63,9 +96,12 @@ function Wishlist() {
             id={"002"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -73,9 +109,12 @@ function Wishlist() {
             id={"003"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -83,9 +122,12 @@ function Wishlist() {
             id={"004"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -93,9 +135,12 @@ function Wishlist() {
             id={"005"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -103,9 +148,12 @@ function Wishlist() {
             id={"006"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -113,9 +161,12 @@ function Wishlist() {
             id={"007"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -123,9 +174,12 @@ function Wishlist() {
             id={"008"}
             name={"test"}
             price={78}
+
+            wishlistStatus={true}
             //   img={"./img"}
             img={img}
-            removeWishlistCallback={removeWishlistCallback}
+            wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
         </div>
