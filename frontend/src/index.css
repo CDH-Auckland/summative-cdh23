@@ -443,8 +443,6 @@ button {
 /* *** *Login END*/
 
 /* **** Signup */
-.landingpage__signup {
-}
 
 .landingpage__signup {
   width: 50%;
@@ -517,9 +515,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 }
 /* **** Signup END*/
 /* Landingpage   END*/
-
-.buysell {
-}
 
 /* Selling page */
 
