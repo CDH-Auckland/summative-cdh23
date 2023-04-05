@@ -6,8 +6,6 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import Header from "../components/Header";
 import Msgbox from "../components/Msgbox";
 
-
-import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
 import ProductThumbnail from "../components/ProductThumbnail";
 
