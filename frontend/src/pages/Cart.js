@@ -8,7 +8,7 @@ function Cart() {
     const navigate = useNavigate();
 
     const backNavigation = () => {
-        navigate("/buyandsell");
+        navigate("/browseitems");
     }
 
     return (
@@ -30,3 +30,6 @@ function Cart() {
 }
 
 export default Cart
+
+
+

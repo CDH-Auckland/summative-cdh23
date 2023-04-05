@@ -1,12 +1,14 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 function Header(props) {
-
+  const navigate = useNavigate();
 
   const backClickHandler = () => {
-    props.backNavigation();
+    // props.backNavigation();
+    navigate(-1);
   }
 
   return (
@@ -15,7 +17,7 @@ function Header(props) {
         <ArrowBackOutlinedIcon fontSize='large' />
       </div>
       <div className='header__title'>
-        <h1>{props.title}</h1>
+        <h2>{props.title}</h2>
       </div>
     </div>
   )
