@@ -3,21 +3,21 @@ import { useState, useEffect } from "react";
 
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 
-function OrderhistoryBox({ history, onDelete }) {
+function CartBox({ cartList, onDelete }) {
   const [status, setStatus] = useState("");
 
-  const deleteOrderHistory = () => {
-    onDelete(history.item_id);
+  const deleteCartHistory = () => {
+    onDelete(cartList.item_id);
   };
 
   useEffect(() => {
-    if (history.order_status === "PP") {
+    if (cartList.order_status === "PP") {
       setStatus("Payment Processed");
-    } else if (history.order_status === "PS") {
+    } else if (cartList.order_status === "PS") {
       setStatus("Processing with seller");
-    } else if (history.order_status === "ITD") {
+    } else if (cartList.order_status === "ITD") {
       setStatus("Item Dispatched");
-    } else if (history.order_status === "ITDE") {
+    } else if (cartList.order_status === "ITDE") {
       setStatus("Item Delivered");
     }
   }, []);
@@ -25,18 +25,18 @@ function OrderhistoryBox({ history, onDelete }) {
   return (
     <div className="orderhistorybox">
       <div className="orderhistorybox_left">
-        <img src={history.imageUrl} alt={history.name} />
+        <img src={cartList.imageUrl} alt={cartList.name} />
       </div>
       <div className="orderhistorybox_middle">
-        <div className="orderhistorybox_ordername">{history.item_name}</div>
-        <div className="orderhistorybox_price">{history.item_price}</div>
+        <div className="orderhistorybox_ordername">{cartList.item_name}</div>
+        <div className="orderhistorybox_price">{cartList.item_price}</div>
         <div className="orderhistorybox_status">{status}</div>
         {/* <button className="orderhistorybox_statusButton">Order status</button> */}
       </div>
       <div className="orderhistorybox_right">
         <div
           className="orderhistorybox_right_icon-blue"
-          onClick={deleteOrderHistory}
+          onClick={deleteCartHistory}
         >
           <RemoveCircleOutlineOutlinedIcon fontSize="large" />
         </div>
@@ -45,4 +45,4 @@ function OrderhistoryBox({ history, onDelete }) {
   );
 }
 
-export default OrderhistoryBox;
+export default CartBox;
