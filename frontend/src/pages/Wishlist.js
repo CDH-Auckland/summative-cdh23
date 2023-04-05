@@ -58,7 +58,7 @@ function Wishlist() {
       "product_id": item_id,
       status: wishliststatus,
     }));
-  };
+
 
   const viewDetailsCallback = (item_id) => {
     console.log(item_id);
@@ -86,7 +86,9 @@ function Wishlist() {
             wishlistStatus={true}
             //   img={"./img"}
             img={img1}
+
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -94,10 +96,12 @@ function Wishlist() {
             id={"002"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -105,10 +109,12 @@ function Wishlist() {
             id={"003"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -116,10 +122,12 @@ function Wishlist() {
             id={"004"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -127,10 +135,12 @@ function Wishlist() {
             id={"005"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -138,10 +148,12 @@ function Wishlist() {
             id={"006"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -149,10 +161,12 @@ function Wishlist() {
             id={"007"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
           <ProductThumbnail
@@ -160,10 +174,12 @@ function Wishlist() {
             id={"008"}
             name={"test"}
             price={78}
+
             wishlistStatus={true}
             //   img={"./img"}
             img={img}
             wishlistCallback={wishlistCallback}
+
             viewDetailsCallback={viewDetailsCallback}
           />
         </div>
