@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../components/Header"
+import Header from "../components/Header";
 import UpdateOutlinedIcon from "@mui/icons-material/UpdateOutlined";
 import OrderhistoryBox from "../components/OrderhistoryBox";
+import Statusmenu from "../components/Statusmenu";
 
 function Orderhistory() {
-  const navigate = useNavigate();
+  
+  const [cartCount, setCartCount] = useState(3);
+  const backNavigation = () => {
+    navigate("/browseitems");
+  };
+  const hamburgerClick = (e) => {
+    console.log(e);
+  };
+
   const [historys, setHistory] = useState([
     {
       item_id: "0023",
@@ -37,6 +46,7 @@ function Orderhistory() {
       imageUrl: "../images/listeditems_1.jpg",
     },
   ]);
+
   const backNavigation = () => {
     // navigate("/browseitems");
   }
@@ -48,10 +58,16 @@ function Orderhistory() {
     console.log(`Deleting selected orderhistory ${e}`);
   };
 
+
   return (
     <div className="wrapper">
       <Header title={"Order history"} backNavigation={backNavigation} />
       <div className="wrapper__sub">
+        <Statusmenu
+          username={"John"}
+          hamburgerClick={hamburgerClick}
+          cartCount={cartCount}
+        />
         <div className="orderhistoryPage_h3section">
           <h3 className="orderhistoryPage_h3-blue">Your order products</h3>
           <div>
@@ -68,7 +84,10 @@ function Orderhistory() {
             />
           ))}
         </div>
-        <button className="orderhistoryPage_Button" onClick={clearAllHistoryHandler}>
+        <button
+          className="orderhistoryPage_Button"
+          onClick={clearAllHistoryHandler}
+        >
           CLEAR ALL HISTORY
         </button>
       </div>

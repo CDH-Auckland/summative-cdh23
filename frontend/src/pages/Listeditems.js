@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../components/Header"
+import Header from "../components/Header";
 import ProductBox from "../components/ProductBox"; // assuming ProductBox.js is in the same directory as Listeditems.js
+import Statusmenu from "../components/Statusmenu";
 
 function Listeditems() {
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(3);
   const product = [
     {
       id: 1,
@@ -27,16 +29,29 @@ function Listeditems() {
     },
   ];
   const backNavigation = () => {
+
     // navigate("/browseitems");
   }
+
   const listitemClickEvent = (e) => {
+    console.log(e);
+  };
+  const hamburgerClick = (e) => {
     console.log(e);
   };
 
   return (
     <div className="wrapper">
-      <Header title={"View Listed selling items"} backNavigation={backNavigation} />
+      <Header
+        title={"View Listed selling items"}
+        backNavigation={backNavigation}
+      />
       <div className="wrapper__sub">
+        <Statusmenu
+          username={"John"}
+          hamburgerClick={hamburgerClick}
+          cartCount={cartCount}
+        />
         <div className="listeditemsPage">
           <div className="listeditemsPage_h3section paddingtop__small">
             <h3 className="listeditemsPage_h3-blue">

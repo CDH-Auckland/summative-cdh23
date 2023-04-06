@@ -12,23 +12,21 @@ npm i cors
 npm install dotenv
 npm install mongoose
 npm install nodemon --save-dev
-touch server.js
 node server.js
 npx nodemon server.js
-http://localhost:3000/(chrome)
-npm install @mui/material @emotion/react @emotion/styled
 http://localhost:4000/(chrome)
 node server.js
 npm install nodemon --save-dev
 npx nodemon server.js
 control + c (stop server)
 
-npm install @mui/icons-material @mui/material @emotion/styled
+
 
 
 
 -initial set up for react
 npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material @mui/material @emotion/styled
 npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 npm install react-router-dom
 
