@@ -96,8 +96,6 @@ function Viewitem() {
     const hamburgerClick = (e) => {
         console.log(e);
     }
-
-
     const backNavigation = () => {
 
     }
