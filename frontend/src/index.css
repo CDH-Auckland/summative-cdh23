@@ -185,6 +185,7 @@ button {
 .statusMenu {
   width: 95%;
   height: 60px;
+  margin-left: 44px;
   /* background-color: darkseagreen; */
   display: flex;
   justify-content: flex-end;
@@ -442,8 +443,6 @@ button {
 /* *** *Login END*/
 
 /* **** Signup */
-.landingpage__signup {
-}
 
 .landingpage__signup {
   width: 50%;
@@ -517,8 +516,78 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 /* **** Signup END*/
 /* Landingpage   END*/
 
-.buysell {
+/* BuySell*/
+.BuySell {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
+
+.buysell__buyitems {
+  width: 50%;
+  background-image: url(./images/BG_L_L_B.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buysell__buyitems__button {
+  position: relative;
+  width: 260px;
+  height: 178px;
+  margin: auto;
+  display: block;
+  padding: 10px;
+  background-color: var(--background-transparent);
+  text-align: center;
+}
+.buysell__buyitems__button h6 {
+  color: var(--secondary-text-color);
+  margin: 0 auto;
+}
+
+.buysell__sellitems {
+  width: 50%;
+  background-image: url(./images/BG_L_L_B.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buysell__sellitems__button {
+  position: relative;
+  width: 260px;
+  height: 178px;
+  margin: auto;
+  display: block;
+  padding: 10px;
+  background-color: var(--background-transparent);
+  text-align: center;
+}
+.buysell__sellitems__button h6 {
+  color: var(--background-colorB);
+  margin: 0 auto;
+}
+
+.buysell__sellitems {
+  width: 50%;
+  background-image: url(./images/BG_L_L.jpg);
+}
+
+/* @media only screen and (max-width: 430px) {
+  .BuySell {
+    flex-direction: column;
+  }
+
+  .buysell__buyitems,
+  .buysell__sellitems {
+    width: 100%;
+    height: 50vh;
+  }
+} */
+
+/* BuySell   END*/
+
 
 /* Selling page */
 
@@ -664,13 +733,78 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 .cart_titleblock {
   display: flex;
   align-items: center;
+  margin-bottom: 44px;
 }
 .cart_titleblock__icon {
   width: 25px;
   height: 25px;
 }
+.cart_orderHistoryBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.cart_total {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-top: 50px;
+  font-family: var(--secondary-font-family);
+}
+.cart_total_h5-fontweight300 {
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.cart_total_h1-fontweight300 {
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.cart_taxes_line,
+.cart_subtotal_line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+  padding: 36px 0;
+}
+.cart_subtotal_line {
+  border-top: none;
+}
+.cart_taxes,
+.cart_subtotal {
+  font-family: var(--secondary-font-family);
+  margin-left: 136px;
+  font-weight: 300;
+}
+.cart_taxes_sum,
+.cart_subtotal_sum {
+  font-family: var(--secondary-font-family);
+  margin-right: 16px;
+  font-weight: 300;
+}
+.cart_subtotal_sum {
+  font-family: var(--secondary-font-family);
+  font-weight: 300;
+}
 
-/* Cart page END */
+.cart_point {
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  margin-top: 64px;
+}
+
+.cart_button {
+  margin-top: 96px;
+  margin-bottom: 144px;
+}
+/* Car page END */
 
 /* Browse Items Page */
 .browseitems_titleblock {
@@ -828,6 +962,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 
 /* Orderhistory page END */
 
+
 /* BuySell*/
 .BuySell {
   width: 100%;
@@ -901,6 +1036,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 } */
 
 /* BuySell   END*/
+
 
 /* Wishlist */
 
@@ -980,12 +1116,283 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   cursor: pointer;
 }
 
+
 .productThumbnail__icon__top {
   display: none;
 }
 
+
+/* @media only screen and (max-width: 430px) {
+  .wishlist__menu {
+    height: 60px;
+  }
+
+  .wishlist__title h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    justify-content: left;
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .product__icon__top {
+    display: none;
+  }
+
+  .wishlist__title {
+    height: 60px;
+  }
+
+  .Wishlist__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  .product__container {
+    width: 190px;
+    height: 232px;
+  }
+
+  .product__image {
+    width: 190px;
+    height: 167px;
+    object-fit: cover;
+  }
+
+  .product__name {
+    width: 130px;
+  }
+
+  .product__price {
+    width: 130px;
+    font-weight: 400;
+  }
+
+  .product__icon {
+    margin-top: 4px;
+    margin-left: 150px;
+  }
+} */
+
+/* Wishlist   END*/
+
+/* AccountDetails */
+* {
+  border: 1px solid red;
+}
+.Account__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+}
+
+.Address__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 125px;
+}
+
+.Accoundetails__Account__input-boxdesign {
+  position: relative;
+  width: 712px;
+  height: 28px;
+  font-size: 20px;
+  font-style: bold italic;
+  padding: 10px;
+  text-align: left;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  margin: 6px auto 0 auto;
+}
+
+input[type="text"]:focus ~ label,
+input[type="email"]:focus ~ label,
+input[type="password"]:focus ~ label,
+input[type="text"]:not(:placeholder-shown) ~ label,
+input[type="email"]:not(:placeholder-shown) ~ label,
+input[type="password"]:not(:placeholder-shown) ~ label {
+  transform: translate(0, -25px);
+  font-size: 20px;
+  color: #6bace4;
+}
+
+.Accountdetails_Account__input {
+  width: 390px;
+  margin: 0 auto;
+}
+
+.Accoundetails__Address__input-boxdesign {
+  position: relative;
+  width: 712px;
+  height: 28px;
+  font-size: 20px;
+  font-style: bold italic;
+  padding: 10px;
+  text-align: left;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  margin: 6px auto 0 auto;
+}
+
+input[type="address1"]:focus ~ label,
+input[type="address2"]:focus ~ label,
+input[type="Surburb"]:focus ~ label,
+input[type="City"]:focus ~ label,
+input[type="PostCode"]:focus ~ label,
+input[type="Phone"]:focus ~ label,
+input[type="address1"]:not(:placeholder-shown) ~ label,
+input[type="address2"]:not(:placeholder-shown) ~ label,
+input[type="Surburb"]:not(:placeholder-shown)
+  ~ label
+  input[type="City"]:not(:placeholder-shown)
+  ~ label,
+input[type="PostCode"]:not(:placeholder-shown) ~ label,
+input[type="Phone"]:not(:placeholder-shown) ~ label {
+  transform: translate(0, -25px);
+  font-size: 20px;
+  color: #6bace4;
+}
+
+.Accountdetails_Address__input {
+  width: 390px;
+  margin: 0 auto;
+}
+
+.Accoundetails__save__button {
+  position: relative;
+  width: 732px;
+  /* width: 390px; */
+  height: 48px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  margin: 100px auto 0 auto;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  /* display: flex;
+  justify-content: center; */
+}
+.Accoundetails__save__button h2 {
+  color: var(--secondary-text-color);
+  margin: 0 auto;
+}
+
+.Accoundetails__delete__button {
+  position: relative;
+  width: 732px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  margin: 12px auto 200px auto;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+.Accoundetails__delete__button h2 {
+  color: var(--secondary-text-color);
+  margin: 0 auto;
+}
+
+/* AccountDetails   END*/
+
+/* Msgbox */
+
+
+@media (max-width: 1243px) {
+  /* styles for screens with a max width of 1243px */
+  .uploadimg {
+    width: 300px;
+    height: 154px;
+
+    /* .sellingitem__addimage {
+    grid-template-columns: repeat(1, 1fr);
+  } */
+  }
+
+.popup__container {
+  position: fixed;
+  width: 680px;
+  height: 390px;
+  border: 3px solid var(--primary-color);
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__btn {
+  width: 60%;
+  height: 48px;
+  padding: 5px 10px;
+  font-family: var(--font-family);
+  margin: 0 auto;
+}
+
+.popup__content {
+  /* flex: 1; */
+  padding: 20px;
+}
+
+.popup__content h2 {
+  color: var(--primary-color);
+  margin: 0 auto;
+}
+
+.MuiSvgIcon-root {
+  color: var(--primary-color);
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Msgbox END */
+
+/* Media Query Controls */
+
+
+@media (max-width: 1054px) {
+  /* styles for screens with a max width of 1054px */
+  .wrapper__sub {
+    width: 80%;
+  }
+  .uploadimg {
+    width: 280px;
+    height: 144px;
+
+  .Wishlist__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+
+  }
+}
+
 @media (max-width: 768px) {
-  /* styles for screens with a max width of 768px */
+  .Accoundetails__Account__input-boxdesign,
+  .Accoundetails__Address__input-boxdesign {
+    width: 548px;
+  }
+  .Accoundetails__save__button ,
+  .Accoundetails__delete__button {
+    width: 568px;
+  }
+
   h1 {
     font-size: 36px;
     font-weight: bold;
@@ -1018,17 +1425,20 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 100%;
     margin: 0 auto;
   }
+  .orderhistorybox {
+    width: 100%;
+  }
   .productBox {
     width: 390px;
     height: 186px;
+  }
+  .cart_button {
+    width: 100%;
   }
   /* .productBox_editButton {
     width: 166px;
     height: 48px;
   } */
-  .orderhistorybox {
-    width: 100%;
-  }
 
   /* landingPage */
 
@@ -1085,6 +1495,9 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     margin-bottom: 184px;
     padding: 0;
   }
+
+  /* landingPage */
+
 }
 
 @media (max-width: 480px) {
@@ -1102,6 +1515,77 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     width: 100%;
     height: 50vh;
   }
+
+
+  .wishlist__menu {
+    height: 60px;
+  }
+
+  .wishlist__title h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    justify-content: left;
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .product__icon__top {
+    display: none;
+  }
+
+  .wishlist__title {
+    height: 60px;
+  }
+
+  .Wishlist__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  .product__container {
+    width: 190px;
+    height: 232px;
+  }
+
+  .product__image {
+    width: 190px;
+    height: 167px;
+    object-fit: cover;
+  }
+
+  .product__name {
+    width: 130px;
+  }
+
+  .product__price {
+    width: 130px;
+    font-weight: 400;
+  }
+
+  .product__icon {
+    margin-top: 4px;
+    margin-left: 150px;
+  }
+
+  .Account__title h3,
+  .Address__title h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    justify-content: left;
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .Accoundetails__Account__input-boxdesign ,
+  .Accoundetails__Address__input-boxdesign {
+    width: 370px;
+  }
+
+  .Accoundetails__save__button ,
+  .Accoundetails__delete__button {
+    width: 390px;
+    }
 
   .sellingitem__addimage {
     grid-template-columns: repeat(1, 1fr);
@@ -1123,6 +1607,13 @@ input[type="password"]:not(:placeholder-shown) ~ label {
     border-radius: 30px;
   }
 
+
+  .popup__container {
+    position: fixed;
+    width: 390px;
+    height: 680px;
+  }
+
   .BuySell {
     flex-direction: column;
   }
@@ -1131,6 +1622,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   .buysell__sellitems {
     width: 100%;
     height: 50vh;
+
   }
 }
 
@@ -1141,6 +1633,7 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 }
 
 @media only screen and (max-width: 355px) {
+
 }
 
 /* Media Query Controls END */
