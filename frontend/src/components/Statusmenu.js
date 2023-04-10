@@ -2,6 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
+import DropdownMenu from '../components/DropdownMenu';
+
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -25,6 +27,7 @@ function Statusmenu(props) {
 
     return (
         <div className='statusMenu'>
+            <DropdownMenu menuopen={menuopen} />
             <span>Welcome {props.username}</span>
             <div className='statusMenu__shoppingcart' onClick={viewCartHandler}>
                 <ShoppingCartOutlinedIcon fontSize='large' />

@@ -1,27 +1,33 @@
 import React from "react";
+import { useState } from 'react';
+
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function popup__container({ id, content, listitemClickEvent }) {
+
+
+function Msgbox({ view, page, msg }) {
+
+  const [hide, setHide] = useState(!view);
+
   const handleEdit = () => {
-    console.log(`Editing product ${id}`);
-    listitemClickEvent(id);
+    setHide(true);
   };
 
-  const Msgbox = () => {
-    return (
-      <div className="popup__container">
-        <ShoppingCartIcon sx={{ fontSize: 140 }}> </ShoppingCartIcon>
+  return (
+    <div className={hide ? "popup_bg hide" : "popup_bg"}>
+      <div className={hide ? "popup__container hide" : "popup__container"}>
+        <ShoppingCartIcon sx={{ fontSize: 85 }}> </ShoppingCartIcon>
         <div className="popup__content">
-          <h2>{content}</h2>
+          <h4>{msg}</h4>
         </div>
         <button className="popup__btn" onClick={handleEdit}>
           Close
         </button>
       </div>
-    );
-  };
+    </div>
 
-  return <Msgbox />;
+  );
+
 }
 
-export default popup__container;
+export default Msgbox

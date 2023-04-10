@@ -30,8 +30,9 @@ const loginUser = async (req, res) => {
             if (!match) {
                 throw Error('Incorrect password');
             }
-            const token = createToken(user._id);
-            const { _id, email, password } = req.body;
+            const _id = user._id;
+            const token = createToken(_id);
+            const { email, password } = req.body;
             res.status(200).json({ _id, email, token });
             res.end();
         }
@@ -67,9 +68,10 @@ const signupUser = async (req, res) => {
             const hash = await bcrypt.hash(password, salt);
             const user = await User.create({ first_name, last_name, email, password: hash });
 
-            const token = createToken(user._id);
+            const _id = user._id;
+            const token = createToken(_id);
 
-            res.status(200).json({ email, token });
+            res.status(200).json({ _id, email, token });
             res.end();
         }
 

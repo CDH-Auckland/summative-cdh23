@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
+
 import BallotOutlinedIcon from "@mui/icons-material/BallotOutlined";
 import Categoryicon from '../components/Categoryicon';
 import Typeicon from '../components/Typeicon';
@@ -125,6 +126,7 @@ function Browseitems() {
             <Header title={"Browse Items"} backNavigation={backNavigation} />
             <div className="wrapper__sub">
                 <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
+
                 <div className='browseitems_titleblock paddingtop__small'>
                     <h3>Category</h3>
                     <div className='cart__titleblock__icon'>

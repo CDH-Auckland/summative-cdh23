@@ -5,6 +5,7 @@
   --primary-color: #415fff;
   --secondary-color: #ffee1c;
   --disabled-color: #9e9e9e;
+  --menu-color: #a5a5a5;
   --criticalColor: #ff0000;
   --text-color: #415fff;
   --secondary-text-color: #ffffff;
@@ -48,6 +49,7 @@
   flex-direction: column;
   align-items: center;
   color: var(--primary-color);
+  overflow: hidden;
 }
 .wrapper__sub {
   width: 60%;
@@ -63,6 +65,14 @@
 }
 .paddingtop__small {
   padding-top: 30px;
+}
+.error {
+  font-size: 16px;
+  color: var(--criticalColor);
+  background-color: #ff000036;
+  border: 1px solid var(--criticalColor);
+  border-radius: 4px;
+  padding: 10px;
 }
 
 /* Block END*/
@@ -181,9 +191,54 @@ button {
   color: var(--primary-color);
 }
 
+/*** DropDown Menu ***/
+.dropDownMenu {
+  position: absolute;
+  top: 85%;
+  right: 2%;
+  background-color: var(--menu-color);
+  color: var(--background-color);
+  border-radius: 3px;
+  padding: 10px 20px;
+  width: 200px;
+  transition: 0.3s ease-in-out;
+}
+.dropDownMenu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 8px;
+  height: 20px;
+  width: 20px;
+  background-color: var(--menu-color);
+  transform: rotate(45deg);
+}
+.close {
+  right: -40%;
+}
+.dropDownMenu ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--primary-color);
+}
+.dropDownMenu ul li a {
+  text-decoration: none;
+}
+.dropDownMenu ul li:hover a {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.dropDownItem {
+  display: flex;
+  gap: 10px;
+  margin: 10px auto;
+}
+
+/*** DropDown Menu END ***/
+
 /*** statusMenu ***/
 .statusMenu {
-  width: 95%;
+  width: 94%;
   height: 60px;
   margin-left: 44px;
   /* background-color: darkseagreen; */
@@ -191,6 +246,8 @@ button {
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
+  position: relative;
+  padding-right: 10px;
 }
 .statusMenu Span {
   font-size: 14px;
@@ -235,6 +292,7 @@ button {
 
 .statusMenu__hamburger {
   cursor: pointer;
+  padding-right: 5px;
 }
 
 /*** statusMenu END ***/
@@ -1297,6 +1355,52 @@ input[type="Phone"]:not(:placeholder-shown) ~ label {
 /* AccountDetails   END*/
 
 /* Msgbox */
+.popup_bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 450;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000d1;
+}
+
+.popup__container {
+  width: 40%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--primary-color);
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: var(--primary-color);
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup__btn {
+  width: 60%;
+  height: 48px;
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+
+.popup__content {
+  /* flex: 1; */
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+/* Msgbox END */
 
 @media (max-width: 1243px) {
   /* styles for screens with a max width of 1243px */
@@ -1307,41 +1411,6 @@ input[type="Phone"]:not(:placeholder-shown) ~ label {
     /* .sellingitem__addimage {
     grid-template-columns: repeat(1, 1fr);
   } */
-  }
-
-  .popup__container {
-    position: fixed;
-    width: 680px;
-    height: 390px;
-    border: 3px solid var(--primary-color);
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .popup__btn {
-    width: 60%;
-    height: 48px;
-    padding: 5px 10px;
-    font-family: var(--font-family);
-    margin: 0 auto;
-  }
-
-  .popup__content {
-    /* flex: 1; */
-    padding: 20px;
-  }
-
-  .popup__content h2 {
-    color: var(--primary-color);
-    margin: 0 auto;
   }
 
   .MuiSvgIcon-root {

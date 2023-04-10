@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext"
 
-import messagbox from "../components/Msgbox"
+import Msgbox from "../components/Msgbox"
 
 import DIOLogoR from "../images/DIO_LogoR.png";
 import DIOLogoL from "../images/DIO_Logo.png";
@@ -13,6 +13,7 @@ function Landing() {
 
   const [error, setError] = useState(null);
   const [isLOading, setIsLoading] = useState(null);
+  const [msgbox, setMsgBox] = useState(true);
 
   const [firstName, setsignFirstName] = useState("");
   const [lastName, setsignLastName] = useState("");
@@ -26,11 +27,12 @@ function Landing() {
   const handleLogin = async (event) => {
     setLogEmail("");
     setLogPw("");
+    console.log(error);
+    console.log(msgbox);
   };
 
-  const handleSubmit = async (e) => {
+  const signupHandler = async (e) => {
     if (password === confirmPassword) {
-
       const requestOptions = {
         method: 'POST',
         body: JSON.stringify({ first_name: firstName, last_name: lastName, email: email, password: password }),
@@ -42,19 +44,26 @@ function Landing() {
       if (!response.ok) {
         setError(json.error);
         setIsLoading(false);
+        setMsgBox(true);
       } else {
+
         localStorage.setItem('user', JSON.stringify(json))
         dispatch({ type: 'LOGIN', payload: json });
         setIsLoading(false);
-      }
+        setError(null);
+        setMsgBox(false);
 
-      setsignFirstName("");
-      setsignLastName("");
-      setsignEmail("");
+        setsignFirstName("");
+        setsignLastName("");
+        setsignEmail("");
+        setsignPassword("");
+        setsignConfirmPassword("");
+      }
+    } else {
       setsignPassword("");
       setsignConfirmPassword("");
-    } else {
-      console.log(" Password and comfirm password not matched");
+      setError("Password and comfirm password not matched");
+      setMsgBox(true);
     }
   };
 
@@ -62,7 +71,7 @@ function Landing() {
 
   return (
     <div className="wrapper">
-      <messagbox />
+      <Msgbox view={msgbox} page={"Landing"} msg={error} />
       <div className="landingpage">
         <div className="landingpage__login">
           {/* background */}
@@ -186,15 +195,15 @@ function Landing() {
               <button
                 className="landingpage__signup__button"
                 type="submit"
-                onClick={handleSubmit}
+                onClick={signupHandler}
               >
                 Sign Up
               </button>
             </div>
           </div>
         </div>
-        {error && <div className="error">{error}</div>}
       </div>
+      {msgbox && <div className="error">{error}</div>}
     </div>
   );
 }
