@@ -3,12 +3,21 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const server = express();
+const userRoutes = require('./routes/user');
+
+const app = express();
 const port = 4000;
 
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
-server.use(cors());
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
+
+
+// routes
+app.use('/api/user', userRoutes);
+
 
 //MongoDB server
 mongoose.connect(process.env.DB_URL).catch((error) => {
@@ -17,7 +26,7 @@ mongoose.connect(process.env.DB_URL).catch((error) => {
 
 mongoose.connection.on("connected", () => {
   console.log("connected to database");
-  server.listen(port, () => {
+  app.listen(port, () => {
     console.log("server listening on http://localhost:" + port);
   });
 });
