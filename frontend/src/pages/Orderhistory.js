@@ -7,11 +7,9 @@ import OrderhistoryBox from "../components/OrderhistoryBox";
 import Statusmenu from "../components/Statusmenu";
 
 function Orderhistory() {
-  
+
   const [cartCount, setCartCount] = useState(3);
-  const backNavigation = () => {
-    navigate("/browseitems");
-  };
+
   const hamburgerClick = (e) => {
     console.log(e);
   };
@@ -48,7 +46,7 @@ function Orderhistory() {
   ]);
 
   const backNavigation = () => {
-    // navigate("/browseitems");
+    // navigate("/buyandsell");
   }
 
   const clearAllHistoryHandler = (e) => {

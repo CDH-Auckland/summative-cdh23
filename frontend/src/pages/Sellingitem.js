@@ -15,6 +15,7 @@ import Header from "../components/Header";
 function Sellingitem() {
   const navigate = useNavigate();
   const [inputs, SetInputs] = useState({
+    user_id: "user",
     category: "",
     type: "",
     title: "",
@@ -52,10 +53,7 @@ function Sellingitem() {
     navigate("/buyandsell");
   };
 
-  const selectChange = (
-    e: SelectChangeEvent<String>,
-    child: React.ReactNode
-  ) => {
+  const selectChange = (e: SelectChangeEvent<String>, child: React.ReactNode) => {
     SetInputs((inputs) => ({
       ...inputs,
       [e.target.name]: e.target.value,

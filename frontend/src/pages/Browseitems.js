@@ -29,9 +29,12 @@ function Browseitems() {
 
     useEffect(() => {
 
+
+
         // get all product API  
         //Server search all products with stock == "A" and return the productArray
         const getAllProduct = async () => {
+
             // get product_id, name, price, category, type, img_utl1
             setProductArray();
             console.log("Product deatls retrieved");

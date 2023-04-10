@@ -21,9 +21,10 @@ function Statusmenu(props) {
         navigate("/cart");
     }
 
+
+
     return (
         <div className='statusMenu'>
-            <img className="statusMenu__usericon" src={require(`../images/user01.jpg`)} alt='' />
             <span>Welcome {props.username}</span>
             <div className='statusMenu__shoppingcart' onClick={viewCartHandler}>
                 <ShoppingCartOutlinedIcon fontSize='large' />

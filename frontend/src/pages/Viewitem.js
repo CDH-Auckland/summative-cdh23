@@ -13,7 +13,7 @@ function Viewitem() {
     const [product_id, setProduct_id] = useState(location.state.item_id);
     const [wistlistStatus, SetWishlistStatus] = useState(location.state.wishlistStatus);
     console.log(product_id);
-    const [cartCount, setCartCount] = useState(3);
+    const [cartCount, setCartCount] = useState(0);
     const [productDetails, setProductDetails] = useState("");
 
     const [wishlistToken, setWishlistToken] = useState(false);
@@ -88,6 +88,8 @@ function Viewitem() {
 
 
     const addToCartHandler = () => {
+
+        setCartCount(2)
         setAddCartToken(true);
     }
     const backNavHandler = () => {

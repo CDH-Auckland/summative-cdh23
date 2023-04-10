@@ -30,14 +30,10 @@ function Wishlist() {
 
   useEffect(() => {
 
-
     //  wishlist remove API
     const removeWishlist = async () => {
       console.log(wistlistStatus);
     }
-
-
-
 
     if (wistlistStatus) {
       removeWishlist();
@@ -61,6 +57,7 @@ function Wishlist() {
       "product_id": item_id,
       status: wishliststatus,
     }));
+  }
 
 
   const viewDetailsCallback = (item_id) => {
@@ -191,4 +188,7 @@ function Wishlist() {
   );
 }
 
-export default Wishlist;
+
+
+export default Wishlist
+
