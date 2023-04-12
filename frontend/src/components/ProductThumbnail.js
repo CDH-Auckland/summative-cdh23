@@ -20,7 +20,7 @@ function ProductThumbnail(props) {
   return (
     <div className="productThumbnail__container">
       <div className="productThumbnail__imageblock" onClick={viewDetailHandler}>
-        <img className="productThumbnail__image" src={props.img} alt="Product" />
+        <img className="productThumbnail__image" src={`http://localhost:4000/items-image/${props.img}`} alt="Product" />
       </div>
       <div className="productThumbnail__info">
         <div className="productThumbnail__infoleft">

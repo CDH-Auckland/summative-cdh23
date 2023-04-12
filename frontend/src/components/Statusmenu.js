@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext"
+
+import DropdownMenu from '../components/DropdownMenu';
 
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -8,7 +11,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
 function Statusmenu(props) {
+    const { user } = useAuthContext();
     const [menuopen, setMenuopen] = useState(false);
+
+
     const navigate = useNavigate();
 
 
@@ -23,8 +29,8 @@ function Statusmenu(props) {
 
     return (
         <div className='statusMenu'>
-            <img className="statusMenu__usericon" src={require(`../images/user01.jpg`)} alt='' />
-            <span>Welcome {props.username}</span>
+            <DropdownMenu menuopen={menuopen} />
+            {user && <span>Welcome {user.firstName}</span>}
             <div className='statusMenu__shoppingcart' onClick={viewCartHandler}>
                 <ShoppingCartOutlinedIcon fontSize='large' />
                 <div className='statusMenu__carcount'>

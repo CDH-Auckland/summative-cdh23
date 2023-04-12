@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
+
 import BallotOutlinedIcon from "@mui/icons-material/BallotOutlined";
 import Categoryicon from '../components/Categoryicon';
 import Typeicon from '../components/Typeicon';
@@ -15,13 +16,18 @@ import img1 from "../images/item_001.jpg";
 
 function Browseitems() {
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
+    const [isLOading, setIsLoading] = useState(null);
+    const [msgbox, setMsgBox] = useState(true);
+
     const [category, setCategory] = useState("all");
     const [type, setType] = useState("all");
     const [cartCount, setCartCount] = useState(3);
 
     const [wistlistStatus, SetWishlistStatus] = useState("");
     const [wistlistArry, setWishlistArray] = useState("");
-    const [productArray, setProductArray] = useState("");
+    const [productArray, setProductArray] = useState([]);
+    const [fetchItems, setFetchItems] = useState(true);
 
     const [wishlistToken, setWishlistToken] = useState(false);
 
@@ -32,16 +38,29 @@ function Browseitems() {
         // get all product API  
         //Server search all products with stock == "A" and return the productArray
         const getAllProduct = async () => {
-            // get product_id, name, price, category, type, img_utl1
-            setProductArray();
-            console.log("Product deatls retrieved");
+
+            const requestOptions = {
+                method: 'GET',
+                // body: JSON.stringify({ category: category, type: type }),
+                // headers: { 'Content-Type': 'application/json' }
+            }
+            const response = await fetch(`http://localhost:4000/api/items/${category}/${type}`, requestOptions)
+            const json = await response.json();
+            console.log(json);
+            setProductArray(json);
+            if (!response.ok) {
+                setError(json.error);
+                setIsLoading(false);
+                setMsgBox(true);
+                setFetchItems(false);
+            } else {
+                setIsLoading(false);
+                setError(null);
+                setMsgBox(false);
+                setFetchItems(false);
+            }
         }
 
-        //get all wishlist API using user_id
-        const getAllWishlist = async () => {
-            //search wishlist using user_id
-            setWishlistArray();
-        }
 
         //  wishlist create API using user_id & product_id 
         //First server will Search wishlist using user_id & product_id if fount msg back"Item all ready in wishlist" else Create new wishlist
@@ -53,7 +72,6 @@ function Browseitems() {
         // wishlist deleted API using user_id & product_id
         //First server will Search wishlist using user_id & product_id if Not fount msg back"Item not in the wishlist" else Delete the wishlist
         const removeWishlist = async () => {
-
             console.log(wistlistStatus)
             console.log("Item removed from your Wish");
         }
@@ -63,7 +81,7 @@ function Browseitems() {
         //All API function calls
 
         if (wishlistToken && wistlistStatus) {
-            console.log(wistlistStatus.status);
+            console.log("wistlistStatus.status", wistlistStatus.status);
             if (wistlistStatus.status) {
                 addWishlist();
 
@@ -74,7 +92,7 @@ function Browseitems() {
             setWishlistToken(false);
         }
 
-        if (!productArray) {
+        if (fetchItems) {
             getAllProduct();
         }
 
@@ -117,11 +135,37 @@ function Browseitems() {
 
     }
 
+    // Items components
+    var itemElements = '';
+    if (productArray === undefined) {
+        itemElements = () => {
+            return <div> No items</div>
+        }
+    } else {
+        itemElements = productArray.map((items, index) => {
+            return <ProductThumbnail
+                key={index}
+                id={items._id}
+                name={items.name}
+                price={items.price}
+                wishlistStatus={true}
+                //   img={"./img"}
+                img={items.imgUrl1}
+                wishlistCallback={wishlistCallback}
+                viewDetailsCallback={viewDetailsCallback}
+            />
+        });
+
+
+    }
+
+
     return (
         <div className="wrapper">
             <Header title={"Browse Items"} backNavigation={backNavigation} />
             <div className="wrapper__sub">
                 <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
+
                 <div className='browseitems_titleblock paddingtop__small'>
                     <h3>Category</h3>
                     <div className='cart__titleblock__icon'>
@@ -153,39 +197,7 @@ function Browseitems() {
                 </div>
 
                 < div className="browseitem__items">
-                    <ProductThumbnail
-                        key={"001"}
-                        id={"001"}
-                        name={"test"}
-                        price={78}
-                        wishlistStatus={true}
-                        //   img={"./img"}
-                        img={img1}
-                        wishlistCallback={wishlistCallback}
-                        viewDetailsCallback={viewDetailsCallback}
-                    />
-                    <ProductThumbnail
-                        key={"0012"}
-                        id={"0013"}
-                        name={"test"}
-                        price={45}
-                        wishlistStatus={false}
-                        //   img={"./img"}
-                        img={img1}
-                        wishlistCallback={wishlistCallback}
-                        viewDetailsCallback={viewDetailsCallback}
-                    />
-                    <ProductThumbnail
-                        key={"045"}
-                        id={"0045"}
-                        name={"test"}
-                        price={120}
-                        wishlistStatus={true}
-                        //   img={"./img"}
-                        img={img1}
-                        wishlistCallback={wishlistCallback}
-                        viewDetailsCallback={viewDetailsCallback}
-                    />
+                    {itemElements}
                 </div>
                 <button className='button' onClick={testclick}>test</button>
 

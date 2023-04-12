@@ -102,8 +102,6 @@ function Cart() {
           <h5 className="cart_subtotal">SubTotal</h5>
           <h3 className="cart_subtotal_sum">${sum}</h3>
         </div>
-
-        <h5 className="cart_point">You earn +{totalPrice} points</h5>
         <button className="cart_button" onClick={checkoutHandler}>
           CHECKOUT
         </button>

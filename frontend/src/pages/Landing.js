@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext"
+
+import Msgbox from "../components/Msgbox"
 
 import DIOLogoR from "../images/DIO_LogoR.png";
 import DIOLogoL from "../images/DIO_Logo.png";
@@ -6,6 +10,13 @@ import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 
 function Landing() {
+  const navigate = useNavigate();
+  const { dispatch } = useAuthContext();
+
+  const [error, setError] = useState(null);
+  const [isLOading, setIsLoading] = useState(null);
+  const [msgbox, setMsgBox] = useState(true);
+
   const [firstName, setsignFirstName] = useState("");
   const [lastName, setsignLastName] = useState("");
   const [email, setsignEmail] = useState("");
@@ -15,23 +26,73 @@ function Landing() {
   const [logemail, setLogEmail] = useState("");
   const [logpw, setLogPw] = useState("");
 
-  const handleLogin = (event) => {
-    console.log("Form submitted:", { logemail, logpw });
-    setLogEmail("");
-    setLogPw("");
+  const handleLogin = async (event) => {
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify({ email: logemail, password: logpw }),
+      headers: { 'Content-Type': 'application/json' }
+    }
+    const response = await fetch('http://localhost:4000/api/user/login', requestOptions)
+    const json = await response.json();
+
+    if (!response.ok) {
+      setError(json.error);
+      setIsLoading(false);
+      setMsgBox(true);
+    } else {
+
+      localStorage.setItem('user', JSON.stringify(json))
+      dispatch({ type: 'LOGIN', payload: json });
+      setIsLoading(false);
+      setError(null);
+      setMsgBox(false);
+      setLogEmail("");
+      setLogPw("");
+      navigate("/buyandsell");
+    }
   };
 
-  const handleSubmit = (e) => {
-    console.log({ firstName, lastName, email, password, confirmPassword });
-    setsignFirstName("");
-    setsignLastName("");
-    setsignEmail("");
-    setsignPassword("");
-    setsignConfirmPassword("");
+  const signupHandler = async (e) => {
+    if (password === confirmPassword) {
+      const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify({ first_name: firstName, last_name: lastName, email: email, password: password }),
+        headers: { 'Content-Type': 'application/json' }
+      }
+      const response = await fetch('http://localhost:4000/api/user/signup', requestOptions)
+      const json = await response.json();
+
+      if (!response.ok) {
+        setError(json.error);
+        setIsLoading(false);
+        setMsgBox(true);
+      } else {
+
+        localStorage.setItem('user', JSON.stringify(json))
+        dispatch({ type: 'LOGIN', payload: json });
+        setIsLoading(false);
+        setError(null);
+        setMsgBox(false);
+        setsignFirstName("");
+        setsignLastName("");
+        setsignEmail("");
+        setsignPassword("");
+        setsignConfirmPassword("");
+        navigate("/buyandsell");
+      }
+    } else {
+      setsignPassword("");
+      setsignConfirmPassword("");
+      setError("Password and comfirm password not matched");
+      setMsgBox(true);
+    }
   };
+
+
 
   return (
     <div className="wrapper">
+      <Msgbox view={msgbox} page={"Landing"} msg={error} />
       <div className="landingpage">
         <div className="landingpage__login">
           {/* background */}
@@ -68,10 +129,10 @@ function Landing() {
               <div className="landingpage__login__inputarea">
                 <input
                   className="landingpage__login--input-border-bottom"
-                  type="text"
+                  type="password"
+                  placeholder="Password"
                   value={logpw}
                   onChange={(event) => setLogPw(event.target.value)}
-                  placeholder="Password"
                 />
                 <div className="landingpage__login--inputicon">
                   <LockIcon />
@@ -101,7 +162,7 @@ function Landing() {
               kits
             </h3>
 
-            <div className="landingpage__signup__input" onSubmit={handleSubmit}>
+            <div className="landingpage__signup__input">
               <div>
                 <input
                   className="landingpage__signup__input-boxdesign"
@@ -155,7 +216,7 @@ function Landing() {
               <button
                 className="landingpage__signup__button"
                 type="submit"
-                onClick={handleSubmit}
+                onClick={signupHandler}
               >
                 Sign Up
               </button>
@@ -163,6 +224,7 @@ function Landing() {
           </div>
         </div>
       </div>
+      {msgbox && <div className="error">{error}</div>}
     </div>
   );
 }

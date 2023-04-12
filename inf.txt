@@ -7,17 +7,26 @@ DB_URL="mongodb+srv://summativecdh2023:Gb7wfWm2BuJ6SUjA@cluster0.6z7upvv.mongodb
 ✅initial set up for node.js
 npm init
 npm install express
-npm uninstall express(***)
-npm i cors
-npm install dotenv
 npm install mongoose
+npm i cors
+//.env
+npm install dotenv
 npm install nodemon --save-dev
+//Hashing password 
+npm install bcrypt
+// validation 
+npm install validator
+//JSON web token
+npm install jsonwebtoken
+npm i aws-sdk
+npm install --save multer
+
+//To run backend
 node server.js
 npx nodemon server.js
 http://localhost:4000/(chrome)
-node server.js
-npm install nodemon --save-dev
-npx nodemon server.js
+
+//To stop server
 control + c (stop server)
 
 

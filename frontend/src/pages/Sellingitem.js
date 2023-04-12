@@ -14,15 +14,25 @@ import Header from "../components/Header";
 
 function Sellingitem() {
   const navigate = useNavigate();
+  const [upload, setUpload] = useState(false);
+  const [msg, setMsg] = useState(null);
+  const [isLOading, setIsLoading] = useState(null);
+  const [errorMsgState, setErrorMsgState] = useState(false);
+  const [msgState, setMsgState] = useState(false);
+
   const [inputs, SetInputs] = useState({
+    user_id: "user",
     category: "",
     type: "",
     title: "",
     description: "",
-    img_url1: "",
-    img_url2: "",
-    img_url3: "",
+    price: "34",
+    imgUrl1: "",
+    imgUrl2: "",
+    imgUrl3: "",
+    imgUrl4: "",
   });
+  const [file1, setFile1] = useState();
   const [limit, setLimit] = useState(0);
   const categoryData = [
     "Category1",
@@ -32,35 +42,86 @@ function Sellingitem() {
     "Category5",
     "Category6",
   ];
-  const typeData = ["DIY Kiy", "Ready to use", "Download"];
+  const typeData = ["DIY Kit", "Ready to use", "Download"];
 
   useEffect(() => {
     const CreateNewSellItem = async () => {
-      const form = new FormData();
-      form.append(inputs);
+
+      console.log("images", inputs.imgUrl1, inputs.imgUrl2, inputs.imgUrl3, inputs.imgUrl4);
+      const formData = new FormData();
+      formData.append("images", inputs.imgUrl1);
+      formData.append("images", inputs.imgUrl2);
+      formData.append("images", inputs.imgUrl3);
+      formData.append("images", inputs.imgUrl4);
+      formData.append("user_id", "00123456");
+      formData.append("name", inputs.title);
+      formData.append("category", inputs.category);
+      formData.append("type", inputs.type);
+      formData.append("description", inputs.description);
+      formData.append("price", inputs.price);
+      console.log("formData", formData);
+
+      const requestOptions = {
+        method: 'POST',
+        body: formData,
+        // headers: { 'Content-Type': 'application/json' }
+      }
+      const response = await fetch('http://localhost:4000/api/items/', requestOptions)
+      const json = await response.json();
+      console.log(json);
+
+      if (!response.ok) {
+        setMsg(json.error);
+        setErrorMsgState(true);
+
+        setIsLoading(false);
+        setMsgState(false);
+      } else {
+
+        setMsg(json.msg);
+        setMsgState(true);
+
+        setIsLoading(false);
+        setErrorMsgState(false);
+
+
+      }
+      setUpload(false);
+
+
     };
 
-    // CreateNewSellItem();
-  }, []);
+
+    if (upload) {
+      CreateNewSellItem();
+    }
+
+  }, [upload]);
 
   const backNavigation = () => {
     navigate("/buyandsell");
   };
 
   const submitClickHandler = () => {
-    console.log(inputs);
-    navigate("/buyandsell");
+    setUpload(true);
+
+    // navigate("/buyandsell");
   };
 
-  const selectChange = (
-    e: SelectChangeEvent<String>,
-    child: React.ReactNode
-  ) => {
+  const selectChange = (e: SelectChangeEvent<String>, child: React.ReactNode) => {
     SetInputs((inputs) => ({
       ...inputs,
       [e.target.name]: e.target.value,
     }));
     console.log(e.target.name + " ---- " + e.target.value);
+  };
+
+  const priceHandleChange = (e) => {
+    SetInputs((inputs) => ({
+      ...inputs,
+      price: e.target.value,
+    }));
+    console.log(e.target.value);
   };
 
   const titleHandleChange = (e) => {
@@ -83,7 +144,9 @@ function Sellingitem() {
   };
 
   const imgFile = (img_file, img_id) => {
-    console.log(img_file, img_id);
+
+    console.log(img_file.name, img_id);
+
     SetInputs((inputs) => ({
       ...inputs,
       [img_id]: img_file,
@@ -156,6 +219,17 @@ function Sellingitem() {
               required
               className="sellingitem__inputadditem"
               type="text"
+              id="price"
+              value={inputs.price}
+              onChange={priceHandleChange}
+            />
+            <label htmlFor="title">Price</label>
+          </div>
+          <div className="sellingitem__divaddtitle paddingtop__small">
+            <input
+              required
+              className="sellingitem__inputadditem"
+              type="text"
               id="title"
               value={inputs.title}
               onChange={titleHandleChange}
@@ -185,12 +259,13 @@ function Sellingitem() {
             </span>
           </div>
           <div className="sellingitem__addimage">
-            <UploadImg key={1} id={"img_url1"} imgFile={imgFile} />
-            <UploadImg key={2} id={"img_url2"} imgFile={imgFile} />
-            <UploadImg key={3} id={"img_url3"} imgFile={imgFile} />
-            <UploadImg key={4} id={"img_url4"} imgFile={imgFile} />
+            <UploadImg key={1} id={"imgUrl1"} imgFile={imgFile} />
+            <UploadImg key={2} id={"imgUrl2"} imgFile={imgFile} />
+            <UploadImg key={3} id={"imgUrl3"} imgFile={imgFile} />
+            <UploadImg key={4} id={"imgUrl4"} imgFile={imgFile} />
           </div>
-
+          {msgState && <div className="msg">{msg}</div>}
+          {errorMsgState && <div className="error">{msg}</div>}
           <button className="button" onClick={submitClickHandler}>
             SUBMIT
           </button>
