@@ -28,7 +28,7 @@ const getItems = async (req, res) => {
         console.log("items", items);
         console.log("items.length", items.length);
 
-        if (items.length == 0) {
+        if (!items) {
             throw Error('Item not existed');
         } else {
             res.status(200).json(items);

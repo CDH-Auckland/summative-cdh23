@@ -10,7 +10,7 @@ function ProductThumbnail(props) {
 
   const wishHandler = (e) => {
     setWishlist(!wishlist);
-    props.wishlistCallback(props.id, !wishlist);
+    props.wishlistCallback(props.id, props.wishlist_id);
   };
 
   const viewDetailHandler = () => {
