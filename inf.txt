@@ -18,6 +18,8 @@ npm install bcrypt
 npm install validator
 //JSON web token
 npm install jsonwebtoken
+npm i aws-sdk
+npm install --save multer
 
 //To run backend
 node server.js

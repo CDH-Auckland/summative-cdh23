@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext"
 
 import Msgbox from "../components/Msgbox"
@@ -9,6 +10,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 
 function Landing() {
+  const navigate = useNavigate();
   const { dispatch } = useAuthContext();
 
   const [error, setError] = useState(null);
@@ -25,10 +27,29 @@ function Landing() {
   const [logpw, setLogPw] = useState("");
 
   const handleLogin = async (event) => {
-    setLogEmail("");
-    setLogPw("");
-    console.log(error);
-    console.log(msgbox);
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify({ email: logemail, password: logpw }),
+      headers: { 'Content-Type': 'application/json' }
+    }
+    const response = await fetch('http://localhost:4000/api/user/login', requestOptions)
+    const json = await response.json();
+
+    if (!response.ok) {
+      setError(json.error);
+      setIsLoading(false);
+      setMsgBox(true);
+    } else {
+
+      localStorage.setItem('user', JSON.stringify(json))
+      dispatch({ type: 'LOGIN', payload: json });
+      setIsLoading(false);
+      setError(null);
+      setMsgBox(false);
+      setLogEmail("");
+      setLogPw("");
+      navigate("/buyandsell");
+    }
   };
 
   const signupHandler = async (e) => {
@@ -52,12 +73,12 @@ function Landing() {
         setIsLoading(false);
         setError(null);
         setMsgBox(false);
-
         setsignFirstName("");
         setsignLastName("");
         setsignEmail("");
         setsignPassword("");
         setsignConfirmPassword("");
+        navigate("/buyandsell");
       }
     } else {
       setsignPassword("");
@@ -108,10 +129,10 @@ function Landing() {
               <div className="landingpage__login__inputarea">
                 <input
                   className="landingpage__login--input-border-bottom"
-                  type="text"
+                  type="password"
+                  placeholder="Password"
                   value={logpw}
                   onChange={(event) => setLogPw(event.target.value)}
-                  placeholder="Password"
                 />
                 <div className="landingpage__login--inputicon">
                   <LockIcon />

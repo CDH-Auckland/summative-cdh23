@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const userRoutes = require('./routes/user');
+const itemsRoutes = require('./routes/items');
 
 const app = express();
 const port = 4000;
@@ -13,10 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-
+app.use("/items-image", express.static("uploads"));
 
 // routes
 app.use('/api/user', userRoutes);
+app.use('/api/items', itemsRoutes);
 
 
 //MongoDB server

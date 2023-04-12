@@ -15,7 +15,7 @@ const createToken = (id) => {
 //login user
 
 const loginUser = async (req, res) => {
-    const { _id, email, password } = req.body;
+    const { email, password } = req.body;
 
     try {
         if (!email || !password) {
@@ -31,9 +31,9 @@ const loginUser = async (req, res) => {
                 throw Error('Incorrect password');
             }
             const _id = user._id;
+            const firstName = user.first_name;
             const token = createToken(_id);
-            const { email, password } = req.body;
-            res.status(200).json({ _id, email, token });
+            res.status(200).json({ _id, firstName, email, token });
             res.end();
         }
     } catch (error) {

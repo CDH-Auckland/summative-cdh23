@@ -12,12 +12,17 @@ function Viewitem() {
     const user_id = location.state.user_id;
     const [product_id, setProduct_id] = useState(location.state.item_id);
     const [wistlistStatus, SetWishlistStatus] = useState(location.state.wishlistStatus);
-    console.log(product_id);
+
     const [cartCount, setCartCount] = useState(0);
     const [productDetails, setProductDetails] = useState("");
 
     const [wishlistToken, setWishlistToken] = useState(false);
     const [addCartToken, setAddCartToken] = useState(false);
+
+    const [msg, setMsg] = useState(null);
+    const [isLOading, setIsLoading] = useState(null);
+    const [errorMsgState, setErrorMsgState] = useState(false);
+    const [msgState, setMsgState] = useState(false);
 
 
     useEffect(() => {
@@ -26,29 +31,39 @@ function Viewitem() {
         //Server search selected product with product_id & stock =="A" if Not fount msg back"Item sold" else send back product details
         //Also collect seller name using user_id from product details
         const getProductDetails = async () => {
+            const requestOptions = {
+                method: 'GET',
+                // body: JSON.stringify({ category: category, type: type }),
+                // headers: { 'Content-Type': 'application/json' }
+            }
+            const response = await fetch(`http://localhost:4000/api/items/${product_id}`, requestOptions)
+            const json = await response.json();
+            console.log(json);
+            setProductDetails(json);
+            if (!response.ok) {
+                setMsg(json.error);
+                setErrorMsgState(true);
+
+                setIsLoading(false);
+                setMsgState(false);
+            } else {
+
+                setMsg(json.msg);
+                setMsgState(true);
+
+                setIsLoading(false);
+                setErrorMsgState(false);
+
+
+            }
             // get product_id, name, price,description, img_url1, img_url2, img_url3, img_url4, seller_name
-            setProductDetails({
-                product_id: product_id, name: "DIT Drone Kit", price: "340", description: "This is a kit for school kids(8+), contains all the information"
-                , seller_name: "Alex", img_url1: "", img_url2: "", img_url3: "", img_url4: ""
-            });
+            // setProductDetails({
+            //     product_id: product_id, name: "DIT Drone Kit", price: "340", description: "This is a kit for school kids(8+), contains all the information"
+            //     , seller_name: "Alex", img_url1: "", img_url2: "", img_url3: "", img_url4: ""
+            // });
             console.log("Item detail retrieved");
         }
 
-
-        //  wishlist create API using user_id & product_id 
-        //First server will Search wishlist using user_id & product_id if fount msg back"Item all ready in wishlist" else Create new wishlist
-        const addWishlist = async () => {
-            console.log(wistlistStatus);
-            console.log("Item added to your Wish");
-        }
-
-        // wishlist deleted API using user_id & product_id
-        //First server will Search wishlist using user_id & product_id if Not fount msg back"Item not in the wishlist" else Delete the wishlist
-        const removeWishlist = async () => {
-
-            console.log(wistlistStatus)
-            console.log("Item removed from your Wish");
-        }
 
 
         // Add item to cart using user_id & product_id
@@ -68,17 +83,7 @@ function Viewitem() {
             getProductDetails();
         }
 
-        if (wishlistToken && wistlistStatus) {
-            console.log(wistlistStatus.status);
-            if (wistlistStatus.status) {
-                addWishlist();
 
-            } else {
-                removeWishlist();
-
-            }
-            setWishlistToken(false);
-        }
 
         if (addCartToken) {
             addToCart();
@@ -112,7 +117,6 @@ function Viewitem() {
                     <img src='' alt='' />
                 </div>
                 <div>
-                    <h5>{productDetails.product_id}</h5>
                     <div>
                         <span>${productDetails.price}</span>
                         <h5>{productDetails.seller_name}</h5>
