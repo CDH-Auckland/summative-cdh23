@@ -1,13 +1,7 @@
 
-
+//Import model schema for items
 const Items = require('../models/itemModel');
 
-
-
-
-
-
-// getItems, getItem, addItem, updateItem, deleteItem 
 
 
 // get all items id, price & name
@@ -72,17 +66,6 @@ const getItem = async (req, res) => {
 }
 
 
-const updateItem = async (req, res) => {
-
-
-
-}
-
-const deleteItem = async (req, res) => {
-
-}
-
-
 
 //Add new item to the DB
 const addItem = async (req, res) => {
@@ -134,4 +117,4 @@ const addItem = async (req, res) => {
     }
 }
 
-module.exports = { getItems, getItem, addItem, updateItem, deleteItem };
+module.exports = { getItems, getItem, addItem };

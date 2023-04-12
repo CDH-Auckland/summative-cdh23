@@ -5,6 +5,10 @@ require("dotenv").config();
 
 const userRoutes = require('./routes/user');
 const itemsRoutes = require('./routes/items');
+const listedItemsRoutes = require('./routes/listed');
+const orderedItemsRoutes = require('./routes/orderHistory');
+const wishlistRoutes = require('./routes/wishlist');
+const cartRoutes = require('./routes/cart');
 
 const app = express();
 const port = 4000;
@@ -19,6 +23,11 @@ app.use("/items-image", express.static("uploads"));
 // routes
 app.use('/api/user', userRoutes);
 app.use('/api/items', itemsRoutes);
+app.use('/api/listed', listedItemsRoutes);
+app.use('/api/order', orderedItemsRoutes);
+app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/cart', cartRoutes);
+
 
 
 //MongoDB server

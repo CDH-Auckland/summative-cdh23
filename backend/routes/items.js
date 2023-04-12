@@ -9,10 +9,10 @@ const router = express.Router();
 
 
 //controller function
-const { getItems, getItem, addItem, updateItem, deleteItem } = require('../controllers/itemsController');
+const { getItems, getItem, addItem } = require('../controllers/itemsController');
 
 
-//Browse All Items route
+//Browse View all Items route
 router.get('/:category/:type', getItems);
 
 //get selected Items details
@@ -23,12 +23,6 @@ router.get('/:id/', getItem);
 router.post('/', upload, addItem);
 
 
-
-//Edit selecte item
-router.put('/:id', updateItem);
-
-//Delete selected item
-router.delete('/:id', deleteItem);
 
 module.exports = router;
 

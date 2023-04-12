@@ -113,7 +113,7 @@ function Viewitem() {
             <Header title={"View Items"} backNavigation={backNavigation} />
             <div className='wrapper__sub'>
                 <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
-                <div>
+                <div >
                     <img src='' alt='' />
                 </div>
                 <div>
