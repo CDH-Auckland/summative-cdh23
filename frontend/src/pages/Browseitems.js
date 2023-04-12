@@ -11,25 +11,25 @@ import Categoryicon from '../components/Categoryicon';
 import Typeicon from '../components/Typeicon';
 import ProductThumbnail from "../components/ProductThumbnail";
 
-import img from "../images/Sampleimage.jpg";
-import img1 from "../images/item_001.jpg";
 
 function Browseitems() {
     const navigate = useNavigate();
-    const [error, setError] = useState(null);
+
+    const [msg, setMsg] = useState("");
     const [isLOading, setIsLoading] = useState(null);
-    const [msgbox, setMsgBox] = useState(true);
+    const [errorMsgState, setErrorMsgState] = useState(false);
+    const [msgState, setMsgState] = useState(false);
 
     const [category, setCategory] = useState("all");
     const [type, setType] = useState("all");
     const [cartCount, setCartCount] = useState(3);
 
-    const [wistlistStatus, SetWishlistStatus] = useState("");
-    const [wistlistArry, setWishlistArray] = useState("");
+    const [wislidtId, setWislidtId] = useState("");
     const [productArray, setProductArray] = useState([]);
     const [fetchItems, setFetchItems] = useState(true);
 
     const [wishlistToken, setWishlistToken] = useState(false);
+
 
     const user_id = "00034rf";
 
@@ -49,14 +49,16 @@ function Browseitems() {
             console.log(json);
             setProductArray(json);
             if (!response.ok) {
-                setError(json.error);
+                setMsg(json.error);
+                setErrorMsgState(true);
+                setMsgState(false);
                 setIsLoading(false);
-                setMsgBox(true);
                 setFetchItems(false);
             } else {
+                setMsg(json.msg);
+                setMsgState(true);
+                setErrorMsgState(false);
                 setIsLoading(false);
-                setError(null);
-                setMsgBox(false);
                 setFetchItems(false);
             }
         }
@@ -65,38 +67,44 @@ function Browseitems() {
         //  wishlist create API using user_id & product_id 
         //First server will Search wishlist using user_id & product_id if fount msg back"Item all ready in wishlist" else Create new wishlist
         const addWishlist = async () => {
-            console.log(wistlistStatus);
-            console.log("Item added to your Wish");
+            const requestOptions = {
+                method: 'PUT',
+                body: JSON.stringify({ user_id: user_id, product_id: wislidtId }),
+                headers: { 'Content-Type': 'application/json' }
+            }
+            const response = await fetch('http://localhost:4000/api/wishlist/', requestOptions)
+            const json = await response.json();
+            console.log(json);
+            if (!response.ok) {
+                setMsg(json.error);
+                setErrorMsgState(true);
+                setIsLoading(false);
+                setMsgState(false);
+            } else {
+                setMsg(json.msg);
+                setMsgState(true);
+                setIsLoading(false);
+                setErrorMsgState(false);
+            }
+            setWislidtId("");
+            setWishlistToken(false);
         }
 
-        // wishlist deleted API using user_id & product_id
-        //First server will Search wishlist using user_id & product_id if Not fount msg back"Item not in the wishlist" else Delete the wishlist
-        const removeWishlist = async () => {
-            console.log(wistlistStatus)
-            console.log("Item removed from your Wish");
-        }
+
 
 
 
         //All API function calls
 
-        if (wishlistToken && wistlistStatus) {
-            console.log("wistlistStatus.status", wistlistStatus.status);
-            if (wistlistStatus.status) {
-                addWishlist();
-
-            } else {
-                removeWishlist();
-
-            }
-            setWishlistToken(false);
+        if (wishlistToken && wislidtId) {
+            addWishlist();
         }
 
         if (fetchItems) {
             getAllProduct();
         }
 
-    }, [wistlistStatus, wishlistToken]);
+    }, [wislidtId, wishlistToken]);
 
     const backNavigation = () => {
         // navigate("/buyandsell");
@@ -116,13 +124,7 @@ function Browseitems() {
     }
 
     const wishlistCallback = (item_id, wishliststatus) => {
-        console.log(item_id, wishliststatus);
-        SetWishlistStatus(inputs => ({
-            ...inputs,
-            "user_id": user_id,
-            "product_id": item_id,
-            status: wishliststatus,
-        }));
+        setWislidtId(item_id);
         setWishlistToken(true);
     };
 
@@ -192,13 +194,15 @@ function Browseitems() {
                     <Typeicon key={"type2"} name={"Ready To Use"} img_url={"readyToUse"} selected={type} typeiconclick={typeiconclick} />
                     <Typeicon key={"type3"} name={"Download"} img_url={"download"} selected={type} typeiconclick={typeiconclick} />
                 </div>
+                {msgState && <div className="msg">{msg}</div>}
+                {errorMsgState && <div className="error">{msg}</div>}
                 <div className='browseitems_titleblock paddingtop__small'>
                     <h3>List Items</h3>
                 </div>
-
                 < div className="browseitem__items">
                     {itemElements}
                 </div>
+
                 <button className='button' onClick={testclick}>test</button>
 
             </div>
