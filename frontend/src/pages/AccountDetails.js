@@ -4,6 +4,71 @@ import PersonSharpIcon from "@mui/icons-material/PersonSharp";
 import HomeIcon from "@mui/icons-material/Home";
 import Header from "../components/Header";
 
+const handleSubmit = (e) => {};
+
+var updateToken = true;
+
+const signupHandler = async (e) => {
+  if (checked) {
+    
+    if (password !== confirmPassword) {
+      setAccountPassword("");
+      setAccountConfirmPassword("");
+      setMsg("Password and comfirm password not matched");
+      setErrorMsgState(true);
+      setMsgState(false);
+      setIsLoading(false);
+      updateToken = false;
+    }
+  }
+
+  if (updateToken) {
+    const requestOptions = {
+
+      method: "PUT",
+
+      body: JSON.stringify({
+        user_id: user_id,
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+      }),
+
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const response = await fetch(
+      "http://localhost:4000/api/user/account",
+      requestOptions
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setMsg(data.error);
+      setErrorMsgState(true);
+      setMsgState(false);
+      setIsLoading(false);
+
+    } else {
+      setMsg(data.msg);
+      setMsgState(true);
+      setErrorMsgState(false);
+      setIsLoading(false);
+      navigate("/");
+    }
+
+    setAccountFirstName("");
+    setAccountLastName("");
+    setAccountEmail("");
+    setAccountPassword("");
+    setAccountConfirmPassword("");
+  }
+};
+
+signupHandler();
+
 function AccountDetails() {
   const [msg, setMsg] = useState("");
   const [isLOading, setIsLoading] = useState(null);
