@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import AssignmentIcon from "@mui/icons-material/Assignment";
 import PersonSharpIcon from "@mui/icons-material/PersonSharp";
 import HomeIcon from "@mui/icons-material/Home";
 import Header from "../components/Header";
 
 function AccountDetails() {
-  const [firstName, setAccountFirstName] = useState("");
+  const [msg, setMsg] = useState("");
+  const [isLOading, setIsLoading] = useState(null);
+  const [errorMsgState, setErrorMsgState] = useState(false);
+  const [msgState, setMsgState] = useState(false);
+
+  const [accountArray, setAccountArray] = useState([]);
+  const [firstName, setAccountFirstName] = useState([]);
   const [lastName, setAccountLastName] = useState("");
   const [email, setAccountEmail] = useState("");
   const [password, setAccountPassword] = useState("");
@@ -20,6 +26,44 @@ function AccountDetails() {
 
   const [logemail, setLogEmail] = useState("");
   const [logpw, setLogPw] = useState("");
+
+  const user_id = "64373945be3bc0b81f1e5cd4";
+
+  //Api get account details on page loading
+
+  useEffect(() => {
+    console.log("inside api request");
+    const getAccountDetails = async () => {
+      const requestOptions = {
+        method: "GET",
+      };
+      const response = await fetch(
+        `http://localhost:4000/api/user/account/${user_id}`,
+        requestOptions
+      );
+      const data = await response.json();
+      console.log("api responce", data);
+      const { _id } = data;
+      console.log("id", _id);
+      setAccountFirstName(data.first_name);
+      setAccountLastName(data.last_name);
+      setAccountEmail(data.email);
+
+      if (!response.ok) {
+        setMsg(data.error);
+        setErrorMsgState(true);
+        setMsgState(false);
+        setIsLoading(false);
+      } else {
+        setMsg(data.msg);
+        setMsgState(true);
+        setErrorMsgState(false);
+        setIsLoading(false);
+      }
+    };
+
+    getAccountDetails();
+  }, []);
 
   const handleLogin = (event) => {
     console.log("Form submitted:", { logemail, logpw });
@@ -98,6 +142,10 @@ function AccountDetails() {
               onChange={(e) => setAccountEmail(e.target.value)}
             />
           </div>
+
+          <div>
+            <h4>Change password</h4>
+          </div>
           <div>
             <input
               className="Accoundetails__Account__input-boxdesign"
@@ -119,96 +167,16 @@ function AccountDetails() {
             />
           </div>
         </div>
-
-        <div className="Address__title">
-          <h3>Address Details</h3>
-          <div className="product__icon__top">
-            <HomeIcon fontSize="large" />
-          </div>
-        </div>
-
-        <div className="Accoundetails__Address__input" onSubmit={handleSubmit}>
-          <div>
-            <input
-              className="Accoundetails__Address__input-boxdesign"
-              type="text"
-              id="Address1"
-              placeholder="Address 1"
-              value={Addres1}
-              onChange={(e) => setAddressAddres1(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              className="Accoundetails__Address__input-boxdesign"
-              type="text"
-              id="Address2"
-              placeholder="Address 2"
-              value={Address2}
-              onChange={(e) => setAddressAddress2(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              className="Accoundetails__Address__input-boxdesign"
-              type="text"
-              id="Surburb"
-              placeholder="Surburb"
-              value={Surburb}
-              onChange={(e) => setAddressSurburb(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              className="Accoundetails__Address__input-boxdesign"
-              type="text"
-              id="City"
-              placeholder="City"
-              value={City}
-              onChange={(e) => setAddressCity(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              className="Accoundetails__Address__input-boxdesign"
-              type="text"
-              id="PostCode"
-              placeholder="Post Code"
-              value={PostCode}
-              onChange={(e) => setAddressPostCode(e.target.value)}
-            />
-          </div>
-          <input
-            className="Accoundetails__Address__input-boxdesign"
-            type="text"
-            id="Phone"
-            placeholder="Phone"
-            value={Phone}
-            onChange={(e) => setAddressPhone(e.target.value)}
-          />
-        </div>
+        <button className="Accoundetails__save__button" onClick={handleSubmit}>
+          SAVE
+        </button>
+        <button
+          className="Accoundetails__delete__button"
+          onClick={handleSubmit}
+        >
+          DELETE
+        </button>
       </div>
-      <button className="Accoundetails__save__button" onClick={handleSubmit}>
-        SAVE
-      </button>
-      <button className="Accoundetails__delete__button" onClick={handleSubmit}>
-        DELETE
-      </button>
-      {/* <button
-        className="Accoundetails__save__button"
-        type="save"
-        onClick={handleSubmit}
-      >
-        SAVE
-      </button>
-
-      <button
-        className="Accoundetails__delete__button"
-        type="delete"
-        onClick={handleSubmit}
-      >
-        DELETE
-      </button> */}
     </div>
   );
 }
