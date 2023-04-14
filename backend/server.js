@@ -9,6 +9,7 @@ const listedItemsRoutes = require('./routes/listed');
 const orderedItemsRoutes = require('./routes/orderHistory');
 const wishlistRoutes = require('./routes/wishlist');
 const cartRoutes = require('./routes/cart');
+const commentRoutes = require('./routes/comment');
 
 const app = express();
 const port = 4000;
@@ -27,6 +28,7 @@ app.use('/api/listed', listedItemsRoutes);
 app.use('/api/order', orderedItemsRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/comment', commentRoutes);
 
 
 
