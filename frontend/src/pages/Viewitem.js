@@ -47,43 +47,43 @@ function Viewitem() {
   const [errorMsgState, setErrorMsgState] = useState(false);
   const [msgState, setMsgState] = useState(false);
 
+  const getProductDetails = async () => {
+    const requestOptions = {
+      method: "GET",
+      // body: JSON.stringify({ category: category, type: type }),
+      // headers: { 'Content-Type': 'application/json' }
+    };
+    const response = await fetch(
+      `http://localhost:4000/api/items/${product_id}`,
+      requestOptions
+    );
+    const json = await response.json();
+    console.log(json);
+    setProductDetails(json);
+    setSlides([
+      { url: json.ReactimgUrl1 },
+      { url: json.imgUrl2 },
+      { url: json.imgUrl3 },
+      { url: json.imgUrl4 },
+    ]);
+    if (!response.ok) {
+      setMsg(json.error);
+      setErrorMsgState(true);
+      setIsLoading(false);
+      setMsgState(false);
+    } else {
+      setMsg(json.msg);
+      setMsgState(true);
+      setIsLoading(false);
+      setErrorMsgState(false);
+    }
+    // get product_id, name, price,description, img_url1, img_url2, img_url3, img_url4, seller_name
+    console.log("Item detail retrieved");
+  };
   useEffect(() => {
     // get all product API using product_id
     //Server search selected product with product_id & stock =="A" if Not fount msg back"Item sold" else send back product details
     //Also collect seller name using user_id from product details
-    const getProductDetails = async () => {
-      const requestOptions = {
-        method: "GET",
-        // body: JSON.stringify({ category: category, type: type }),
-        // headers: { 'Content-Type': 'application/json' }
-      };
-      const response = await fetch(
-        `http://localhost:4000/api/items/${product_id}`,
-        requestOptions
-      );
-      const json = await response.json();
-      console.log(json);
-      setProductDetails(json);
-      setSlides([
-        { url: json.ReactimgUrl1 },
-        { url: json.imgUrl2 },
-        { url: json.imgUrl3 },
-        { url: json.imgUrl4 },
-      ]);
-      if (!response.ok) {
-        setMsg(json.error);
-        setErrorMsgState(true);
-        setIsLoading(false);
-        setMsgState(false);
-      } else {
-        setMsg(json.msg);
-        setMsgState(true);
-        setIsLoading(false);
-        setErrorMsgState(false);
-      }
-      // get product_id, name, price,description, img_url1, img_url2, img_url3, img_url4, seller_name
-      console.log("Item detail retrieved");
-    };
 
     // Add item to cart using user_id & product_id
     // First server will check the product stock using product_id if stock =="S" msg back "Item Sold Cannot add to cart"
@@ -146,6 +146,9 @@ function Viewitem() {
     />,
   ];
 
+  const refreshComments = () => {
+    getProductDetails();
+  };
   return (
     <div className="wrapper">
       <Header title={"View Items"} backNavigation={backNavigation} />
@@ -181,7 +184,10 @@ function Viewitem() {
             CANCEL
           </button>
 
-          <CommentsCreate />
+          <CommentsCreate
+            product_id={product_id}
+            refreshComments={refreshComments}
+          />
         </div>
       </div>
     </div>
