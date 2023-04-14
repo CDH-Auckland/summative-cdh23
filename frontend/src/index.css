@@ -848,6 +848,32 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   padding-bottom: 10px;
 }
 
+.comment-create {
+  display: flex;
+  justify-content: center;
+  width: 98%;
+  height: 320px;
+  border: 1px solid var(--primary-color);
+  flex-direction: column;
+  /* flex-wrap: nowrap; */
+  align-items: center;
+  margin-top: 50px;
+}
+
+.comment-create-h2 {
+  /* margin-top: 64px; */
+}
+.comment-create-write {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.comment-create-textarea {
+  margin: 30px 0;
+}
 /* Cart page */
 
 .cart_titleblock {
