@@ -23,6 +23,9 @@ function DropdownMenu({ menuopen }) {
   const accountHandler = () => {
     navigate("/accountdetails");
   }
+  const buysellitemsHandler = () => {
+    navigate("/buyandsell");
+  }
   const browseitemsHandler = () => {
     navigate("/browseitems");
   }
@@ -44,6 +47,12 @@ function DropdownMenu({ menuopen }) {
             <PersonIcon />
           </div>
           <a>Account</a>
+        </li >
+        < li className='dropDownItem' onClick={buysellitemsHandler}>
+          <div>
+            <AssignmentIcon />
+          </div>
+          <a>Buy & Sell</a>
         </li >
         < li className='dropDownItem' onClick={browseitemsHandler}>
           <div>

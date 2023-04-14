@@ -19,20 +19,69 @@ import img1 from "../images/item_001.jpg";
 // import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 
 function Wishlist() {
+  const [fetchItems, setFetchItems] = useState(true);
+
+  const getAllWishlist = async () => {
+    const requestOptions = {
+      method: 'GET',
+      // body: JSON.stringify({ category: category, type: type }),
+      // headers: { 'Content-Type': 'application/json' }
+    }
+    const response = await fetch(`http://localhost:4000/api/wishlist/${user_id}`, requestOptions)
+    const json = await response.json();
+    console.log(json);
+
+    if (!response.ok) {
+      setMsg(json.error);
+      setErrorMsgState(true);
+      setMsgState(false);
+      setIsLoading(false);
+      setFetchItems(false);
+    } else {
+      if (json.msg) {
+        setMsg(json.msg);
+        setMsgState(true);
+      } else {
+        setWishListArray(json);
+        setMsg("");
+        setMsgState(false);
+      }
+      setErrorMsgState(false);
+      setIsLoading(false);
+      setFetchItems(false);
+    }
+  }
+
+
   const navigate = useNavigate();
+  var user_id = null;
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      user_id = user._id;
+      console.log(user_id);
+
+      if (fetchItems) {
+        getAllWishlist();
+
+      }
+    } else {
+      navigate("/")
+    }
+
+  }, [fetchItems]);
+
   const location = useLocation();
 
   console.log(JSON.parse(localStorage.getItem('user')));
 
-  const user_id = "00034rf";
-
   const [cartCount, setCartCount] = useState(3);
   const [wistlistStatus, SetWishlistStatus] = useState("");
-  const [wishListArray, setWishListArray] = useState([]);
+  const [wishListArray, setWishListArray] = useState(null);
   const [wislidtId, setWislidtId] = useState("");
   const [productId, setProductId] = useState("");
   const [wishlistToken, setWishlistToken] = useState(false);
-  const [fetchItems, setFetchItems] = useState(true);
+
 
   const [msg, setMsg] = useState(null);
   const [isLOading, setIsLoading] = useState(null);
@@ -40,44 +89,7 @@ function Wishlist() {
   const [msgState, setMsgState] = useState(false);
 
 
-  useEffect(() => {
-    // get all wishlist
-    const getAllWishlist = async () => {
-      const requestOptions = {
-        method: 'GET',
-        // body: JSON.stringify({ category: category, type: type }),
-        // headers: { 'Content-Type': 'application/json' }
-      }
-      const response = await fetch(`http://localhost:4000/api/wishlist/${user_id}`, requestOptions)
-      const json = await response.json();
-      console.log(json);
 
-      if (!response.ok) {
-        setMsg(json.error);
-        setErrorMsgState(true);
-        setMsgState(false);
-        setIsLoading(false);
-        setFetchItems(false);
-      } else {
-        if (json.msg) {
-          setMsg(json.msg);
-          setMsgState(true);
-        } else {
-          setWishListArray(json);
-          setMsg("");
-          setMsgState(false);
-        }
-        setErrorMsgState(false);
-        setIsLoading(false);
-        setFetchItems(false);
-      }
-    }
-    if (fetchItems) {
-      getAllWishlist();
-
-    }
-
-  }, []);
 
   useEffect(() => {
 
@@ -93,6 +105,7 @@ function Wishlist() {
       const response = await fetch(`http://localhost:4000/api/wishlist/${user_id}/${wislidtId}`, requestOptions)
       const json = await response.json();
       console.log(json);
+      setFetchItems(true);
       if (!response.ok) {
         setMsg(json.error);
         setErrorMsgState(true);
@@ -104,10 +117,9 @@ function Wishlist() {
         setIsLoading(false);
         setErrorMsgState(false);
       }
-      setFetchItems(true);
       setWislidtId("");
       setWishlistToken(false);
-      setFetchItems(true);
+      getAllWishlist();
     }
 
     if (wishlistToken) {
@@ -136,15 +148,11 @@ function Wishlist() {
     console.log(item_id);
   }
 
-  // Items components
-  var itemElements = '';
-  if (wishListArray === undefined) {
-    itemElements = () => {
-      return <div> No items</div>
-    }
-  } else {
-    itemElements = wishListArray.map((items, index) => {
-      return <ProductThumbnail
+  // Items component
+
+  const itemElements = wishListArray?.map((items, index) => {
+    return (
+      <ProductThumbnail
         key={items.product_id}
         id={items.product_id}
         wishlist_id={items._id}
@@ -156,10 +164,9 @@ function Wishlist() {
         wishlistCallback={wishlistCallback}
         viewDetailsCallback={viewDetailsCallback}
       />
-    });
+    )
 
-
-  }
+  });
 
 
   return (
@@ -176,8 +183,8 @@ function Wishlist() {
         {msgState && <div className="msg">{msg}</div>}
         {errorMsgState && <div className="error">{msg}</div>}
         <div className="Wishlist__items">
-
           {itemElements}
+
         </div>
       </div>
     </div>

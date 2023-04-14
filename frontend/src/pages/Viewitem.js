@@ -2,19 +2,41 @@ import React from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+
+
+import img_not from "../images/img_not.png"
+
 import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
 
+
 function Viewitem() {
     const navigate = useNavigate();
+    const [user_id, setUser_id] = useState();
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            setUser_id(user._id);
+            console.log(user_id);
+        } else {
+            navigate("/")
+        }
+    }, []);
+
+    console.log("testing user inf", user_id)
+
     const location = useLocation();
 
-    const user_id = location.state.user_id;
+
+
     const [product_id, setProduct_id] = useState(location.state.item_id);
     const [wistlistStatus, SetWishlistStatus] = useState(location.state.wishlistStatus);
 
     const [cartCount, setCartCount] = useState(0);
     const [productDetails, setProductDetails] = useState("");
+    const [slides, setSlides] = useState([]);
 
     const [wishlistToken, setWishlistToken] = useState(false);
     const [addCartToken, setAddCartToken] = useState(false);
@@ -40,27 +62,20 @@ function Viewitem() {
             const json = await response.json();
             console.log(json);
             setProductDetails(json);
+            setSlides([{ url: json.ReactimgUrl1 }, { url: json.imgUrl2 }, { url: json.imgUrl3 }, { url: json.imgUrl4 }])
             if (!response.ok) {
                 setMsg(json.error);
                 setErrorMsgState(true);
-
                 setIsLoading(false);
                 setMsgState(false);
             } else {
 
                 setMsg(json.msg);
                 setMsgState(true);
-
                 setIsLoading(false);
                 setErrorMsgState(false);
-
-
             }
             // get product_id, name, price,description, img_url1, img_url2, img_url3, img_url4, seller_name
-            // setProductDetails({
-            //     product_id: product_id, name: "DIT Drone Kit", price: "340", description: "This is a kit for school kids(8+), contains all the information"
-            //     , seller_name: "Alex", img_url1: "", img_url2: "", img_url3: "", img_url4: ""
-            // });
             console.log("Item detail retrieved");
         }
 
@@ -81,6 +96,7 @@ function Viewitem() {
 
         if (!productDetails) {
             getProductDetails();
+
         }
 
 
@@ -107,30 +123,46 @@ function Viewitem() {
 
     }
 
+    const handleDragStart = (e) => e.preventDefault();
+
+
+    const items = [
+        <img src={`http://localhost:4000/items-image/${productDetails.imgUrl1}`} alt="" onDragStart={handleDragStart} role="presentation" />,
+        <img src={`http://localhost:4000/items-image/${productDetails.imgUrl2}`} alt="" onDragStart={handleDragStart} role="presentation" />,
+        <img src={`http://localhost:4000/items-image/${productDetails.imgUrl3}`} alt="" onDragStart={handleDragStart} role="presentation" />,
+        <img src={`http://localhost:4000/items-image/${productDetails.imgUrl4}`} alt="" onDragStart={handleDragStart} role="presentation" />,
+    ];
 
     return (
         <div className='wrapper'>
             <Header title={"View Items"} backNavigation={backNavigation} />
             <div className='wrapper__sub'>
                 <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
-                <div >
-                    <img src='' alt='' />
+                <div className='viewItem__imagewrapper'>
+                    {console.log(productDetails)}
+                    {console.log(slides)}
+                    <AliceCarousel mouseTracking items={items} />
+                    {/* <img src={`http://localhost:4000/items-image/${productDetails.imgUrl1}`} alt={productDetails.name} />
+                    <img src={`http://localhost:4000/items-image/${productDetails.imgUrl2}`} alt={productDetails.name} />
+                    <img src={`http://localhost:4000/items-image/${productDetails.imgUrl3}`} alt={productDetails.name} /> */}
+
+                </div>
+                <div className='viewItem__pricenamediv'>
+                    <span>NZD${productDetails.price}</span>
+                    <h5>{productDetails.seller_name}</h5>
+                </div>
+                <div className='viewItem__namediv'>
+                    <h3>{productDetails.name}</h3>
+                </div>
+                <div className='viewItem__descdiv' >
+                    <h3>{productDetails.description}</h3>
                 </div>
                 <div>
-                    <div>
-                        <span>${productDetails.price}</span>
-                        <h5>{productDetails.seller_name}</h5>
-                    </div>
-                </div>
-                <div>
-                    <span>{productDetails.name}</span>
-                </div>
-                <div>
-                    <span>{productDetails.description}</span>
+                    <button className='button ' onClick={addToCartHandler}>ADD TO CART</button>
+                    <button className='button button--invert' onClick={backNavHandler}>CANCEL</button>
                 </div>
 
-                <button className='button' onClick={addToCartHandler}>ADD TO CART</button>
-                <button className='button button--invert' onClick={backNavHandler}>CANCEL</button>
+
             </div>
         </div>
     )

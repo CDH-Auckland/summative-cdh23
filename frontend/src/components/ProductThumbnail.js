@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 
+import img_not from "../images/img_not.png"
+
 
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
@@ -20,7 +22,13 @@ function ProductThumbnail(props) {
   return (
     <div className="productThumbnail__container">
       <div className="productThumbnail__imageblock" onClick={viewDetailHandler}>
-        <img className="productThumbnail__image" src={`http://localhost:4000/items-image/${props.img}`} alt="Product" />
+        {props.img ? (
+          <img className="productThumbnail__image" src={`http://localhost:4000/items-image/${props.img}`} alt="Product" />
+        ) : (
+          <img src={img_not} alt={props.name} />
+        )}
+
+
       </div>
       <div className="productThumbnail__info">
         <div className="productThumbnail__infoleft">

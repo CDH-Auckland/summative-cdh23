@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 // import AssignmentIcon from "@mui/icons-material/Assignment";
+import ConfirmNotification from '../components/ConfirmNotification';
 import PersonSharpIcon from "@mui/icons-material/PersonSharp";
-import HomeIcon from "@mui/icons-material/Home";
 import Header from "../components/Header";
 
 function AccountDetails() {
+
+  const navigate = useNavigate();
+  const [user_id, setUser_id] = useState();
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      setUser_id(user._id);
+      console.log(user_id);
+    } else {
+      navigate("/")
+    }
+  }, []);
+
+  console.log("testing user inf", user_id)
+
   const [msg, setMsg] = useState("");
+  const [dilogeOpen, setDilogeOpen] = useState(false);
   const [isLOading, setIsLoading] = useState(null);
   const [errorMsgState, setErrorMsgState] = useState(false);
-  const [msgState, setMsgState] = useState(false);
 
-  const [accountArray, setAccountArray] = useState([]);
   const [firstName, setAccountFirstName] = useState([]);
   const [lastName, setAccountLastName] = useState("");
   const [email, setAccountEmail] = useState("");
   const [password, setAccountPassword] = useState("");
   const [confirmPassword, setAccountConfirmPassword] = useState("");
 
-  const [Addres1, setAddressAddres1] = useState("");
-  const [Address2, setAddressAddress2] = useState("");
-  const [Surburb, setAddressSurburb] = useState("");
-  const [City, setAddressCity] = useState("");
-  const [PostCode, setAddressPostCode] = useState("");
-  const [Phone, setAddressPhone] = useState("");
+  const [checked, setChecked] = React.useState(false);
 
-  const [logemail, setLogEmail] = useState("");
-  const [logpw, setLogPw] = useState("");
 
-  const user_id = "64373945be3bc0b81f1e5cd4";
 
   //Api get account details on page loading
 
@@ -42,68 +50,112 @@ function AccountDetails() {
         requestOptions
       );
       const data = await response.json();
-      console.log("api responce", data);
-      const { _id } = data;
-      console.log("id", _id);
-      setAccountFirstName(data.first_name);
-      setAccountLastName(data.last_name);
-      setAccountEmail(data.email);
 
       if (!response.ok) {
         setMsg(data.error);
+        setDilogeOpen(true);
         setErrorMsgState(true);
-        setMsgState(false);
         setIsLoading(false);
       } else {
+        setAccountFirstName(data[0].first_name);
+        setAccountLastName(data[0].last_name);
+        setAccountEmail(data[0].email);
         setMsg(data.msg);
-        setMsgState(true);
+        setDilogeOpen(false);
         setErrorMsgState(false);
         setIsLoading(false);
       }
     };
 
     getAccountDetails();
-  }, []);
+  }, [user_id]);
 
-  const handleLogin = (event) => {
-    console.log("Form submitted:", { logemail, logpw });
-    setLogEmail("");
-    setLogPw("");
-  };
+
 
   const handleSubmit = (e) => {
-    console.log({
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-      Addres1,
-      Address2,
-      Surburb,
-      City,
-      PostCode,
-      Phone,
-    });
 
-    setAccountFirstName("");
-    setAccountLastName("");
-    setAccountEmail("");
-    setAccountPassword("");
-    setAccountConfirmPassword("");
+    var updateToken = true;
+    const signupHandler = async (e) => {
 
-    setAddressAddres1("");
-    setAddressAddress2("");
-    setAddressSurburb("");
-    setAddressCity("");
-    setAddressPostCode("");
-    setAddressPhone("");
+      if (checked) {
+        if (password !== confirmPassword) {
+          setAccountPassword("");
+          setAccountConfirmPassword("");
+          setMsg("Password and comfirm password not matched");
+          setDilogeOpen(true);
+          setErrorMsgState(true);
+          setIsLoading(false);
+          updateToken = false;
+        }
+        if (password === "") {
+          setAccountPassword("");
+          setAccountConfirmPassword("");
+          setMsg("Enter new password");
+          setDilogeOpen(true);
+          setErrorMsgState(true);
+          setIsLoading(false);
+          updateToken = false;
+        }
+      }
+
+      if (updateToken) {
+        const requestOptions = {
+          method: 'PUT',
+          body: JSON.stringify({ user_id: user_id, first_name: firstName, last_name: lastName, email: email, password: password }),
+          headers: { 'Content-Type': 'application/json' }
+        }
+
+        const response = await fetch('http://localhost:4000/api/user/account', requestOptions)
+        const data = await response.json();
+
+        if (!response.ok) {
+          setMsg(data.error);
+          setDilogeOpen(true);
+          setErrorMsgState(true);
+          setIsLoading(false);
+        } else {
+          setMsg(data.msg);
+          setDilogeOpen(true);
+          setErrorMsgState(false);
+          setIsLoading(false);
+          navigate("/");
+        }
+
+        setAccountFirstName("");
+        setAccountLastName("");
+        setAccountEmail("");
+        setAccountPassword("");
+        setAccountConfirmPassword("");
+      }
+
+    };
+
+    signupHandler();
+
+
+
   };
+
+  const handleDelete = (e) => {
+
+  }
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
+  const dilogCloseHandler = (e) => {
+    console.log("Diloge closed")
+    setDilogeOpen(false);
+
+  }
 
   return (
     <div className="wrapper">
       <Header title={"Account Details"} />
       <div className="wrapper__sub">
+        <ConfirmNotification openDilog={dilogeOpen} msgError={errorMsgState} msg={msg} dilogCloseHandler={dilogCloseHandler} />
+
         <div className="Account__title">
           <h3>Account Details</h3>
           <div className="product__icon__top">
@@ -111,7 +163,7 @@ function AccountDetails() {
           </div>
         </div>
 
-        <div className="Accoundetails__Account__input" onSubmit={handleSubmit}>
+        <div className="Accoundetails__Account__input" >
           <div>
             <input
               className="Accoundetails__Account__input-boxdesign"
@@ -143,8 +195,15 @@ function AccountDetails() {
             />
           </div>
 
-          <div>
+          <div className=" paddingtop__small">
             <h4>Change password</h4>
+
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={handleChange}
+            />
+
           </div>
           <div>
             <input
@@ -167,12 +226,14 @@ function AccountDetails() {
             />
           </div>
         </div>
+        {/* {msgState && <div className="msg">{msg}</div>}
+        {errorMsgState && <div className="error">{msg}</div>} */}
         <button className="Accoundetails__save__button" onClick={handleSubmit}>
           SAVE
         </button>
         <button
           className="Accoundetails__delete__button"
-          onClick={handleSubmit}
+          onClick={handleDelete}
         >
           DELETE
         </button>

@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 function BuySell() {
+
   const navigate = useNavigate();
+  const [user_id, setUser_id] = useState();
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      setUser_id(user._id);
+      console.log(user_id);
+    } else {
+      navigate("/")
+    }
+  }, []);
+
+  console.log("testing user inf", user_id)
+
 
 
 
