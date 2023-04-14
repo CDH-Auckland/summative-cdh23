@@ -860,9 +860,6 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   margin-top: 50px;
 }
 
-.comment-create-h2 {
-  /* margin-top: 64px; */
-}
 .comment-create-write {
   display: flex;
   flex-direction: column;
