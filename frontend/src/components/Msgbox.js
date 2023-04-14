@@ -7,15 +7,16 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function Msgbox({ view, page, msg }) {
 
-  const [hide, setHide] = useState(!view);
+  const [hide, setHide] = useState(view);
+  console.log("inside msg box", hide);
 
   const handleEdit = () => {
-    setHide(true);
+    setHide(false);
   };
 
   return (
-    <div className={hide ? "popup_bg hide" : "popup_bg"}>
-      <div className={hide ? "popup__container hide" : "popup__container"}>
+    <div className={hide ? "popup_bg" : "popup_bg hide"}>
+      <div className={hide ? "popup__container" : "popup__container hide"}>
         <ShoppingCartIcon sx={{ fontSize: 85 }}> </ShoppingCartIcon>
         <div className="popup__content">
           <h4>{msg}</h4>

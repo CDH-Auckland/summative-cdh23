@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
-
+import ConfirmNotification from '../components/ConfirmNotification';
 import Header from "../components/Header"
 import Statusmenu from '../components/Statusmenu';
 
@@ -14,24 +14,40 @@ import ProductThumbnail from "../components/ProductThumbnail";
 
 function Browseitems() {
     const navigate = useNavigate();
+    const [user_id, setUser_id] = useState();
+
+
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            setUser_id(user._id);
+            console.log(user_id);
+        } else {
+            navigate("/")
+        }
+        console.log("testing user inf", user_id)
+    }, []);
+
+
+
 
     const [msg, setMsg] = useState("");
+    const [dilogeOpen, setDilogeOpen] = useState(false);
     const [isLOading, setIsLoading] = useState(null);
     const [errorMsgState, setErrorMsgState] = useState(false);
-    const [msgState, setMsgState] = useState(false);
+
 
     const [category, setCategory] = useState("all");
     const [type, setType] = useState("all");
     const [cartCount, setCartCount] = useState(3);
 
     const [wislidtId, setWislidtId] = useState("");
-    const [productArray, setProductArray] = useState([]);
+    const [productArray, setProductArray] = useState(null);
     const [fetchItems, setFetchItems] = useState(true);
 
     const [wishlistToken, setWishlistToken] = useState(false);
 
 
-    const user_id = "00034rf";
 
     useEffect(() => {
 
@@ -45,18 +61,19 @@ function Browseitems() {
                 // headers: { 'Content-Type': 'application/json' }
             }
             const response = await fetch(`http://localhost:4000/api/items/${category}/${type}`, requestOptions)
+
             const json = await response.json();
             console.log(json);
             setProductArray(json);
             if (!response.ok) {
                 setMsg(json.error);
+                setDilogeOpen(true);
                 setErrorMsgState(true);
-                setMsgState(false);
                 setIsLoading(false);
                 setFetchItems(false);
             } else {
                 setMsg(json.msg);
-                setMsgState(true);
+                setDilogeOpen(false);
                 setErrorMsgState(false);
                 setIsLoading(false);
                 setFetchItems(false);
@@ -74,17 +91,17 @@ function Browseitems() {
             }
             const response = await fetch('http://localhost:4000/api/wishlist/', requestOptions)
             const json = await response.json();
-            console.log(json);
+            console.log("Add to wishlist json replay:", json);
             if (!response.ok) {
                 setMsg(json.error);
+                setDilogeOpen(true);
                 setErrorMsgState(true);
                 setIsLoading(false);
-                setMsgState(false);
             } else {
                 setMsg(json.msg);
-                setMsgState(true);
-                setIsLoading(false);
+                setDilogeOpen(true);
                 setErrorMsgState(false);
+                setIsLoading(false);
             }
             setWislidtId("");
             setWishlistToken(false);
@@ -104,7 +121,7 @@ function Browseitems() {
             getAllProduct();
         }
 
-    }, [wislidtId, wishlistToken]);
+    }, [fetchItems, wislidtId, wishlistToken]);
 
     const backNavigation = () => {
         // navigate("/buyandsell");
@@ -113,10 +130,12 @@ function Browseitems() {
     const categoryiconclick = (e) => {
         setCategory(e);
         console.log(e);
+        setFetchItems(true);
     }
     const typeiconclick = (e) => {
         setType(e);
         console.log(e);
+        setFetchItems(true);
     }
 
     const hamburgerClick = (e) => {
@@ -133,19 +152,17 @@ function Browseitems() {
         navigate("/viewitem", { state: { user_id: user_id, item_id: item_id, wishlistStatus: wishlistStatus } });
     }
 
-    const testclick = () => {
-
+    const dilogCloseHandler = (e) => {
+        console.log("Diloge closed")
+        setDilogeOpen(false);
     }
 
+
     // Items components
-    var itemElements = '';
-    if (productArray === undefined) {
-        itemElements = () => {
-            return <div> No items</div>
-        }
-    } else {
-        itemElements = productArray.map((items, index) => {
-            return <ProductThumbnail
+
+    const itemElements = productArray?.map((items, index) => {
+        return (
+            <ProductThumbnail
                 key={index}
                 id={items._id}
                 name={items.name}
@@ -156,16 +173,21 @@ function Browseitems() {
                 wishlistCallback={wishlistCallback}
                 viewDetailsCallback={viewDetailsCallback}
             />
-        });
+        );
+    });
 
 
-    }
+
+
 
 
     return (
         <div className="wrapper">
             <Header title={"Browse Items"} backNavigation={backNavigation} />
             <div className="wrapper__sub">
+
+                <ConfirmNotification openDilog={dilogeOpen} msgError={errorMsgState} msg={msg} dilogCloseHandler={dilogCloseHandler} />
+
                 <Statusmenu username={"John"} hamburgerClick={hamburgerClick} cartCount={cartCount} />
 
                 <div className='browseitems_titleblock paddingtop__small'>
@@ -176,14 +198,14 @@ function Browseitems() {
                 </div>
                 <div className='browseitems_categoryblock paddingtop__small'>
 
-                    <Categoryicon key={"category1"} name={"category1"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category2"} name={"category2"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category3"} name={"category3"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category4"} name={"category4"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category5"} name={"category5"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category6"} name={"category6"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category7"} name={"category7"} selected={category} categoryiconclick={categoryiconclick} />
-                    <Categoryicon key={"category8"} name={"category8"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category1"} name={"Category1"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category2"} name={"Category2"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category3"} name={"Category3"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category4"} name={"Category4"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category5"} name={"Category5"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category6"} name={"Category6"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category7"} name={"Category7"} selected={category} categoryiconclick={categoryiconclick} />
+                    <Categoryicon key={"category8"} name={"Category8"} selected={category} categoryiconclick={categoryiconclick} />
 
                 </div>
                 <div className='browseitems_titleblock paddingtop__small'>
@@ -194,16 +216,15 @@ function Browseitems() {
                     <Typeicon key={"type2"} name={"Ready To Use"} img_url={"readyToUse"} selected={type} typeiconclick={typeiconclick} />
                     <Typeicon key={"type3"} name={"Download"} img_url={"download"} selected={type} typeiconclick={typeiconclick} />
                 </div>
-                {msgState && <div className="msg">{msg}</div>}
-                {errorMsgState && <div className="error">{msg}</div>}
+                {/* <div className={msgState ? "msg" : "msg hide"}>{msg}</div>
+                <div className={errorMsgState ? "error" : "error hide"}>{msg}</div> */}
+
                 <div className='browseitems_titleblock paddingtop__small'>
                     <h3>List Items</h3>
                 </div>
                 < div className="browseitem__items">
                     {itemElements}
                 </div>
-
-                <button className='button' onClick={testclick}>test</button>
 
             </div>
         </div>

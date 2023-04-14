@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
@@ -7,6 +7,19 @@ import OrderhistoryBox from "../components/OrderhistoryBox";
 import Statusmenu from "../components/Statusmenu";
 
 function Orderhistory() {
+  const navigate = useNavigate();
+  const [user_id, setUser_id] = useState();
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      setUser_id(user._id);
+      console.log(user_id);
+    } else {
+      navigate("/")
+    }
+  }, []);
+
+  console.log("testing user inf", user_id)
 
   const [cartCount, setCartCount] = useState(3);
 

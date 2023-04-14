@@ -43,22 +43,13 @@
 .wrapper__sub {
   width: 70%;
   height: 100%;
-  background-color: aqua;
+  min-height: 500px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   color: var(--primary-color);
   overflow: hidden;
-}
-.wrapper__sub {
-  width: 60%;
-  height: 100%;
-  background-color: aqua;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
 }
 .paddinginline__small {
   padding-inline: 30px;
@@ -209,6 +200,7 @@ button {
   padding: 10px 20px;
   width: 200px;
   opacity: 1;
+  z-index: 9999;
   visibility: visible;
   transition: 0.3s ease-in-out;
 }
@@ -336,11 +328,17 @@ button {
 }
 
 .productBox_right {
+  width: 100%;
+  height: 100%;
   flex: 1 1;
   padding: 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+.productBox_infopart {
+  width: 100%;
+  height: 75%;
 }
 
 .productBox_name {
@@ -352,6 +350,12 @@ button {
 .productBox_author {
   font-size: 14px;
   color: var(--primary-color);
+}
+.productBox_divdescription {
+  width: 98%;
+  height: 55%;
+  background-color: #dadada;
+  overflow-y: scroll;
 }
 
 /* .productBox_editButton {
@@ -801,6 +805,48 @@ input[type="password"]:not(:placeholder-shown) ~ label {
 }
 
 /* Selling page END */
+
+/*** View Item Details ***/
+
+.viewItem__imagewrapper {
+  width: 95%;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewItem__imagewrapper img {
+  width: 50%;
+  height: 300px;
+}
+
+.viewItem__pricenamediv {
+  width: 95%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.viewItem__pricenamediv span {
+  font-size: 30px;
+}
+
+.viewItem__namediv,
+.viewItem__descdiv {
+  width: 95%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.viewItem__descdiv {
+  padding-bottom: 10px;
+}
 
 /* Cart page */
 
@@ -1265,10 +1311,14 @@ input[type="password"]:not(:placeholder-shown) ~ label {
   width: 100%;
   height: 125px;
 }
+.Accoundetails__Account__input {
+  width: 100%;
+  height: auto;
+}
 
 .Accoundetails__Account__input-boxdesign {
   position: relative;
-  width: 712px;
+  width: 96%;
   height: 28px;
   font-size: 20px;
   font-style: bold italic;

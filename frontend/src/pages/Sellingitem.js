@@ -14,6 +14,22 @@ import Header from "../components/Header";
 
 function Sellingitem() {
   const navigate = useNavigate();
+  const [user_id, setUser_id] = useState();
+
+
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      setUser_id(user._id);
+      console.log(user_id);
+    } else {
+      navigate("/")
+    }
+  }, []);
+
+  console.log("testing user inf", user_id)
+
+
   const [upload, setUpload] = useState(false);
   const [msg, setMsg] = useState(null);
   const [isLOading, setIsLoading] = useState(null);
@@ -26,7 +42,7 @@ function Sellingitem() {
     type: "",
     title: "",
     description: "",
-    price: "34",
+    price: "",
     imgUrl1: "",
     imgUrl2: "",
     imgUrl3: "",
@@ -44,66 +60,60 @@ function Sellingitem() {
   ];
   const typeData = ["DIY Kit", "Ready to use", "Download"];
 
-  useEffect(() => {
-    const CreateNewSellItem = async () => {
 
-      console.log("images", inputs.imgUrl1, inputs.imgUrl2, inputs.imgUrl3, inputs.imgUrl4);
-      const formData = new FormData();
-      formData.append("images", inputs.imgUrl1);
-      formData.append("images", inputs.imgUrl2);
-      formData.append("images", inputs.imgUrl3);
-      formData.append("images", inputs.imgUrl4);
-      formData.append("user_id", "00123456");
-      formData.append("name", inputs.title);
-      formData.append("category", inputs.category);
-      formData.append("type", inputs.type);
-      formData.append("description", inputs.description);
-      formData.append("price", inputs.price);
-      console.log("formData", formData);
+  const CreateNewSellItem = async () => {
 
-      const requestOptions = {
-        method: 'POST',
-        body: formData,
-        // headers: { 'Content-Type': 'application/json' }
-      }
-      const response = await fetch('http://localhost:4000/api/items/', requestOptions)
-      const json = await response.json();
-      console.log(json);
+    console.log("images", inputs.imgUrl1, inputs.imgUrl2, inputs.imgUrl3, inputs.imgUrl4);
+    const formData = new FormData();
+    formData.append("images", inputs.imgUrl1);
+    formData.append("images", inputs.imgUrl2);
+    formData.append("images", inputs.imgUrl3);
+    formData.append("images", inputs.imgUrl4);
+    formData.append("user_id", user_id);
+    formData.append("name", inputs.title);
+    formData.append("category", inputs.category);
+    formData.append("type", inputs.type);
+    formData.append("description", inputs.description);
+    formData.append("price", inputs.price);
+    console.log("formData", formData);
 
-      if (!response.ok) {
-        setMsg(json.error);
-        setErrorMsgState(true);
+    const requestOptions = {
+      method: 'POST',
+      body: formData,
+      // headers: { 'Content-Type': 'application/json' }
+    }
+    const response = await fetch('http://localhost:4000/api/items/', requestOptions)
+    const json = await response.json();
+    console.log(json);
 
-        setIsLoading(false);
-        setMsgState(false);
-      } else {
+    if (!response.ok) {
+      setMsg(json.error);
+      setErrorMsgState(true);
+      setIsLoading(false);
+      setMsgState(false);
+    } else {
 
-        setMsg(json.msg);
-        setMsgState(true);
-
-        setIsLoading(false);
-        setErrorMsgState(false);
-
-
-      }
-      setUpload(false);
-
-
-    };
-
-
-    if (upload) {
-      CreateNewSellItem();
+      setMsg(json.msg);
+      setMsgState(true);
+      setIsLoading(false);
+      setErrorMsgState(false);
+      navigate("/buyandsell");
     }
 
-  }, [upload]);
+  };
+
+
+
+
+
+
 
   const backNavigation = () => {
     navigate("/buyandsell");
   };
 
   const submitClickHandler = () => {
-    setUpload(true);
+    CreateNewSellItem();
 
     // navigate("/buyandsell");
   };
@@ -223,7 +233,7 @@ function Sellingitem() {
               value={inputs.price}
               onChange={priceHandleChange}
             />
-            <label htmlFor="title">Price</label>
+            <label htmlFor="title">Price(NZD$)</label>
           </div>
           <div className="sellingitem__divaddtitle paddingtop__small">
             <input

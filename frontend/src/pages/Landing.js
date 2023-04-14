@@ -15,7 +15,7 @@ function Landing() {
 
   const [error, setError] = useState(null);
   const [isLOading, setIsLoading] = useState(null);
-  const [msgbox, setMsgBox] = useState(true);
+  const [msgbox, setMsgBox] = useState(false);
 
   const [firstName, setsignFirstName] = useState("");
   const [lastName, setsignLastName] = useState("");
@@ -40,7 +40,7 @@ function Landing() {
       setIsLoading(false);
       setMsgBox(true);
     } else {
-
+      console.log(json);
       localStorage.setItem('user', JSON.stringify(json))
       dispatch({ type: 'LOGIN', payload: json });
       setIsLoading(false);
